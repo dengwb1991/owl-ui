@@ -1,5 +1,5 @@
 <template>
-  <div>button</div>
+  <div>OwlButton</div>
 </template>
 
 <script>

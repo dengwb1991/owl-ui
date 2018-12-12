@@ -26,7 +26,7 @@ module.exports = {
     }
   },
   plugins: [
-    new cleanWebpackPlugin(['dist'])
+    // new cleanWebpackPlugin(['dist'])
     // new uglifyJsPlugin({
     //   uglifyOptions: {
     //     compress: {

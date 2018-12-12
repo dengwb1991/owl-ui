@@ -1,3 +1,5 @@
 <template>
-  <div>2222</div>
+  <div>
+    <OwlButton/>
+  </div>
 </template>

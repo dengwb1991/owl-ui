@@ -1,7 +1,6 @@
 import OwlButton from './src/button'
 
-export default {
-  install: (Vue) => {
-    Vue.component(OwlButton.name, OwlButton)
-  }
+OwlButton.install = function (Vue) {
+  Vue.component(OwlButton.name, OwlButton)
 }
+export default OwlButton
