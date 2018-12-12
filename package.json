@@ -1,13 +1,14 @@
 {
-  "name": "vue-owl-ui",
+  "name": "owl-ui",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server --open --inline --progress --config ./build/webpack.dev.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
@@ -20,15 +21,21 @@
     "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^2.0.0",
     "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
-    "vue-loader": "^15.4.2",
+    "url-loader": "^0.6.2",
+    "vue-loader": "^13.3.0",
+    "vue-template-compiler": "^2.5.16",
+    "vue-template-es2015-compiler": "^1.6.0",
     "webpack": "^3.7.1",
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.5"
   },
   "dependencies": {
-    "vue": "^2.5.19"
+    "babel-polyfill": "^6.26.0",
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.2"
   }
 }

@@ -5,6 +5,8 @@ const vueLoaderConfig = require('./vue-loader.conf')
 const cleanWebpackPlugin = require('clean-webpack-plugin')
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
+const resolve = (dir) => path.join(__dirname, '..', dir)
+
 module.exports = {
   entry: {
     app: './src/index.js'
@@ -20,20 +22,20 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('examples')
     }
   },
   plugins: [
-    new cleanWebpackPlugin(['dist']),
-    new uglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
-    })
+    new cleanWebpackPlugin(['dist'])
+    // new uglifyJsPlugin({
+    //   uglifyOptions: {
+    //     compress: {
+    //       warnings: false
+    //     }
+    //   },
+    //   sourceMap: config.build.productionSourceMap,
+    //   parallel: true
+    // })
   ],
   module: {
     rules: [
