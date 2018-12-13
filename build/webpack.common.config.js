@@ -35,18 +35,6 @@ module.exports = {
       '@': resolve('examples')
     }
   },
-  plugins: [
-    // new cleanWebpackPlugin(['dist'])
-    // new uglifyJsPlugin({
-    //   uglifyOptions: {
-    //     compress: {
-    //       warnings: false
-    //     }
-    //   },
-    //   sourceMap: config.build.productionSourceMap,
-    //   parallel: true
-    // })
-  ],
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),

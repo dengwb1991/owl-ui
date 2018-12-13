@@ -1,20 +1,21 @@
 <template>
   <div class="example">
-    <p class="title">Custom</p>
+    <p class="title">Array & Object</p>
     <OwlTabBar :data="data"
-               :active.sync="active"
-               :initCallback="initCallback"
-               :background="background"
-               :activeStyle="activeStyle"
-               :lineStyle="lineStyle"
-               :name="name"
-               @callback="getData"/>
+         :active.sync="active"
+         :initCallback="initCallback"
+         :name="name"
+         :lineWidth="lineWidth"
+         :highlight="highlight"
+         :lineColor="lineColor"
+         @callback="getData"/>
     <Params :data="paramsData"/>
   </div>
 </template>
 
 <script>
 import Params from './Params'
+
 export default {
   components: {
     Params
@@ -22,19 +23,11 @@ export default {
   data () {
     return {
       data: [{key: 'Google'}, {key: 'IBM'}, {key: 'Apple'}, {key: 'Oracle'}, {key: 'Facebook'}, {key: 'Baidu'}],
-      active: 0,
+      active: 1,
       name: 'key',
-      background: '#24292e',
-      activeStyle: {
-        'color': '#FFF',
-        'font-family': 'PingFangSC-Medium'
-      },
-      lineStyle: {
-        'width': '40px',
-        'background': '#FFF',
-        'height': '4px',
-        'border-radius': '2px'
-      },
+      lineWidth: '40px',
+      highlight: '#24292e',
+      lineColor: '#24292e',
       initCallback: true,
       result: null,
       paramsData: []
@@ -49,9 +42,9 @@ export default {
         data: this.data,
         active: this.active,
         name: this.name,
-        background: this.background,
-        activeStyle: this.activeStyle,
-        lineStyle: this.lineStyle,
+        lineWidth: this.lineWidth,
+        highlight: this.highlight,
+        lineColor: this.lineColor,
         initCallback: this.initCallback,
         result: this.result
       })

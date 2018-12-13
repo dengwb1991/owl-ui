@@ -1,40 +1,25 @@
 <template>
   <div class="example">
-    <p class="title">Custom</p>
+    <p class="title">Default</p>
     <OwlTabBar :data="data"
-               :active.sync="active"
-               :initCallback="initCallback"
-               :background="background"
-               :activeStyle="activeStyle"
-               :lineStyle="lineStyle"
-               :name="name"
-               @callback="getData"/>
+         :active.sync="active"
+         :initCallback="initCallback"
+         @callback="getData"/>
     <Params :data="paramsData"/>
   </div>
 </template>
 
 <script>
 import Params from './Params'
+
 export default {
   components: {
     Params
   },
   data () {
     return {
-      data: [{key: 'Google'}, {key: 'IBM'}, {key: 'Apple'}, {key: 'Oracle'}, {key: 'Facebook'}, {key: 'Baidu'}],
+      data: ['Google', 'IBM'],
       active: 0,
-      name: 'key',
-      background: '#24292e',
-      activeStyle: {
-        'color': '#FFF',
-        'font-family': 'PingFangSC-Medium'
-      },
-      lineStyle: {
-        'width': '40px',
-        'background': '#FFF',
-        'height': '4px',
-        'border-radius': '2px'
-      },
       initCallback: true,
       result: null,
       paramsData: []
@@ -48,10 +33,6 @@ export default {
       this.paramsData = Object.entries({
         data: this.data,
         active: this.active,
-        name: this.name,
-        background: this.background,
-        activeStyle: this.activeStyle,
-        lineStyle: this.lineStyle,
         initCallback: this.initCallback,
         result: this.result
       })
