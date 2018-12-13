@@ -1,4 +1,4 @@
-import OwlButton from './src/button'
+import OwlButton from './src/Button'
 
 OwlButton.install = function (Vue) {
   Vue.component(OwlButton.name, OwlButton)

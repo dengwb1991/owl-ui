@@ -12,6 +12,10 @@ const router = new Router({
     {
       path: '/button',
       component: () => import('../view/button/Index')
+    },
+    {
+      path: '/tab-bar',
+      component: () => import('../view/tab-bar/Index')
     }
   ]
 })

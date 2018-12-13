@@ -4,7 +4,6 @@ const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const cleanWebpackPlugin = require('clean-webpack-plugin')
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
 const resolve = (dir) => path.join(__dirname, '..', dir)
 
 const createLintingRule = () => ({
@@ -64,6 +63,14 @@ module.exports = {
         },
         include: [resolve('src'), resolve('node_modules/webpack-dev-server/client')],
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader', 'postcss-loader']
+      },
+      {
+        test: /\.less$/,
+        loaders: ['style-loader', 'less-loader', 'postcss-loader']
       }
     ]
   }

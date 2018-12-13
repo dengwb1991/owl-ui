@@ -1,6 +1,7 @@
 import Button from '../packages/button'
+import TabBar from '../packages/tab-bar'
 
-const components = [Button]
+const components = [Button, TabBar]
 
 const install = function (Vue, opts = {}) {
   if (install.installed) return
