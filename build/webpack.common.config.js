@@ -7,6 +7,17 @@ const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const resolve = (dir) => path.join(__dirname, '..', dir)
 
+const createLintingRule = () => ({
+  test: /\.(js|vue)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  include: [resolve('src'), resolve('examples')],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.dev.showEslintErrorsInOverlay
+  }
+})
+
 module.exports = {
   entry: {
     app: './src/index.js'
@@ -39,6 +50,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
