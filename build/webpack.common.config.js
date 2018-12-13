@@ -35,6 +35,7 @@ module.exports = {
       '@': resolve('examples')
     }
   },
+  plugins: [],
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),

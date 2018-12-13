@@ -8,7 +8,7 @@ const config = require('../config')
 const configuration = merge(commonConfig, {
   devtool: 'inline-source-map',
   entry: {
-    main: './examples/main',
+    app: './examples/main',
     vendors: ['vue', 'vue-router']
   },
   output: {
