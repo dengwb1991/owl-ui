@@ -1,4 +1,6 @@
 build/
 config/
 src/
+node_modules/
+examples/
 package-lock.json
