@@ -250,5 +250,3 @@ export default {
   }
 }
 </script>
-
-<!-- <style src="../assets/css/main.less" lang="less" scoped></style> -->
