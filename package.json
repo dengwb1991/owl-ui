@@ -52,6 +52,7 @@
     "postcss-pxtorem": "^4.0.1",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.6.2",
+    "vue-router": "^3.0.2",
     "vue-loader": "^13.3.0",
     "vue-template-compiler": "^2.5.16",
     "vue-template-es2015-compiler": "^1.6.0",
@@ -61,7 +62,6 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.2"
+    "vue": "^2.5.16"
   }
 }

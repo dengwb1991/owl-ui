@@ -4,3 +4,10 @@ src/
 node_modules/
 examples/
 package-lock.json
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.npmignore
+.postcssrc
