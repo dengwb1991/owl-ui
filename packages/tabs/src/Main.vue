@@ -1,5 +1,5 @@
 <template>
-  <div class="owl-tab" :style="BaseStyle">
+  <div class="owl-tabs" :style="BaseStyle">
     <ul :style="[ulStyle, ulWidth, ulTransform, ulTransition]"
         @touchstart="doTouchStart($event)"
         @touchmove="doTouchMove($event)"
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'OwlTabBar',
+  name: 'OwlTabs',
   data () {
     return {
       liWidth: 0,
@@ -251,4 +251,4 @@ export default {
 }
 </script>
 
-<style src="../assets/css/main.less" lang="less" scoped></style>
+<!-- <style src="../assets/css/main.less" lang="less" scoped></style> -->

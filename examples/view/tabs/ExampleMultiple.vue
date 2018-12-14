@@ -1,13 +1,12 @@
 <template>
   <div class="example">
-    <p class="title">Array & Object</p>
-    <OwlTabBar :data="data"
+    <p class="title">Multiple</p>
+    <OwlTabs :data="data"
          :active.sync="active"
          :initCallback="initCallback"
-         :name="name"
+         :tabWidth="tabWidth"
+         :tabHeight="tabHeight"
          :lineWidth="lineWidth"
-         :highlight="highlight"
-         :lineColor="lineColor"
          @callback="getData"/>
     <Params :data="paramsData"/>
   </div>
@@ -22,12 +21,11 @@ export default {
   },
   data () {
     return {
-      data: [{key: 'Google'}, {key: 'IBM'}, {key: 'Apple'}, {key: 'Oracle'}, {key: 'Facebook'}, {key: 'Baidu'}],
-      active: 1,
-      name: 'key',
-      lineWidth: '40px',
-      highlight: '#24292e',
-      lineColor: '#24292e',
+      data: ['Google', 'IBM', 'Apple', 'Oracle', 'Facebook', 'Baidu'],
+      active: 0,
+      tabWidth: '100px',
+      tabHeight: '40px',
+      lineWidth: '30px',
       initCallback: true,
       result: null,
       paramsData: []
@@ -41,10 +39,9 @@ export default {
       this.paramsData = Object.entries({
         data: this.data,
         active: this.active,
-        name: this.name,
+        tabWidth: this.tabWidth,
+        tabHeight: this.tabHeight,
         lineWidth: this.lineWidth,
-        highlight: this.highlight,
-        lineColor: this.lineColor,
         initCallback: this.initCallback,
         result: this.result
       })

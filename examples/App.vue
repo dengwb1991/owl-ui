@@ -10,6 +10,7 @@ export default {
 }
 </script>
 
-<style>
-@import './assets/css/app.less'
+<style lang="less">
+@import './assets/css/app.less';
+@import '../src/styles/index.less';
 </style>

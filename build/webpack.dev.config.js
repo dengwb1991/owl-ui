@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const commonConfig = require('./webpack.common.config.js')
 const config = require('../config')
+const utils = require('./utils')
 
 const configuration = merge(commonConfig, {
   devtool: 'inline-source-map',
@@ -22,6 +23,12 @@ const configuration = merge(commonConfig, {
     port: config.dev.port,
     publicPath: '/',
     noInfo: true
+  },
+  module: {
+    rules: utils.styleLoaders({
+      sourceMap: config.dev.cssSourceMap,
+      usePostCSS: true
+    })
   }
 })
 

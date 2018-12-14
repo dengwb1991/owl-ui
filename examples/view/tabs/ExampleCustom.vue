@@ -1,7 +1,7 @@
 <template>
   <div class="example">
     <p class="title">Custom</p>
-    <OwlTabBar :data="data"
+    <OwlTabs :data="data"
                :active.sync="active"
                :initCallback="initCallback"
                :background="background"

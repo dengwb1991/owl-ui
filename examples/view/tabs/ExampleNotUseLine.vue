@@ -1,7 +1,7 @@
 <template>
   <div class="example">
     <p class="title">Not use underline</p>
-    <OwlTabBar :data="data"
+    <OwlTabs :data="data"
          :active.sync="active"
          :lineUse="lineUse"
          :initCallback="initCallback"

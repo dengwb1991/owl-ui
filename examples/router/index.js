@@ -14,8 +14,8 @@ const router = new Router({
       component: () => import('../view/button/Index')
     },
     {
-      path: '/tab-bar',
-      component: () => import('../view/tab-bar/Index')
+      path: '/tabs',
+      component: () => import('../view/tabs/Index')
     }
   ]
 })

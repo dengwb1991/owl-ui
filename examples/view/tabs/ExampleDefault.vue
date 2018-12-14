@@ -1,12 +1,9 @@
 <template>
   <div class="example">
-    <p class="title">Multiple</p>
-    <OwlTabBar :data="data"
+    <p class="title">Default</p>
+    <OwlTabs :data="data"
          :active.sync="active"
          :initCallback="initCallback"
-         :tabWidth="tabWidth"
-         :tabHeight="tabHeight"
-         :lineWidth="lineWidth"
          @callback="getData"/>
     <Params :data="paramsData"/>
   </div>
@@ -21,11 +18,8 @@ export default {
   },
   data () {
     return {
-      data: ['Google', 'IBM', 'Apple', 'Oracle', 'Facebook', 'Baidu'],
+      data: ['Google', 'IBM'],
       active: 0,
-      tabWidth: '100px',
-      tabHeight: '40px',
-      lineWidth: '30px',
       initCallback: true,
       result: null,
       paramsData: []
@@ -39,9 +33,6 @@ export default {
       this.paramsData = Object.entries({
         data: this.data,
         active: this.active,
-        tabWidth: this.tabWidth,
-        tabHeight: this.tabHeight,
-        lineWidth: this.lineWidth,
         initCallback: this.initCallback,
         result: this.result
       })
