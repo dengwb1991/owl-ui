@@ -3,11 +3,12 @@ config/
 src/
 node_modules/
 examples/
+LICENSE
 package-lock.json
 .babelrc
 .editorconfig
 .eslintignore
-.eslintrc
+.eslintrc.js
 .gitignore
 .npmignore
-.postcssrc
+.postcssrc.js

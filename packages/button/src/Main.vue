@@ -1,5 +1,5 @@
 <template>
-  <div>OwlButton</div>
+  <button :class="['owl-button', type]">OwlButton</button>
 </template>
 
 <script>
@@ -9,13 +9,8 @@ export default {
     type: {
       type: String,
       default: 'default'
-    }
+    },
+    text: String,
   }
 }
 </script>
-
-<style scoped>
-div {
-  width: 100px;
-}
-</style>

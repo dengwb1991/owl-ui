@@ -7,15 +7,16 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/button'
+      // redirect: '/button'
+      component: () => import('../')
     },
     {
       path: '/button',
-      component: () => import('../view/button/Index')
+      component: () => import('../view/Button')
     },
     {
       path: '/tabs',
-      component: () => import('../view/tabs/Index')
+      component: () => import('../view/Tabs')
     }
   ]
 })
