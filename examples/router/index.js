@@ -1,28 +1,35 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import bus from '../plugins/bus'
 
 Vue.use(Router)
-const requireRouter = require.context('../view/button', false, /[a-zA-Z]*\.vue/)
+
+const requireRouter = require.context('.', false, /\.js/)
+
+let routes = []
 requireRouter.keys().forEach(fileName => {
+  if (fileName === './index.js') return
   const requireConfig = requireRouter(fileName)
-  console.log(requireConfig)
+  const routerArr = requireConfig.default || requireConfig
+  routes = [ ...routes, ...routerArr ]
 })
+
 const router = new Router({
   routes: [
+    ...routes,
     {
       path: '/',
-      // redirect: '/button'
       component: () => import('../')
-    },
-    {
-      path: '/button',
-      component: () => import('../view/button')
-    },
-    {
-      path: '/tabs',
-      component: () => import('../view/tabs')
     }
   ]
 })
+
+// router.afterEach(() => {
+//   // console.log(routes)
+//   setTimeout(() => {
+//     bus.$emit('routes', routes)
+//   })
+// })
+
 
 export default router
