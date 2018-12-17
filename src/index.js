@@ -1,5 +1,5 @@
-import Button from '../packages/Button'
-import Tabs from '../packages/Tabs'
+import Button from '../packages/button'
+import Tabs from '../packages/tabs'
 
 const components = [Button, Tabs]
 

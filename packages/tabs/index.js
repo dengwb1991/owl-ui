@@ -1,4 +1,4 @@
-import OwlTabBar from './src/Main'
+import OwlTabBar from './src/main'
 
 OwlTabBar.install = function (Vue) {
   Vue.component(OwlTabBar.name, OwlTabBar)
