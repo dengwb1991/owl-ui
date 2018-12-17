@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import bus from '../plugins/bus'
 
 Vue.use(Router)
 
@@ -23,13 +22,5 @@ const router = new Router({
     }
   ]
 })
-
-// router.afterEach(() => {
-//   // console.log(routes)
-//   setTimeout(() => {
-//     bus.$emit('routes', routes)
-//   })
-// })
-
 
 export default router
