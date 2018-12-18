@@ -1,8 +1,7 @@
-import Button from '../packages/button'
-import Tabs from '../packages/tabs'
+import Button from 'packages/button'
+import Tabs from 'packages/tabs'
 
 const components = [Button, Tabs]
-
 const install = function (Vue, opts = {}) {
   if (install.installed) return
 
@@ -18,7 +17,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  Button
+  Button,
+  Tabs
 }
 
 module.exports.default = module.exports

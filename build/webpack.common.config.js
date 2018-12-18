@@ -2,15 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const cleanWebpackPlugin = require('clean-webpack-plugin')
-const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const resolve = (dir) => path.join(__dirname, '..', dir)
 
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
-  include: [resolve('src'), resolve('examples')],
+  include: [resolve('src'), resolve('examples'), resolve('test')],
   options: {
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
@@ -32,7 +30,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('examples')
+      '@': resolve('examples'),
+      'packages': resolve('packages')
     }
   },
   plugins: [],
@@ -47,10 +46,10 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        options: {
-          presets: ['es2015']
-        },
-        include: [resolve('src'), resolve('node_modules/webpack-dev-server/client')],
+        // options: {
+        //   presets: ['es2015']
+        // },
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
         exclude: /node_modules/
       },
       {

@@ -1,16 +1,23 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const commonConfig = require('./webpack.common.config.js')
+const utils = require('./utils')
 
 const configuration = merge(commonConfig, {
-  devtool: 'eval-source-map',
+  module: {
+    rules: utils.styleLoaders()
+  },
+  devtool: '#inline-source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-          NODE_ENV: '"testing"'
+        NODE_ENV: '"testing"'
       }
     })
   ]
 })
+
+delete configuration.entry
+// delete configuration.output
 
 module.exports = configuration

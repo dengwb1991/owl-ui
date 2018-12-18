@@ -1,5 +1,5 @@
 <template>
-  <button :class="['owl-button', type]">OwlButton</button>
+  <button :class="['owl-button', type]">{{text}}</button>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
       type: String,
       default: 'default'
     },
-    text: String,
+    text: String
   }
 }
 </script>
