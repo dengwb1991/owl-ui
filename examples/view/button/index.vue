@@ -1,5 +1,5 @@
 <template>
   <div>
-    <OwlButton/>
+    <OwlButton :text="'按钮'"/>
   </div>
 </template>

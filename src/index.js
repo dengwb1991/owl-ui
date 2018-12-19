@@ -1,12 +1,21 @@
-import Button from 'packages/button'
-import Tabs from 'packages/tabs'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
 
-const components = [Button, Tabs]
+const components = {}
+
+const requireComponent = require.context('../packages', true, /\.js/)
+
+requireComponent.keys().forEach(filePath => {
+  const componentConfig = requireComponent(filePath)
+  const key = upperFirst(camelCase(filePath.split('/')[1]))
+  components[key] = componentConfig.default || componentConfig
+})
 
 const install = function (Vue, opts = {}) {
   if (install.installed) return
 
-  components.forEach(component => {
+  Object.keys(components).forEach(key => {
+    const component = components[key]
     Vue.component(component.name, component)
   })
 }
@@ -18,8 +27,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  Button,
-  Tabs
+  ...components
 }
 
 module.exports.default = module.exports

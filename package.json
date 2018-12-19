@@ -5,8 +5,9 @@
   "main": "./dist/owl-ui.common.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config ./build/webpack.dev.config.js",
-    "build": "npm run build:style && webpack --config ./build/webpack.prod.config.js",
+    "build": "npm run build:style && npm run build:component && webpack --config ./build/webpack.prod.config.js",
     "build:style": "gulp --gulpfile build/build-style.js",
+    "build:component": "webpack --config ./build/webpack.component.config.js",
     "lint": "eslint --fix --ext .js,.vue src",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run lint && npm run unit"
@@ -63,6 +64,8 @@
     "karma-webpack": "^2.0.2",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.upperfirst": "^4.3.1",
     "mocha": "^5.2.0",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-less": "^3.1.0",
