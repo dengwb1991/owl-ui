@@ -12,3 +12,4 @@ package-lock.json
 .gitignore
 .npmignore
 .postcssrc.js
+components.json
