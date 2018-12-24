@@ -1,6 +1,6 @@
 {
   "name": "owl-ui",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Owl UI",
   "main": "./dist/owl-ui.common.js",
   "scripts": {
