@@ -9,7 +9,6 @@ const Components = require('../components.json')
 
 process.env.NODE_ENV = 'production'
 
-console.log('Components', Components)
 const configuration = merge(commonConfig, {
   entry: Components,
   output: {
