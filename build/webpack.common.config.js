@@ -78,7 +78,7 @@ module.exports = {
         test: /\.(gif|png|jpe?g)(\?\S*)?$/,
         loader: 'url-loader',
         query: {
-          limit: 10000,
+          // limit: 10000,s
           name: path.posix.join('static', '[name].[hash:7].[ext]')
         }
       }

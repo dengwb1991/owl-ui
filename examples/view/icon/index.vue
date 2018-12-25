@@ -1,5 +1,9 @@
 <template>
-  <i class="owl-iconfont-close"></i>
+  <div>
+    <i class="owl-iconfont-close"></i>
+
+    <OwlIcon/>
+  </div>
 </template>
 
 <style scoped>
