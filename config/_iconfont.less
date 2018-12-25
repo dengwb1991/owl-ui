@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "<%= fontName %>";
+  src: url('<%= fontPath %><%= fontName %>.eot<%= cacheBusterQueryString %>');
+  src: url('<%= fontPath %><%= fontName %>.eot?<%= cacheBuster %>#iefix') format('eot'),
+    url('<%= fontPath %><%= fontName %>.woff2<%= cacheBusterQueryString %>') format('woff2'),
+    url('<%= fontPath %><%= fontName %>.woff<%= cacheBusterQueryString %>') format('woff'),
+    url('<%= fontPath %><%= fontName %>.ttf<%= cacheBusterQueryString %>') format('truetype'),
+    url('<%= fontPath %><%= fontName %>.svg<%= cacheBusterQueryString %>#<%= fontName %>') format('svg');
+}
+
+.<%= cssClass%>-base-pseudo {
+  font-family: "<%= fontName %>";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.<%= cssClass%>-char(@filename) {
+  <% _.each(glyphs, function(glyph) { %>@<%= glyph.fileName %>: "\<%= glyph.codePoint %>";
+  <% }); %>
+  content: @@filename;
+}
+
+.<%= cssClass%>(@filename, @insert: before) {
+  @pseudo-selector: ~":@{insert}";
+
+  &@{pseudo-selector} {
+    &:extend(.<%= cssClass%>-base-pseudo);
+    .<%= cssClass%>-char(@filename);
+  }
+}
+
+<% _.each(glyphs, function(glyph) { %>.<%= cssClass%>-<%= glyph.fileName %> {
+  .<%= cssClass%>(<%= glyph.originalFileName ? glyph.originalFileName : glyph.fileName %>);
+}
+<% }); %>
