@@ -14,6 +14,11 @@ module.exports = {
   },
   build: {
     productionSourceMap: false,
-    assetsSubDirectory: 'static'
+    assetsSubDirectory: 'static',
+    assetsRoot: path.resolve(__dirname, '../lib'),
+    assetsPublicPath: '/'
+  },
+  docsBuild: {
+    assetsRoot: path.resolve(__dirname, '../../dist')
   }
 }

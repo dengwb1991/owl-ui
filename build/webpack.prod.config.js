@@ -14,8 +14,8 @@ const configuration = merge(commonConfig, {
     app: './src/index.js',
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/dist/',
+    path: config.build.assetsRoot,
+    publicPath: config.build.assetsPublicPath,
     filename: 'owl-ui.common.js',
     library: 'owl-ui',
     libraryTarget: 'umd',
@@ -30,7 +30,7 @@ const configuration = merge(commonConfig, {
     }
   },
   plugins: [
-    new cleanWebpackPlugin(['dist']),
+    new cleanWebpackPlugin(['lib']),
     new uglifyJsPlugin({
       uglifyOptions: {
         compress: {

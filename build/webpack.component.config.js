@@ -12,8 +12,8 @@ process.env.NODE_ENV = 'production'
 const configuration = merge(commonConfig, {
   entry: Components,
   output: {
-    path: path.resolve(__dirname, '../dist/'),
-    publicPath: '/dist/',
+    path: config.build.assetsRoot,
+    publicPath: config.build.assetsPublicPath,
     filename: '[name].js',
     chunkFilename: '[id].js',
     libraryTarget: 'umd'

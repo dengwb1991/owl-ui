@@ -17,8 +17,8 @@ const createLintingRule = () => ({
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    path: config.build.assetsRoot,
+    publicPath: config.build.assetsPublicPath,
     library: 'owl-ui',
     libraryTarget: 'umd',
     filename: 'owl-ui.common.js'

@@ -14,7 +14,7 @@ const configuration = merge(commonConfig, {
   },
   output: {
     path: path.join(__dirname, '../examples/dist'),
-    publicPath: '',
+    publicPath: config.build.assetsPublicPath,
     filename: '[name].js',
     chunkFilename: '[name].chunk.js'
   },
