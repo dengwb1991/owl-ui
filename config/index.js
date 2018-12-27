@@ -4,8 +4,8 @@ const path = require('path')
 
 module.exports = {
   dev: {
-    cacheBusting: true,
-    cssSourceMap: true,
+    cacheBusting: false,
+    cssSourceMap: false,
     useEslint: true,
     showEslintErrorsInOverlay: false,
     assetsSubDirectory: 'static',
@@ -19,6 +19,8 @@ module.exports = {
     assetsPublicPath: '/'
   },
   docsBuild: {
-    assetsRoot: path.resolve(__dirname, '../../dist')
+    assetsRoot: path.resolve(__dirname, '../../dist'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/'
   }
 }
