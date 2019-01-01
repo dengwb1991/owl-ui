@@ -1,0 +1,1 @@
+webpackJsonp([4],{445:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(461),l=n(48)(null,r.a,!1,null,null,null);e.default=l.exports},461:function(t,e,n){"use strict";var r={render:function(){var t=this.$createElement,e=this._self._c||t;return e("div",[e("OwlButton",{attrs:{text:"按钮"}})],1)},staticRenderFns:[]};e.a=r}});
