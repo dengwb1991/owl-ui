@@ -1,5 +1,3 @@
 <template>
-  <div>
-    1111144
-  </div>
+  <h1>我是欢迎页</h1>
 </template>

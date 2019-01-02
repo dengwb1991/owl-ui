@@ -1,0 +1,51 @@
+body {
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  font-size: 14Px;
+  color: #656b79;
+  background-color: #fff;
+}
+html, body, #docs {
+  height: 100%;
+}
+div {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+body, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+* {
+  outline: none;
+}
+.md {
+  padding: 0 10Px;
+}
+section {
+  float: left;
+  position: relative;
+  height: inherit;
+  overflow: auto;
+  box-sizing: border-box;
+  &.nav {
+    width: 15%;
+  }
+  &.md {
+    width: 55%;
+  }
+  &.phone {
+    width: 30%;
+  }
+  .example {
+    position: absolute;
+    transform: translate(0, -50%);
+    top: 50%;
+  }
+}

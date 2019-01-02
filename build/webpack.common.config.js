@@ -29,7 +29,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('examples'),
       'packages': resolve('packages'),
-      'images': resolve('src/images')
+      'images': resolve('src/images'),
+      'dist': resolve('dist')
     }
   },
   plugins: [],
@@ -81,6 +82,10 @@ module.exports = {
           // limit: 10000,
           name: path.posix.join('static', '[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.md$/,
+        loader: 'vue-markdown-loader'
       }
     ]
   }
