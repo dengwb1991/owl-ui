@@ -1,47 +1,32 @@
 const path = require('path')
-const merge = require('webpack-merge')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const commonConfig = require('./webpack.common.config.js')
 const config = require('../config')
-const utils = require('./utils')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const devConfig = require('./webpack.dev.config.js')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const configuration = merge(commonConfig, {
-  devtool: 'inline-source-map',
-  entry: {
-    app: './docs/main',
-    vendors: ['vue', 'vue-router']
-  },
-  output: {
-    path: path.join(__dirname, '../docs/dist'),
-    publicPath: config.build.assetsPublicPath,
-    filename: '[name].js',
-    chunkFilename: '[name].chunk.js'
-  },
-  devServer: {
-    host: config.dev.host,
-    port: config.dev.port,
-    publicPath: '/',
-    noInfo: true,
-    quiet: true
-  },
-  module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.dev.cssSourceMap,
-      usePostCSS: true
+module.exports = new Promise((resolve, reject) => {
+  const configuration = {
+    entry: {
+      app: './docs/main',
+      vendors: ['vue', 'vue-router']
+    },
+    output: {
+      path: path.join(__dirname, '../docs/dist'),
+      publicPath: config.build.assetsPublicPath,
+      filename: '[name].js',
+      chunkFilename: '[name].chunk.js'
+    }
+  }
+  devConfig.then(config => {
+    const devConfig = Object.assign({}, config, configuration)
+    const index = devConfig.plugins.findIndex(function (plugin) {
+      return plugin instanceof HtmlWebpackPlugin
     })
-  },
-  plugins: [
-    // new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new HtmlWebpackPlugin({
+    devConfig.plugins.splice(index, 1, new HtmlWebpackPlugin({
       filename: path.join(__dirname, '../docs/dist/index.html'),
       template: path.join(__dirname, '../docs/index.html'),
       inject: true
-    }),
-    new FriendlyErrorsPlugin()
-  ]
-})
+    }))
 
-module.exports = configuration
+    resolve(devConfig)
+  })
+})

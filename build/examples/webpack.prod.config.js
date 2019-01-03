@@ -1,9 +1,9 @@
-var config = require('../../config')
-var utils = require('../utils')
-var docProdWebpackConfig = require('../docs/webpack.prod.config')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+const config = require('../../config')
+const utils = require('../utils')
+const docProdWebpackConfig = require('../docs/webpack.prod.config')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var webpackConfig = Object.assign({}, docProdWebpackConfig, {
+const webpackConfig = Object.assign({}, docProdWebpackConfig, {
   entry: './examples/main.js',
   output: {
     path: config.examples.assetsRoot,
@@ -12,7 +12,7 @@ var webpackConfig = Object.assign({}, docProdWebpackConfig, {
   }
 })
 
-var index = webpackConfig.plugins.findIndex(function (plugin) {
+const index = webpackConfig.plugins.findIndex(function (plugin) {
   return plugin instanceof HtmlWebpackPlugin
 })
 webpackConfig.plugins.splice(index, 1, new HtmlWebpackPlugin({

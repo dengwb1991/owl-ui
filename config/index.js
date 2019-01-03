@@ -12,7 +12,9 @@ module.exports = {
     assetsSubDirectory: 'static',
     host: '0.0.0.0',
     port: 8088,
-    assetsPublicPath: '/'
+    assetsPublicPath: '/',
+    errorOverlay: true,
+    poll: false
   },
   build: {
     env: require('./prod.env'),
