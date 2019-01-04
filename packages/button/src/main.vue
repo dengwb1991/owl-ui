@@ -1,5 +1,5 @@
 <template>
-  <button :class="['owl-button', type]">{{text}}</button>
+  <button :class="['owl-button', type]" @click="$emit('click')">{{text}}</button>
 </template>
 
 <script>
