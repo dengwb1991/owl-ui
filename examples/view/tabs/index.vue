@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <OwlPage>
     <ExampleDefault/>
 
     <ExampleNotUseLine/>
@@ -9,7 +9,7 @@
     <ExampleObject/>
 
     <ExampleCustom/>
-  </div>
+  </OwlPage>
 </template>
 
 <script>

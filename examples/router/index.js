@@ -15,11 +15,11 @@ requireRouter.keys().forEach(fileName => {
 
 const router = new Router({
   routes: [
-    ...routes,
-    {
-      path: '/',
-      component: () => import('../')
-    }
+    ...routes
+    // {
+    //   path: '/',
+    //   component: () => import('../')
+    // }
   ]
 })
 

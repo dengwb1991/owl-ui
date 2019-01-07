@@ -1,5 +1,5 @@
 <template>
-  <div class="examples-drawer">
+  <OwlPage class="examples-drawer">
     <OwlButton @click="open('down')"
                   text="down"/>
     <OwlButton @click="open('up')"
@@ -10,7 +10,7 @@
                   text="left"/>
     <OwlDrawer :visible.sync="visible"
                :placement="placement"/>
-  </div>
+  </OwlPage>
 </template>
 
 <script>
@@ -32,7 +32,6 @@ export default {
 
 <style lang="less" scoped>
 .examples-drawer {
-  margin: 20px;
   text-align: center;
 }
 button {

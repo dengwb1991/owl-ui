@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <OwlPage>
     <i class="owl-iconfont-close"></i>
 
     <OwlIcon/>
-  </div>
+  </OwlPage>
 </template>
 
 <style scoped>

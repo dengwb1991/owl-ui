@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <OwlPage>
     <OwlLogo/>
-  </div>
+  </OwlPage>
 </template>
