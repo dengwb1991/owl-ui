@@ -1,8 +1,11 @@
 build/
 config/
 src/
-node_modules/
+dist/
+docs/
 examples/
+node_modules/
+test/
 LICENSE
 package-lock.json
 .babelrc
