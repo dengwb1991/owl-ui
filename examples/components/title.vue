@@ -1,6 +1,6 @@
 <template>
   <div class="title">
-    <p @click="$router.back()">返回</p>
+    <p @click="$router.push('/')">返回</p>
     {{titleName}}
   </div>
 </template>
