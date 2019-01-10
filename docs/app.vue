@@ -9,7 +9,6 @@
     <section class="phone">
       <Example/>
     </section>
-    
   </div>
 </template>
 
