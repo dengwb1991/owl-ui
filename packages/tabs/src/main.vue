@@ -15,7 +15,7 @@
       <div ref="line"
            class="line"
            v-if="lineUse"
-           :style="[underlineStyle, underlineLeft]"></div>
+           :style="[underlineStyle, underlineLeft, lineTransition]"></div>
     </ul>
   </div>
 </template>
@@ -31,7 +31,8 @@ export default {
       tabTransition: null,
       activeIndex: this.active,
       tabsIns: null,
-      surplusWidth: 0
+      surplusWidth: 0,
+      lineTransition: {}
     }
   },
   props: {
@@ -247,6 +248,9 @@ export default {
     this.tabPlace()
 
     this.initCallback && this.getCurrData()
+    setTimeout(() => {
+      this.lineTransition = { transition: 'left 0.4s ease' }
+    })
   }
 }
 </script>
