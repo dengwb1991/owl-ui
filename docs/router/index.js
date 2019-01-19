@@ -17,8 +17,12 @@ const router = new Router({
   routes: [
     ...routes,
     {
-      path: '/',
+      path: '/home',
       component: () => import('../')
+    },
+    {
+      path: '/',
+      redirect: '/home'
     }
   ]
 })
