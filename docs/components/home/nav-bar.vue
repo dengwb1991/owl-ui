@@ -5,8 +5,8 @@
       <p>Owl UI Design</p>
     </div>
     <div class="tabs-wrap">
-      <p>文档</p>
-      <p>示例</p>
+      <p @click="start">文档</p>
+      <p @click="start">示例</p>
       <p>中文</p>
     </div>
   </div>
@@ -20,15 +20,22 @@ export default {
     return {
       logo
     }
+  },
+  methods: {
+    start () {
+      this.$router.push('/zh-cn/button')
+    }
   }
 }
 </script>
 
 <style lang="less" scoped>
 .nav-wrap {
-  overflow: hidden;
-  margin: 0 190Px;
+  max-width: 1160Px;
+  width: 100%;
+  margin: 0 auto;
   background: #FFF;
+  overflow: hidden;
   .tabs-wrap {
     float: right;
     p {

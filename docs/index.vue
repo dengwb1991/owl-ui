@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-wrap">
     <nav-bar/>
     <contents/>
     <features/>
@@ -20,4 +20,9 @@ export default {
 }
 </script>
 
-
+<style lang="less" scoped>
+.page-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+</style>
