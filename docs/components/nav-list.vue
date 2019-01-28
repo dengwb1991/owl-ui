@@ -3,15 +3,15 @@
     <ul>
       <li>
         <span class="angle">01</span>
-        <p>概览</p>
+        <p class="label">概览</p>
       </li>
       <li>
         <span class="angle">02</span>
-        <p>组件</p>
+        <p class="label">组件</p>
       </li>
       <li>
         <span class="angle">03</span>
-        <p>模块</p>
+        <p class="label">模块</p>
       </li>
       <!-- <li v-for="(nav, index) in navs"
           :key="index"
@@ -47,9 +47,27 @@ export default {
 <style lang="less" scoped>
 .nav-list {
   height: 100%;
-  padding: 50Px 0;
+  padding: 38Px 0;
   box-sizing: border-box;
   overflow-y: auto;
+  ul {
+    li {
+      position: relative;
+      width: 100%;
+      .label {
+        font-family: PingFangSC-Regular;
+        font-size: 24Px;
+        color: #333;
+        letter-spacing: 0.3Px;
+        line-height: 53Px;
+        margin: 20Px 30Px 0 30Px;
+        border-bottom: 1Px solid #DDD;
+      }
+      span {
+        position: absolute;
+      }
+    }
+  }
   // ul {
   //   padding-left: 10Px;
   //   li {
