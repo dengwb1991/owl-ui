@@ -1,6 +1,6 @@
 <template>
   <div class="nav-wrap">
-    <div class="logo-wrap">
+    <div class="logo-wrap" @click="toHome">
       <img :src="logo"/>
       <p>Owl UI Design</p>
     </div>
@@ -24,6 +24,9 @@ export default {
   methods: {
     start () {
       this.$router.push('/zh-cn/button')
+    },
+    toHome () {
+      this.$router.push('/home')
     }
   }
 }
@@ -31,12 +34,13 @@ export default {
 
 <style lang="less" scoped>
 .nav-wrap {
-  max-width: 1160Px;
+  max-width: 1240Px;
   width: 100%;
   margin: 0 auto;
   background: #FFF;
   overflow: hidden;
   .tabs-wrap {
+    padding-right: 40Px;
     float: right;
     p {
       font-family: PingFangSC-Regular;
@@ -53,10 +57,14 @@ export default {
     }
   }
   .logo-wrap {
+    padding-left: 40Px;
     float: left;
     position: relative;
     height: 80Px;
     line-height: 80Px;
+    &:hover {
+      cursor: pointer;
+    }
     img {
       width: 39Px;
       height: 45Px;

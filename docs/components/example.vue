@@ -30,11 +30,13 @@ export default {
   background-repeat: no-repeat;
   background-size: 100%;
   padding: 100Px 15Px;
+  margin: 0 56Px 0 26Px;
   box-sizing: border-box;
-  width: 365Px;
+  width: 320Px;
   iframe {
     width: 100%;
-    height: 580Px;
+    height: 515Px;
+    border: none;
     background-color: #fff;
   }
 }

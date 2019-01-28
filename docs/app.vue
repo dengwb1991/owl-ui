@@ -1,36 +1,43 @@
 <template>
   <div id="docs">
+    <navigator/>
     <template v-if="isHome">
       <Index/>
     </template>
     <template v-else>
-      <section class="nav">
-        <NavBar/>
-      </section>
-      <section class="md">
-        <router-view/>
-      </section>
-      <section class="phone">
-        <Example/>
-      </section>
+      <div class="docs-view">
+        <section class="nav">
+          <nav-list/>
+        </section>
+        <section class="md">
+          <router-view/>
+        </section>
+        <section class="phone">
+          <example/>
+        </section>
+      </div>
     </template>
   </div>
 </template>
 
 <script>
-import NavBar from './components/nav-bar'
+import Navigator from './components/home/navigator'
+import NavList from './components/nav-list'
 import Example from './components/example'
 import Index from './index'
 export default {
   name: 'App',
   components: {
-    NavBar,
+    Navigator,
+    NavList,
     Example,
     Index
   },
   computed: {
     isHome () {
-      return ['/', '/home'].includes(this.$route.path)
+      const type = ['/home'].includes(this.$route.path)
+      document.body.style.overflow = !type ? 'hidden' : ''
+      return type
     }
   }
 }
