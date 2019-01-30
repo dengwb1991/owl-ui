@@ -4,14 +4,38 @@
       <li>
         <span class="angle">01</span>
         <p class="label">概览</p>
+        <img :src="arrow"/>
+        <ul>
+          <li>
+            <a>介绍</a>
+          </li>
+          <li>
+            <a>快速上手</a>
+          </li>
+        </ul>
       </li>
       <li>
         <span class="angle">02</span>
         <p class="label">组件</p>
+        <img :src="arrow"/>
+        <ul>
+          <li>
+            <p class="label">基础</p>
+            <ul>
+              <li>
+                <a>Button</a>
+              </li>
+              <li>
+                <a>Logo</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </li>
       <li>
         <span class="angle">03</span>
         <p class="label">模块</p>
+        <img :src="arrow"/>
       </li>
       <!-- <li v-for="(nav, index) in navs"
           :key="index"
@@ -23,11 +47,15 @@
 
 <script>
 import navs from '../assets/json/nav.json'
+import blueArrow from '../assets/images/blue-arrow.png'
+import arrow from '../assets/images/arrow.png'
 import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      navs
+      navs,
+      blueArrow,
+      arrow
     }
   },
   computed: mapState({
@@ -54,45 +82,65 @@ export default {
     li {
       position: relative;
       width: 100%;
+      &:hover {
+        cursor: pointer;
+      }
+      li {
+        font-family: PingFangSC-Regular;
+        font-size: 18Px;
+        color: #666666;
+        letter-spacing: 0.22Px;
+        line-height: 40Px;
+        background: #FFFFFF;
+        text-indent: 60Px;
+        li {
+          text-indent: 80Px;
+        }
+        .label {
+          font-family: PingFangSC-Regular;
+          font-size: 20Px;
+          color: #999;
+          letter-spacing: 0.25Px;
+          margin: 0;
+          height: 48Px;
+          line-height: 48Px;
+          text-indent: 60Px;
+          border-bottom: none;
+        }
+      }
+      a {
+        display: block;
+        &:hover {
+          background: #FBFBFB;
+        }
+      }
+      img {
+        position: absolute;
+        top: 25Px;
+        right: 30Px;
+        width: 14Px;
+        height: 13Px;
+      }
       .label {
         font-family: PingFangSC-Regular;
         font-size: 24Px;
         color: #333;
         letter-spacing: 0.3Px;
         line-height: 53Px;
-        margin: 20Px 30Px 0 30Px;
+        margin: 20Px 30Px 12Px 30Px;
         border-bottom: 1Px solid #DDD;
+        text-indent: 30Px;
       }
       span {
         position: absolute;
+        font-family: PingFangSC-Regular;
+        font-size: 22Px;
+        color: #CCC;
+        letter-spacing: 0.28Px;
+        left: 30Px;
+        line-height: 30Px;
       }
     }
   }
-  // ul {
-  //   padding-left: 10Px;
-  //   li {
-  //     height: 30Px;
-  //     line-height: 30Px;
-  //     padding: 8Px;
-  //     font-size: 18Px;
-  //     &:hover {
-  //       cursor: pointer;
-  //     }
-  //   }
-  //   .active {
-  //     position: relative;
-  //     color: #3f6fea;
-  //     &:before {
-  //       content: "";
-  //       position: absolute;
-  //       width: 3Px;
-  //       height: 25Px;
-  //       transform: translate(0, -50%);
-  //       top: 50%;
-  //       right: 0;
-  //       background: #3f6fea;
-  //     }
-  //   }
-  // }
 }
 </style>

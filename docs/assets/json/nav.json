@@ -1,18 +1,40 @@
 [
   {
-    "name": "Button",
-    "router": "/button"
+    "num": "01",
+    "name": "概览",
+    "items": [
+      {
+        "key": "介绍",
+        "router": "/"
+      },
+      {
+        "key": "快速上手",
+        "router": "/"
+      }
+    ]
   },
   {
-    "name": "Icon",
-    "router": "/icon"
+    "num": "02",
+    "name": "组件",
+    "items": [
+      {
+        "name": "基础",
+        "items": [
+          {
+            "key": "Button",
+            "router": "/button"
+          },
+          {
+            "key": "Logo",
+            "router": "/logo"
+          }
+        ]
+      }
+    ]
   },
   {
-    "name": "Logo",
-    "router": "/logo"
-  },
-  {
-    "name": "Tabs",
-    "router": "/tabs"
+    "num": "03",
+    "name": "模块",
+    "items": []
   }
 ]
