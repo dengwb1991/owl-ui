@@ -7,7 +7,6 @@
     <div class="tabs-wrap">
       <p @click="start">文档</p>
       <p @click="start">示例</p>
-      <p>中文</p>
     </div>
   </div>
 </template>
@@ -23,7 +22,7 @@ export default {
   },
   methods: {
     start () {
-      this.$router.push('/zh-cn/button')
+      this.$router.push('/zh-cn/introduction')
     },
     toHome () {
       this.$router.push('/home')

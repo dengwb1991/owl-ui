@@ -3,9 +3,11 @@ import Router from 'vue-router'
 import store from '../store'
 Vue.use(Router)
 
-const requireRouter = require.context('.', false, /\.js/)
+const requireRouter = require.context('./', true, /\.js/)
 
 let routes = []
+
+console.log(requireRouter.keys())
 requireRouter.keys().forEach(fileName => {
   if (fileName === './index.js') return
   const requireConfig = requireRouter(fileName)

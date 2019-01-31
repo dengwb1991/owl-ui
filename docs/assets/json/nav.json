@@ -2,20 +2,22 @@
   {
     "num": "01",
     "name": "概览",
+    "max-height": "100px",
     "items": [
       {
         "key": "介绍",
-        "router": "/"
+        "router": "/introduction"
       },
       {
         "key": "快速上手",
-        "router": "/"
+        "router": "/quick-start"
       }
     ]
   },
   {
     "num": "02",
     "name": "组件",
+    "max-height": "300px",
     "items": [
       {
         "name": "基础",
@@ -27,6 +29,15 @@
           {
             "key": "Logo",
             "router": "/logo"
+          }
+        ]
+      },
+      {
+        "name": "导航",
+        "items": [
+          {
+            "key": "Tabs",
+            "router": "/tabs"
           }
         ]
       }
