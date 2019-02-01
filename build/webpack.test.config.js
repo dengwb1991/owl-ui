@@ -18,6 +18,5 @@ const configuration = merge(commonConfig, {
 })
 
 delete configuration.entry
-// delete configuration.output
 
 module.exports = configuration

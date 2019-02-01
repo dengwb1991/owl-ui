@@ -1,4 +1,3 @@
-// require('shelljs/global')
 process.env.NODE_ENV = 'production'
 
 var ora = require('ora')

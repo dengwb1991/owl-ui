@@ -1,12 +1,12 @@
 <template>
   <div class="contents-wrap">
+    <img class="bg" :src="bg"/>
     <div class="contents">
       <p class="name">Owl UI Design</p>
       <p class="introduce">服务于企业产品的设计体系，基于确定和自然的设计价值观上<br>的模块化解决方案，让设计者和开发者专注于更好的用户体验。</p>
       <button @click="start"><span>开始探索</span></button>
       <button @click="start"><span>介绍</span></button>
     </div>
-    <img class="bg" :src="bg"/>
   </div>
 </template>
 
@@ -38,7 +38,6 @@ export default {
     padding-top: 65Px;
     max-width: 555Px;
     height: auto;
-    // margin-right: -40Px;
   }
   .contents {
     float: left;
