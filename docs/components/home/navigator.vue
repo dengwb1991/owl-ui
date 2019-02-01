@@ -1,5 +1,6 @@
 <template>
-  <div class="nav-wrap">
+  <div class="nav-wrap"
+       ref="navigator">
     <div class="logo-wrap" @click="toHome">
       <img :src="logo"/>
       <p>Owl UI Design</p>
@@ -8,11 +9,15 @@
       <p @click="start">文档</p>
       <p @click="start">示例</p>
     </div>
+    <span class="toggle-nav">
+      <i></i>
+    </span>
   </div>
 </template>
 
 <script>
 import logo from '../../assets/images/logo.png'
+import { debounce } from '../../assets/js/utils'
 
 export default {
   data () {
@@ -27,6 +32,28 @@ export default {
     toHome () {
       this.$router.push('/home')
     }
+  },
+  watch: {
+    '$route.path': {
+      handler: function (path) {
+        if (path === '/home') {
+          window.addEventListener('scroll', this.checkScrollTop, false)
+          this.$refs.navigator && (this.$refs.navigator.style['box-shadow'] = 'none')
+        } else {
+          window.removeEventListener('scroll', this.checkScrollTop, false)
+          this.$refs.navigator && (this.$refs.navigator.style['box-shadow'] = '0 1Px 2Px rgba(0, 0, 0, .18)')
+        }
+      },
+      immediate: true
+    }
+  },
+  beforeCreate () {
+    this.checkScrollTop = debounce(() => {
+      const y = window.scrollY
+      const height = 15
+      const shadow = y > height ? '0 1Px 2Px rgba(0, 0, 0, .18)' : 'none'
+      this.$refs.navigator && (this.$refs.navigator.style['box-shadow'] = shadow)
+    }, 100)
   }
 }
 </script>
@@ -45,11 +72,37 @@ export default {
     line-height: 42Px;
     text-align: center;
     position: fixed;
+    overflow: auto;
     top: 0;
     left: 0;
     z-index: 1;
     transition: all .5s;
-    box-shadow: 0 1Px 2Px rgba(0, 0, 0, .18);
+    // box-shadow: 0 1Px 2Px rgba(0, 0, 0, .18);
+    .toggle-nav {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16Px;
+      i {
+        margin: 0 2Px;
+      }
+      &:before, &:after {
+        content: "";
+        width: 3Px!important;
+        height: 3Px!important;
+      }
+      &:before, &:after, i {
+        display: inline-block;
+        width: 5Px;
+        height: 5Px;
+        border-radius: 50%;
+        background-color: #646464;
+      }
+    }
     .logo-wrap {
       padding-left: 0;
       font-size: 0;
@@ -73,6 +126,9 @@ export default {
       }
     }
   }
+}
+.toggle-nav {
+  display: none;
 }
 .tabs-wrap {
   padding-right: 40Px;

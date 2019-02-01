@@ -57,8 +57,17 @@ export default {
     margin: 0 auto;
     padding-top: 70Px;
     padding-bottom: 215Px;
+    @media screen and (max-width: 960px) {
+      display: block;
+      padding-bottom: 150Px;
+    }
     .feature {
       text-align: center;
+      @media screen and (max-width: 960px) {
+        width: 50%;
+        display: inline-block;
+        padding-bottom: 10Px
+      }
     }
     .reserved {
       font-family: PingFangSC-Light;
@@ -70,22 +79,37 @@ export default {
       transform: translate(-50%, 0);
       left: 50%;
       bottom: 55Px;
+      @media screen and (max-width: 960px) {
+        width: 100%;
+        text-align: center;
+        font-size: 12Px;
+      }
     }
     p {
       font-size: 20Px;
       line-height: 28Px;
       color: #FFFFFF;
+      @media screen and (max-width: 960px) {
+        font-size: 14Px;
+        line-height: 20Px;
+      }
     }
     .en {
       font-family: PingFangSC-Regular;
     }
     .name {
       font-family: PingFangSC-Medium;
-      padding-top: 18Px;
     }
     img {
       width: 117Px;
       height: 117Px;
+      padding-bottom: 18Px;
+      transition: all .5s;
+      @media screen and (max-width: 960px) {
+        width: 64Px;
+        height: 64Px;
+        padding-bottom: 0;
+      }
     }
   }
 }

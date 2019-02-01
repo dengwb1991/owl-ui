@@ -33,15 +33,27 @@ export default {
   margin: 0 auto;
   min-height: 650Px;
   overflow: hidden;
+  @media screen and (max-width: 960px) {
+    margin: 0 10Px;
+    min-height: auto;
+    padding-bottom: 50Px;
+  }
   .bg {
     float: right;
     padding-top: 65Px;
     max-width: 555Px;
     height: auto;
+    @media screen and (max-width: 960px) {
+      float: none;
+      display: block;
+    }
   }
   .contents {
     float: left;
     font-size: 0;
+    @media screen and (max-width: 960px) {
+      text-align: center;
+    }
     button {
       position: relative;
       margin-top: 25Px;
@@ -63,6 +75,9 @@ export default {
         cursor: pointer;
         span {
           padding-right: 20Px;
+          @media screen and (max-width: 960px) {
+            padding-right: 0;
+          }
           &:after {
             opacity: 1;
             right: 10Px;
@@ -77,6 +92,9 @@ export default {
         top: 50%;
         right: 0;
         transition: 0.5s;
+        @media screen and (max-width: 960px) {
+          content: none;
+        }
       }
       &:first-of-type {
         background-color: #2E54EB;
@@ -84,6 +102,7 @@ export default {
         color: #FFF;
       }
       &:last-of-type {
+        background-color: #FFF;
         border: 1Px solid #2E54EB;
         color: #2E54EB;
       }
@@ -96,6 +115,14 @@ export default {
     color: #666666;
     letter-spacing: 0.25Px;
     line-height: 40Px;
+    @media screen and (max-width: 960px) {
+      font-size: 14Px;
+      line-height: 20Px;
+      text-align: left;
+      br {
+        display: none;
+      }
+    }
   }
   .name {
     padding-top: 190Px;
@@ -103,6 +130,12 @@ export default {
     font-size: 70Px;
     color: #222222;
     letter-spacing: 0.88Px;
+    transition: all .5s;
+    @media screen and (max-width: 960px) {
+      opacity: 0;
+      height: 0;
+      padding-top: 0;
+    }
   }
 }
 </style>
