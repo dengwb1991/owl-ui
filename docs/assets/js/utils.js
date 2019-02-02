@@ -7,3 +7,7 @@ export const debounce = (fn, delay = 300 ) => {
     }, delay)
   }
 }
+
+export const setScrollTop = (top) => {
+  document.documentElement.scrollTop = document.body.scrollTop = top
+}

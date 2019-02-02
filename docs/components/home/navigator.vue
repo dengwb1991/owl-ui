@@ -5,11 +5,12 @@
       <img :src="logo"/>
       <p>Owl UI Design</p>
     </div>
-    <div class="tabs-wrap">
-      <p @click="start">文档</p>
-      <p @click="start">示例</p>
+    <div :class="['tabs-wrap', { 'active': showTabs }]">
+      <i></i>
+      <p @click="introduction">文档</p>
+      <p @click="example">示例</p>
     </div>
-    <span class="toggle-nav">
+    <span class="toggle-nav" @click="toggle">
       <i></i>
     </span>
   </div>
@@ -17,17 +18,25 @@
 
 <script>
 import logo from '../../assets/images/logo.png'
-import { debounce } from '../../assets/js/utils'
+import { debounce, setScrollTop } from '../../assets/js/utils'
 
 export default {
   data () {
     return {
-      logo
+      logo,
+      showTabs: false
     }
   },
   methods: {
-    start () {
+    toggle () {
+      if (['/home'].includes(this.$route.path)) {
+        this.showTabs = !this.showTabs
+      }
+    },
+    introduction () {
       this.$router.push('/zh-cn/introduction')
+    },
+    example () {
     },
     toHome () {
       this.$router.push('/home')
@@ -36,6 +45,8 @@ export default {
   watch: {
     '$route.path': {
       handler: function (path) {
+        setScrollTop(0)
+        this.showTabs = false
         if (path === '/home') {
           window.addEventListener('scroll', this.checkScrollTop, false)
           this.$refs.navigator && (this.$refs.navigator.style['box-shadow'] = 'none')
@@ -72,12 +83,64 @@ export default {
     line-height: 42Px;
     text-align: center;
     position: fixed;
-    overflow: auto;
+    overflow: visible;
+    background: rgba(255, 255, 255, .9);
     top: 0;
     left: 0;
     z-index: 1;
     transition: all .5s;
-    // box-shadow: 0 1Px 2Px rgba(0, 0, 0, .18);
+    .active {
+      transform: scale(1)!important;
+    }
+    .tabs-wrap {
+      padding-right: 0;
+      position: absolute;
+      right: 10Px;
+      width: 60Px;
+      top: 35Px;
+      border: 1Px solid #DDD;
+      border-radius: 4Px;
+      transition: all 0.3s;
+      text-align: center;
+      background: rgba(255, 255, 255, .9);
+      transform: scale(0);
+      transform-origin: 80% 0;
+      i {
+        display: block;
+        position: absolute;
+        top: -5Px;
+        right: 7Px;
+        width: 10Px;
+        height: 5Px;
+        background: #FFF;
+        &:before, &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 3Px;
+          width: 8Px;
+          border-top: 1Px solid #DDD;
+        }
+        &:before {
+          transform: rotate(-40deg);
+          transform-origin: left bottom;
+        }
+        &:after {
+          right: 0;
+          transform: rotate(40deg);
+          transform-origin: right bottom;
+        }
+      }
+      p {
+        font-size: 12Px;
+        display: block;
+        margin-left: 0;
+        line-height: 35Px;
+        &:hover {
+          color: #333333;
+        }
+      }
+    }
     .toggle-nav {
       display: flex;
       position: absolute;
@@ -133,6 +196,9 @@ export default {
 .tabs-wrap {
   padding-right: 40Px;
   float: right;
+  i {
+    display: none;
+  }
   p {
     font-family: PingFangSC-Regular;
     font-size: 18Px;

@@ -7,7 +7,6 @@ const requireRouter = require.context('./', true, /\.js/)
 
 let routes = []
 
-console.log(requireRouter.keys())
 requireRouter.keys().forEach(fileName => {
   if (fileName === './index.js') return
   const requireConfig = requireRouter(fileName)

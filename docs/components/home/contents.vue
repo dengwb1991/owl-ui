@@ -4,8 +4,8 @@
     <div class="contents">
       <p class="name">Owl UI Design</p>
       <p class="introduce">服务于企业产品的设计体系，基于确定和自然的设计价值观上<br>的模块化解决方案，让设计者和开发者专注于更好的用户体验。</p>
-      <button @click="start"><span>开始探索</span></button>
-      <button @click="start"><span>介绍</span></button>
+      <button @click="quickStart"><span>开始探索</span></button>
+      <button @click="introduction"><span>介绍</span></button>
     </div>
   </div>
 </template>
@@ -20,8 +20,11 @@ export default {
     }
   },
   methods: {
-    start () {
-      this.$router.push('/zh-cn/button')
+    quickStart () {
+      this.$router.push('/zh-cn/quick-start')
+    },
+    introduction () {
+      this.$router.push('/zh-cn/introduction')
     }
   }
 }
