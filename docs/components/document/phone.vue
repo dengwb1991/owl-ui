@@ -18,7 +18,7 @@ export default {
       return this.$route.path.replace(/^\/(zh-cn|en)2?/, '')
     },
     src () {
-      return this.env === 'production' ? './examples/#' : '../../dist/examples/#'
+      return this.env === 'production' ? './examples/#' : './dist/examples/#'
     }
   }
 }

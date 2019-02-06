@@ -3,7 +3,7 @@
     <ul>
       <li v-for="(nav, index) in list"
           :class="{'active': nav.active}"
-          @click="expand(index)"
+          @click="expand($event, index)"
           :key="index">
         <span class="angle">{{nav.num}}</span>
         <p class="label">{{nav.name}}</p>
@@ -14,7 +14,7 @@
               :class="{'active': item.active}"
               :key="index">
             <template v-if="item.items">
-              <p class="label">{{item.name}}</p>
+              <p class="label child">{{item.name}}</p>
               <ul>
                 <li v-for="(item, index) in item.items"
                     :class="{'active': item.active}"
@@ -52,7 +52,8 @@ export default {
     lang: ({ language }) => language.lang
   }),
   methods: {
-    expand (index) {
+    expand (event, index) {
+      if (event.target.className.includes('child')) return
       this.$set(this.expands, index, !this.expands[index])
     },
     route (path) {
