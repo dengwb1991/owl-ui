@@ -33,6 +33,9 @@ export default {
   margin: 0 56Px 0 26Px;
   box-sizing: border-box;
   width: 320Px;
+  @media screen and (max-width: 960px) {
+    margin: 0;
+  }
   iframe {
     width: 100%;
     height: 515Px;

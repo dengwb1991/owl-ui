@@ -23,3 +23,52 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.docs-view {
+  section {
+    position: relative;
+    // overflow: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    &.nav {
+      width: 280Px;
+      border-right: 1Px solid #DDD;
+      @media screen and (max-width: 960px) {
+        display: none;
+      }
+    }
+    &.md {
+      position: relative;
+      flex: 1;
+      height: 100%;
+      padding: 54px 50px 50px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      @media screen and (max-width: 960px) {
+        flex: none;
+        height: auto;
+        padding: 0;
+        overflow-y: visible;
+        width: 95%;
+        margin: 0 auto;
+      }
+    }
+    &.phone {
+      width: 450Px;
+      height: 100%;
+      overflow-y: auto;
+    }
+    .example {
+      position: absolute;
+      transform: translate(0, -50%);
+      top: 47%;
+      @media screen and (max-width: 960px) {
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+    }
+  }
+}
+</style>
