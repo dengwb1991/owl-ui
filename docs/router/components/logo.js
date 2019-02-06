@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/zh-cn/logo',
+    path: 'logo',
     component: () => import('../../view/zh-cn/components/logo.md')
   }
 ]

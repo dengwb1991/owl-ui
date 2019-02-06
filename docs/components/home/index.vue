@@ -1,13 +1,13 @@
 <template>
-  <div class="page-wrap">
+  <div class="home-page-wrap">
     <contents/>
     <features/>
   </div>
 </template>
 
 <script>
-import Contents from './components/home/contents'
-import Features from './components/home/features'
+import Contents from './contents'
+import Features from './features'
 
 export default {
   components: {
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.page-wrap {
+.home-page-wrap {
   width: 100%;
   overflow: hidden;
 }

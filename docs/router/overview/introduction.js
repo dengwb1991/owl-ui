@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/zh-cn/introduction',
+    path: 'introduction',
     component: () => import('../../view/zh-cn/overview/introduction.md')
   }
 ]

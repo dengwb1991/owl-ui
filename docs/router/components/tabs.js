@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/zh-cn/tabs',
+    path: 'tabs',
     component: () => import('../../view/zh-cn/components/tabs.md')
   }
 ]

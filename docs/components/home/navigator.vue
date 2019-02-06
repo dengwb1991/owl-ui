@@ -20,6 +20,8 @@
 import logo from '../../assets/images/logo.png'
 import { debounce, setScrollTop } from '../../assets/js/utils'
 
+const CLIENT_WIDTH = 960
+
 export default {
   data () {
     return {
@@ -40,6 +42,13 @@ export default {
     },
     toHome () {
       this.$router.push('/home')
+    },
+    boxShadow () {
+      const y = window.scrollY
+      const height = 15
+      const type = y > height && document.body.offsetWidth < CLIENT_WIDTH
+      const shadow = type ? '0 1Px 2Px rgba(0, 0, 0, .18)' : 'none'
+      this.$refs.navigator && (this.$refs.navigator.style['box-shadow'] = shadow)
     }
   },
   watch: {
@@ -47,12 +56,11 @@ export default {
       handler: function (path) {
         setScrollTop(0)
         this.showTabs = false
+        this.boxShadow()
         if (path === '/home') {
           window.addEventListener('scroll', this.checkScrollTop, false)
-          this.$refs.navigator && (this.$refs.navigator.style['box-shadow'] = 'none')
         } else {
           window.removeEventListener('scroll', this.checkScrollTop, false)
-          this.$refs.navigator && (this.$refs.navigator.style['box-shadow'] = '0 1Px 2Px rgba(0, 0, 0, .18)')
         }
       },
       immediate: true
@@ -60,10 +68,7 @@ export default {
   },
   beforeCreate () {
     this.checkScrollTop = debounce(() => {
-      const y = window.scrollY
-      const height = 15
-      const shadow = y > height ? '0 1Px 2Px rgba(0, 0, 0, .18)' : 'none'
-      this.$refs.navigator && (this.$refs.navigator.style['box-shadow'] = shadow)
+      this.boxShadow()
     }, 100)
   }
 }

@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/zh-cn/button',
+    path: 'button',
     component: () => import('../../view/zh-cn/components/button.md')
   }
 ]

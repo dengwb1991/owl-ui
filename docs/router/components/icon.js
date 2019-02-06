@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/zh-cn/icon',
+    path: 'icon',
     component: () => import('../../view/zh-cn/components/icon.md')
   }
 ]

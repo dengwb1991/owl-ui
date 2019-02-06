@@ -16,10 +16,14 @@ requireRouter.keys().forEach(fileName => {
 
 const router = new Router({
   routes: [
-    ...routes,
+    {
+      path: '/zh-cn',
+      component: () => import('../components/document'),
+      children: routes
+    },
     {
       path: '/home',
-      component: () => import('../')
+      component: () => import('../components/home')
     },
     {
       path: '/',
