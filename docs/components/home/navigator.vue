@@ -18,6 +18,7 @@
 
 <script>
 import logo from '../../assets/images/logo.png'
+import bus from '../../plugins/bus'
 import { debounce, setScrollTop } from '../../assets/js/utils'
 
 const CLIENT_WIDTH = 960
@@ -31,6 +32,7 @@ export default {
   },
   methods: {
     toggle () {
+      bus.$emit('showDrawer')
       if (['/home'].includes(this.$route.path)) {
         this.showTabs = !this.showTabs
       }

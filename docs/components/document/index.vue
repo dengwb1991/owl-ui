@@ -9,21 +9,40 @@
     <section class="phone">
       <phone/>
     </section>
+    <owl-drawer :visible.sync="visible"
+                placement="right">
+      222
+    </owl-drawer>
   </div>
 </template>
 
 <script>
 import NavList from './nav-list'
 import Phone from './phone'
+import bus from '../../plugins/bus'
 
 export default {
   components: {
     NavList,
     Phone
+  },
+  data () {
+    return {
+      visible: false
+    }
+  },
+  beforeDestroy () {
+    bus.$off('showDrawer')
+  },
+  created () {
+    bus.$on('showDrawer', () => {
+      this.visible = true
+    })
   }
 }
 </script>
 
+<style lang="less" src="../../../src/styles/packages/drawer.less"></style>
 <style lang="less" scoped>
 .docs-view {
   section {
