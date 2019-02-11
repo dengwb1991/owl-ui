@@ -10,8 +10,9 @@
       <phone/>
     </section>
     <owl-drawer :visible.sync="visible"
+                :containerStyle="containerStyle"
                 placement="right">
-      222
+      <nav-list/>
     </owl-drawer>
   </div>
 </template>
@@ -28,7 +29,10 @@ export default {
   },
   data () {
     return {
-      visible: false
+      visible: false,
+      containerStyle: {
+        width: '12em'
+      }
     }
   },
   beforeDestroy () {
@@ -47,9 +51,11 @@ export default {
 .docs-view {
   section {
     position: relative;
-    // overflow: auto;
     display: inline-block;
     box-sizing: border-box;
+    @media screen and (max-width: 960px) {
+      display: block;
+    }
     &.nav {
       width: 280Px;
       border-right: 1Px solid #DDD;

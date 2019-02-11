@@ -112,9 +112,17 @@ export default {
         line-height: 40Px;
         background: #FFFFFF;
         text-indent: 60Px;
+        @media screen and (max-width: 960px) {
+          text-indent: 20Px;
+          font-size: 16Px;
+          line-height: 34Px;
+        }
         li {
           position: relative;
           text-indent: 80Px;
+          @media screen and (max-width: 960px) {
+            text-indent: 30Px;
+          }
         }
         .label {
           font-family: PingFangSC-Regular;
@@ -126,6 +134,12 @@ export default {
           line-height: 48Px;
           text-indent: 60Px;
           border-bottom: none;
+          @media screen and (max-width: 960px) {
+            text-indent: 20Px;
+            font-size: 12Px;
+            height: 34Px;
+            line-height: 34Px;
+          }
         }
       }
       .active a {
@@ -155,7 +169,10 @@ export default {
         width: 12Px;
         height: 12Px;
         transition: all 0.5s;
-        transform: rotate(-180deg)
+        transform: rotate(-180deg);
+        @media screen and (max-width: 960px) {
+          display: none;
+        }
       }
       .expand {
         transform: rotate(0deg)!important;
@@ -169,6 +186,12 @@ export default {
         margin: 20Px 30Px 12Px 30Px;
         border-bottom: 1Px solid #DDD;
         text-indent: 30Px;
+        @media screen and (max-width: 960px) {
+          font-size: 18Px;
+          margin: 0;
+          text-indent: 10Px;
+          line-height: 40Px;
+        }
       }
       span {
         position: absolute;
@@ -178,6 +201,9 @@ export default {
         letter-spacing: 0.28Px;
         left: 30Px;
         line-height: 30Px;
+        @media screen and (max-width: 960px) {
+          display: none;
+        }
       }
     }
   }

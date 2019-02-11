@@ -58,20 +58,13 @@ export default {
       handler: function (path) {
         setScrollTop(0)
         this.showTabs = false
-        this.boxShadow()
-        if (path === '/home') {
-          window.addEventListener('scroll', this.checkScrollTop, false)
-        } else {
-          window.removeEventListener('scroll', this.checkScrollTop, false)
-        }
       },
       immediate: true
     }
   },
-  beforeCreate () {
-    this.checkScrollTop = debounce(() => {
-      this.boxShadow()
-    }, 100)
+  created () {
+    this.checkScrollTop = debounce(this.boxShadow, 100)
+    window.addEventListener('scroll', this.checkScrollTop, false)
   }
 }
 </script>
