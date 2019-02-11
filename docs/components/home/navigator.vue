@@ -73,19 +73,21 @@ export default {
 .nav-wrap {
   max-width: 1240Px;
   width: 100%;
-  margin: 0 auto;
   background: #FFF;
   overflow: hidden;
   height: 80Px;
   line-height: 80Px;
+  position: fixed;
+  top: 0;
+  transform: translate(-50%, 0);
+  left: 50%;
   @media screen and (max-width: 960px) {
     height: 42Px;
     line-height: 42Px;
     text-align: center;
-    position: fixed;
     overflow: visible;
     background: rgba(255, 255, 255, .9);
-    top: 0;
+    transform: none;
     left: 0;
     z-index: 1;
     transition: all .5s;

@@ -21,5 +21,9 @@ export default {
 .home-page-wrap {
   width: 100%;
   overflow: hidden;
+  padding-top: 80Px;
+  @media screen and (max-width: 960px) {
+    padding-top: 20Px;
+  }
 }
 </style>

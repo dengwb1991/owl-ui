@@ -65,13 +65,21 @@
   border: 1Px solid #eee;
   text-align: left;
   color: #656b79;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .md table th:nth-child(3),
 .md table th:nth-child(5) {
   width: 65Px;
+  @media screen and (max-width: 960px) {
+    width: auto;
+  }
 }
 .md table th:nth-child(4) {
   width: 110Px;
+  @media screen and (max-width: 960px) {
+    width: auto;
+  }
 }
 .hljs-string, .hljs-variable, .hljs-template-variable, .hljs-strong, .hljs-emphasis, .hljs-quote {
   color: #df5000;

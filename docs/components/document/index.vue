@@ -49,9 +49,29 @@ export default {
 <style lang="less" src="../../../src/styles/packages/drawer.less"></style>
 <style lang="less" scoped>
 .docs-view {
+  padding-top: 80Px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  @media screen and (max-width: 960px) {
+    padding-top: 20Px;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 80Px;
+    width: 100%;
+    border-top: 1Px solid #DDD;
+    @media screen and (max-width: 960px) {
+      content: none;
+    }
+  }
   section {
     position: relative;
-    display: inline-block;
     box-sizing: border-box;
     @media screen and (max-width: 960px) {
       display: block;
