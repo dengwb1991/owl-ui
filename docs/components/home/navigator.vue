@@ -32,15 +32,17 @@ export default {
   },
   methods: {
     toggle () {
-      bus.$emit('showDrawer')
-      if (['/home'].includes(this.$route.path)) {
+      if (['/home', '/example'].includes(this.$route.path)) {
         this.showTabs = !this.showTabs
+      } else {
+        bus.$emit('showDrawer')
       }
     },
     introduction () {
       this.$router.push('/zh-cn/introduction')
     },
     example () {
+      this.$router.push('/example')
     },
     toHome () {
       this.$router.push('/home')
@@ -78,6 +80,7 @@ export default {
   height: 80Px;
   line-height: 80Px;
   position: fixed;
+  z-index: 1;
   top: 0;
   transform: translate(-50%, 0);
   left: 50%;

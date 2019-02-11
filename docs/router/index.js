@@ -26,6 +26,10 @@ const router = new Router({
       component: () => import('../components/home')
     },
     {
+      path: '/example',
+      component: () => import('../components/example')
+    },
+    {
       path: '/',
       redirect: '/home'
     }
