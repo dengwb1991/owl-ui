@@ -106,8 +106,7 @@ export default {
     }
     .example {
       position: absolute;
-      transform: translate(0, -50%);
-      top: 47%;
+      top: 10Px;
       @media screen and (max-width: 960px) {
         transform: translate(-50%, -50%);
         top: 50%;

@@ -29,7 +29,7 @@ export default {
   background-image: url('../../assets/images/phone.png');
   background-repeat: no-repeat;
   background-size: 100%;
-  padding: 100Px 15Px;
+  padding: 90Px 15Px;
   margin: 0 56Px 0 26Px;
   box-sizing: border-box;
   width: 320Px;

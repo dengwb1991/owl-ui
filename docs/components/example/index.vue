@@ -1,12 +1,19 @@
 <template>
   <div class="example-wrap">
+    <div class="phone-main">
+      <phone/>
+    </div>
     <img class="code" :src="qrCode"/>
   </div>
 </template>
 
 <script>
 import qrCode from '../../assets/images/qr-code.png'
+import phone from '../document/phone'
 export default {
+  components: {
+    phone
+  },
   data () {
     return {
       qrCode
@@ -21,9 +28,20 @@ export default {
   height: 100%;
   width: 100%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 960px) {
+    align-items: flex-start;
+  }
+  .phone-main {
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
+  }
   .code {
-    width: 200Px;
-    height: 200Px;
+    width: 280Px;
+    height: 280Px;
   }
 }
 </style>
