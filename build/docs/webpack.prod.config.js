@@ -45,6 +45,13 @@ const webpackConfig = merge(baseWebpackConfig, {
       sourceMap: false,
       parallel: true
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../../docs/static'),
+        to: config.build.assetsSubDirectory,
+        ignore: ['.*']
+      }
+    ]),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false

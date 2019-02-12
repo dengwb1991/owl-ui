@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const config = require('../config')
+const utils = require('./utils')
 const vueLoaderConfig = require('./vue-loader.conf')
 const resolve = (dir) => path.join(__dirname, '..', dir)
 
@@ -64,7 +65,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: path.posix.join('static', '[name].[hash:7].[ext]')
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
       {

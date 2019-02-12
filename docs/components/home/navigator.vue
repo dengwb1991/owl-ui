@@ -1,5 +1,6 @@
 <template>
   <div class="nav-wrap"
+       :style="{'position': position}"
        ref="navigator">
     <div class="logo-wrap" @click="toHome">
       <img :src="logo"/>
@@ -27,7 +28,8 @@ export default {
   data () {
     return {
       logo,
-      showTabs: false
+      showTabs: false,
+      position: document.body.offsetWidth < CLIENT_WIDTH ? 'fixed' : 'relative'
     }
   },
   methods: {
@@ -60,6 +62,9 @@ export default {
       handler: function (path) {
         setScrollTop(0)
         this.showTabs = false
+        if (document.body.offsetWidth > CLIENT_WIDTH) {
+          this.position = path === '/home' ? 'relative' : 'fixed'
+        }
       },
       immediate: true
     }
@@ -79,12 +84,14 @@ export default {
   overflow: hidden;
   height: 80Px;
   line-height: 80Px;
-  position: fixed;
+  // position: fixed;
+  // position: relative;
   z-index: 1;
   top: 0;
   transform: translate(-50%, 0);
   left: 50%;
   @media screen and (max-width: 960px) {
+    position: fixed;
     height: 42Px;
     line-height: 42Px;
     text-align: center;
