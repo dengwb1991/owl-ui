@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import qrCode from '../../assets/images/qr-code.png'
+import qrCode from '../../static/images/qr-code.png'
 import phone from '../document/phone'
 export default {
   components: {

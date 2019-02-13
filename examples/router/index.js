@@ -13,14 +13,4 @@ requireRouter.keys().forEach(fileName => {
   routes = [ ...routes, ...routerArr ]
 })
 
-const router = new Router({
-  routes: [
-    ...routes
-    // {
-    //   path: '/',
-    //   component: () => import('../')
-    // }
-  ]
-})
-
-export default router
+export default new Router({ routes })

@@ -10,6 +10,7 @@
       <i></i>
       <p @click="introduction">文档</p>
       <p @click="example">示例</p>
+      <p @click="git">GIT</p>
     </div>
     <span class="toggle-nav" @click="toggle">
       <i></i>
@@ -39,6 +40,9 @@ export default {
       } else {
         bus.$emit('showDrawer')
       }
+    },
+    git () {
+      location.assign('https://github.com/dengwb1991/owl-ui')
     },
     introduction () {
       this.$router.push('/zh-cn/introduction')
