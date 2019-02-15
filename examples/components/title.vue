@@ -17,6 +17,10 @@ export default {
 
 <style lang="less" scoped>
 .title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
   width: 100%;
   height: 40Px;
   background: #FFF;

@@ -103,14 +103,16 @@ export default {
       width: 450Px;
       height: 100%;
       overflow-y: auto;
+      @media screen and (max-width: 960px) {
+        overflow-y: visible;
+      }
     }
     .example {
       position: absolute;
       top: 10Px;
       @media screen and (max-width: 960px) {
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
+        margin: 0 auto;
+        position: relative;
       }
     }
   }

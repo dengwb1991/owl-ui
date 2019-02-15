@@ -66,6 +66,7 @@ export default {
       handler: function (path) {
         setScrollTop(0)
         this.showTabs = false
+        console.log(document.body.offsetWidth)
         if (document.body.offsetWidth > CLIENT_WIDTH) {
           this.position = path === '/home' ? 'relative' : 'fixed'
         }
