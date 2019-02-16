@@ -177,6 +177,7 @@ export default {
     doTouchStart (event) {
       event.stopPropagation()
       this.tabTransition = null
+
       this.tabsIns = {
         ...this.tabsIns,
         X: event.touches[0].pageX - parseFloat(this.tabTransX)
@@ -185,7 +186,7 @@ export default {
     doTouchMove (event) {
       if (this.data.length <= 4) return
       event.preventDefault()
-      const surplusWidth = this.surplusWidth
+      const surplusWidth = this.surplusWidth = Math.abs(this.surplusWidth)
 
       let transX = event.touches[0].pageX - this.tabsIns.X
       if (surplusWidth + event.touches[0].pageX - this.tabsIns.X < 0) {
@@ -215,8 +216,8 @@ export default {
     },
     tabPlace () {
       this.tabTransition = '-webkit-transform 0.4s linear 0s'
-      const surplusWidth = this.surplusWidth = this.liWidth * this.data.length - document.body.scrollWidth
-      const centerMarginLeft = parseInt((document.body.scrollWidth - this.liWidth) / 2)
+      const surplusWidth = this.surplusWidth = this.liWidth * this.data.length - document.body.clientWidth
+      const centerMarginLeft = parseInt((document.body.clientWidth - this.liWidth) / 2)
       const bodyMarginLeft = parseInt(this.$refs.tab[this.activeIndex].offsetLeft + this.tabTransX)
       let shouldTranslateX = parseInt(this.tabTransX) - (bodyMarginLeft - centerMarginLeft)
       if (shouldTranslateX > 0 && shouldTranslateX + parseInt(this.tabTransX) > 0) {

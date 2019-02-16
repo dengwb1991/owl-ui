@@ -6,7 +6,7 @@
 
 <style lang="less">
 .page-move-enter, .page-move-leave-active {
-  transform: translate(100%, 0);
+  transform: translateX(100%);
 }
 .page-move-enter-active, .page-move-leave-active {
   transition: transform 0.3s;

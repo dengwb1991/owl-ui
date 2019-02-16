@@ -37,8 +37,10 @@ export default {
     margin: 0;
   }
   iframe {
+    position: relative;
     width: 100%;
     height: 515Px;
+    overflow: auto;
     border: none;
     background-color: #fff;
   }
