@@ -3,6 +3,7 @@
     <div class="phone-main">
       <phone/>
     </div>
+    <p class="example-online" @click="examples">online example</p>
     <img class="code" :src="qrCode"/>
   </div>
 </template>
@@ -17,6 +18,11 @@ export default {
   data () {
     return {
       qrCode
+    }
+  },
+  methods: {
+    examples () {
+      location.assign('http://owl-ui.dengwb.com/examples')
     }
   }
 }
@@ -33,6 +39,20 @@ export default {
   align-items: center;
   @media screen and (max-width: 960px) {
     align-items: flex-start;
+    display: block;
+  }
+  .example-online {
+    display: none;
+    @media screen and (max-width: 960px) {
+      font-family: SFProDisplay-Medium;
+      display: block;
+      font-size: 22Px;
+      line-height: 28Px;
+      color: #2E54EB;
+      padding-bottom: 20Px;
+      text-decoration: underline;
+    }
+
   }
   .phone-main {
     @media screen and (max-width: 960px) {

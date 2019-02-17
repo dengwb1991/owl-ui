@@ -104,6 +104,7 @@ export default {
       height: 100%;
       overflow-y: auto;
       @media screen and (max-width: 960px) {
+        display: none;
         overflow-y: visible;
       }
     }

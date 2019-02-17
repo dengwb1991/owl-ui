@@ -35,6 +35,7 @@ export default {
   width: 320Px;
   @media screen and (max-width: 960px) {
     margin: 0;
+    // display: none;
   }
   iframe {
     position: relative;
