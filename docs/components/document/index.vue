@@ -79,6 +79,8 @@ export default {
     &.nav {
       width: 280Px;
       border-right: 1Px solid #DDD;
+      height: 100%;
+      overflow-y: scroll;
       @media screen and (max-width: 960px) {
         display: none;
       }
