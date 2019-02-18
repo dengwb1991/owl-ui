@@ -1,8 +1,24 @@
-.md h1, .md h2, .md h3 {
-  color: #444;
-  font-size: 1.2em;
-  margin: 1.5em 0 1.2em;
+.md {
+  h1, h2, h3, h4 {
+    position: relative;
+    color: #444;
+    font-size: 1.2em;
+    margin: 1.5em 0 1.2em;
+    .anchor {
+      opacity: 0;
+      float: left;
+      margin-left: -20Px;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+  }
+  h1:hover, h2:hover, h3:hover, h4:hover {
+    .anchor {
+      opacity: 1;
+    }
+  }
 }
+
 .md h1 {
   font-size: 2em;
 }

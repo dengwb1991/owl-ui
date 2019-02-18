@@ -89,7 +89,7 @@ export default {
       position: relative;
       flex: 1;
       height: 100%;
-      padding: 54px 50px 50px;
+      padding: 54px 50px 50px 120px;
       box-sizing: border-box;
       overflow-y: auto;
       @media screen and (max-width: 960px) {
@@ -97,7 +97,7 @@ export default {
         height: auto;
         padding: 0;
         overflow-y: visible;
-        width: 95%;
+        width: 90%;
         margin: 0 auto;
       }
     }

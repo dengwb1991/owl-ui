@@ -36,4 +36,12 @@ const router = new Router({
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  if (!to.matched.length) {
+    next('/')
+  } else {
+    next()
+  }
+})
+
 export default router
