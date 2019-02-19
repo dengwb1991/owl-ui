@@ -1,6 +1,7 @@
 {
   "button": "./packages/button/index.js",
   "tabs": "./packages/tabs/index.js",
+  "icon": "./packages/icon/index.js",
   "logo": "./packages/logo/index.js",
   "drawer": "./packages/drawer/index.js"
 }

@@ -19,7 +19,7 @@ module.exports = {
   build: {
     env: require('./prod.env'),
     productionSourceMap: false,
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: '',
     assetsRoot: path.resolve(__dirname, '../lib'),
     assetsPublicPath: '/'
   },

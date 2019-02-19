@@ -1,6 +1,7 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
+const utils = require('./utils')
 const commonConfig = require('./webpack.common.config.js')
 const config = require('../config')
 const cleanWebpackPlugin = require('clean-webpack-plugin')
@@ -14,8 +15,8 @@ const configuration = merge(commonConfig, {
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,
-    filename: '[name].js',
-    chunkFilename: '[id].js',
+    filename: utils.assetsPath('[name]/[name].js'),
+    chunkFilename: utils.assetsPath('[name]/[name].js'),
     libraryTarget: 'umd'
   },
   externals: {
