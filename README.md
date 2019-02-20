@@ -13,6 +13,7 @@
 [![](https://img.shields.io/npm/l/owl-ui.svg)](https://github.com/dengwb1991/owl-ui)
 [![GitHub last commit](https://img.shields.io/github/last-commit/dengwb1991/owl-ui.svg?style=flat-square)](https://github.com/dengwb1991/owl-ui)
 [![](https://img.shields.io/npm/dt/owl-ui.svg)](https://www.npmjs.com/package/owl-ui)
+[![](https://img.shields.io/github/stars/dengwb1991/owl-ui.svg?style=social&label=Stars)](https://github.com/dengwb1991/owl-ui)
 
 ### Install
 
@@ -25,6 +26,7 @@ npm install owl-ui -S
 ```js
 import Vue from 'vue'
 import Owl from 'owl-ui'
+import 'owl-ui/lib/styles/owl-ui.css'
 
 Vue.use(Owl)
 ```
@@ -52,3 +54,8 @@ npm run docs
 ### Author
 
 [[Dengwb]](http://www.dengwb.com)
+
+### Connection
+
+[[JueJin]](https://juejin.im/post/5c6504d06fb9a049c6445a25)
+
