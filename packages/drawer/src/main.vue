@@ -4,11 +4,11 @@
       <div class="owl-drawer-mask"
            :style="maskStyle"
            @click="handleMask"
-           v-show="visible"></div>
+           v-show="isVisible"></div>
     </transition>
     <transition :name="`move-${placement}`">
       <div class="owl-drawer-container"
-           :style="[container, containerStyle]" v-show="visible">
+           :style="[container, containerStyle]" v-show="isVisible">
         <slot/>
       </div>
     </transition>
@@ -16,6 +16,9 @@
 </template>
 
 <script>
+
+import visibilityMixin from 'mixins/visibility'
+
 const STYLE = {
   down: {
     bottom: 0,
@@ -45,11 +48,8 @@ const STYLE = {
 
 export default {
   name: 'OwlDrawer',
+  mixins: [visibilityMixin],
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
     maskClosable: {
       type: Boolean,
       default: true
@@ -77,20 +77,9 @@ export default {
     }
   },
   methods: {
-    close () {
-      this.$emit('update:visible', false)
-      this.$emit('onClose')
-    },
     handleMask () {
       if (!this.maskClosable) return
-      this.close()
-    }
-  },
-  watch: {
-    visible () {
-      if (this.lockScroll) {
-        document.body.style.overflow = this.visible ? 'hidden' : ''
-      }
+      this.hide()
     }
   }
 }

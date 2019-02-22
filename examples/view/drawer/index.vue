@@ -9,7 +9,8 @@
     <OwlButton @click="open('left')"
                   text="left"/>
     <OwlDrawer :visible.sync="visible"
-               :placement="placement"/>
+               :placement="placement"
+               @callback="getStatus"/>
   </OwlPage>
 </template>
 
@@ -25,6 +26,9 @@ export default {
     open (placement) {
       this.placement = placement
       this.visible = true
+    },
+    getStatus (val) {
+      console.log('visible', val)
     }
   }
 }
