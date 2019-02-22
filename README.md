@@ -14,6 +14,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/dengwb1991/owl-ui.svg?style=flat-square)](https://github.com/dengwb1991/owl-ui)
 [![](https://img.shields.io/npm/dt/owl-ui.svg)](https://www.npmjs.com/package/owl-ui)
 [![](https://img.shields.io/github/stars/dengwb1991/owl-ui.svg?style=social&label=Stars)](https://github.com/dengwb1991/owl-ui)
+[![](https://api.travis-ci.org/dengwb1991/owl-ui.svg?branch=master)](https://travis-ci.org/dengwb1991/owl-ui)
 
 ### Install
 
