@@ -15,8 +15,8 @@ const configuration = merge(commonConfig, {
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,
-    filename: utils.assetsPath('[name]/[name].js'),
-    chunkFilename: utils.assetsPath('[name]/[name].js'),
+    filename: path.posix.join('', '[name]/[name].js'),
+    chunkFilename: path.posix.join('', '[name]/[name].js'),
     libraryTarget: 'umd'
   },
   externals: {
