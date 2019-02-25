@@ -109,6 +109,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "highlight.js": "^9.4.0",
     "vue": "^2.5.16"
   },
   "engines": {
