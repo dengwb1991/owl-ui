@@ -7,11 +7,23 @@ const rename = require('gulp-rename')
 const autoprefixer = require('gulp-autoprefixer')
 const postcss = require('gulp-postcss')
 const pxtorem = require('postcss-pxtorem')
-const merge = require('merge-stream')
+const gulpif = require('gulp-if')
+// const merge = require('merge-stream')
 
 const resolve = (dir) => path.join(__dirname, '../..', dir)
 
 const cssPath = resolve('src/styles/packages')
+
+const ap = {
+  browsers: ['last 2 versions', 'ie > 8']
+}
+
+const processors = [
+  pxtorem({
+    rootValue: 75,
+    propList: ["*"]
+  })
+]
 
 function getFolders(dir) {
   return fs.readdirSync(dir).filter(function (item) {
@@ -21,60 +33,31 @@ function getFolders(dir) {
   })
 }
 
-let ap = {
-  browsers: ['last 2 versions', 'ie > 8']
+function owlTask (taskName) {
+  return gulp.src(resolve('src/styles/index.less'))
+      .pipe(less())
+      .pipe(autoprefixer(ap))
+      .pipe(gulpif(taskName === 'owl-ui', postcss(processors)))
+      .pipe(cleanCSS())
+      .pipe(rename(taskName + '.css'))
+      .pipe(gulp.dest(resolve('lib/styles')))
 }
 
-let processors = [
-  pxtorem({
-    rootValue: 75,
-    propList: ["*"]
-  })
-]
-
-gulp.task('owl-ui', function () {
-  gulp.src(resolve('src/styles/index.less'))
-    .pipe(less())
-    .pipe(autoprefixer(ap))
-    .pipe(postcss(processors))
-    .pipe(cleanCSS())
-    .pipe(rename('owl-ui.css'))
-    .pipe(gulp.dest(resolve('lib/styles')))
-})
-
-gulp.task('owl-ui-px', function () {
-  gulp.src(resolve('src/styles/index.less'))
-    .pipe(less())
-    .pipe(autoprefixer(ap))
-    .pipe(cleanCSS())
-    .pipe(rename('owl-ui-px.css'))
-    .pipe(gulp.dest(resolve('lib/styles')))
-})
-
-gulp.task('packages', function () {
+function packageTask (taskName) {
   const folders = getFolders(cssPath)
-  const tasks = folders.map(function (folder) {
+  return folders.map(function (folder) {
     return gulp.src(resolve('src/styles/packages/' + folder + '.less'))
       .pipe(less())
       .pipe(autoprefixer(ap))
-      .pipe(postcss(processors))
+      .pipe(gulpif(taskName === 'packages', postcss(processors)))
       .pipe(cleanCSS())
+      .pipe(gulpif(taskName === 'packages-px', rename(folder + '-px.css')))
       .pipe(gulp.dest(resolve('lib/' + folder +'/')))
   })
-  return merge(tasks)
+}
+gulp.task('all', function () {
+  return [owlTask('owl-ui'), owlTask('owl-ui-px'),
+    packageTask('packages'), packageTask('packages-px')]
 })
 
-gulp.task('packages-px', function () {
-  const folders = getFolders(cssPath)
-  const tasks = folders.map(function (folder) {
-    return gulp.src(resolve('src/styles/packages/' + folder + '.less'))
-      .pipe(less())
-      .pipe(autoprefixer(ap))
-      .pipe(cleanCSS())
-      .pipe(rename(folder + '-px.css'))
-      .pipe(gulp.dest(resolve('lib/' + folder +'/')))
-  })
-  return merge(tasks)
-})
-
-gulp.task('default', ['owl-ui', 'owl-ui-px', 'packages', 'packages-px'])
+gulp.task('default', ['all'])
