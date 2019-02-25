@@ -4,7 +4,7 @@ import apiCreator from './creator'
 import instantiateComponent from './instantiate'
 
 function install(Vue, options = {}) {
-  const {componentPrefix = '', apiPrefix = '$create-'} = options
+  const {componentName = '', apiPrefix = '$'} = options
 
   Vue.createAPI = function (Component, events, single) {
     if (isBoolean(events)) {
@@ -13,7 +13,7 @@ function install(Vue, options = {}) {
     }
     const api = apiCreator.call(this, Component, events, single)
     const createName = processComponentName(Component, {
-      componentPrefix,
+      componentName,
       apiPrefix,
     })
     Vue.prototype[createName] = Component.$create = api.create
@@ -22,11 +22,10 @@ function install(Vue, options = {}) {
 }
 
 function processComponentName(Component, options) {
-  const {componentPrefix, apiPrefix} = options
+  const {componentName, apiPrefix} = options
   const name = Component.name
   assert(name, 'Component must have name while using create-api!')
-  const prefixReg = new RegExp(`^${escapeReg(componentPrefix)}`, 'i')
-  const pureName = name.replace(prefixReg, '')
+  const pureName = componentName ? componentName : name
   let camelizeName = `${camelize(`${apiPrefix}${pureName}`)}`
   return camelizeName
 }

@@ -33,14 +33,14 @@ function getFolders(dir) {
   })
 }
 
-function owlTask (taskName) {
+function task (taskName) {
   return gulp.src(resolve('src/styles/index.less'))
-      .pipe(less())
-      .pipe(autoprefixer(ap))
-      .pipe(gulpif(taskName === 'owl-ui', postcss(processors)))
-      .pipe(cleanCSS())
-      .pipe(rename(taskName + '.css'))
-      .pipe(gulp.dest(resolve('lib/styles')))
+    .pipe(less())
+    .pipe(autoprefixer(ap))
+    .pipe(gulpif(taskName === 'owl-ui', postcss(processors)))
+    .pipe(cleanCSS())
+    .pipe(rename(taskName + '.css'))
+    .pipe(gulp.dest(resolve('lib/styles')))
 }
 
 function packageTask (taskName) {
@@ -56,7 +56,7 @@ function packageTask (taskName) {
   })
 }
 gulp.task('all', function () {
-  return [owlTask('owl-ui'), owlTask('owl-ui-px'),
+  return [task('owl-ui'), task('owl-ui-px'),
     packageTask('packages'), packageTask('packages-px')]
 })
 

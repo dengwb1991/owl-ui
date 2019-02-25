@@ -31,7 +31,7 @@ export default {
     },
     visible: {
       handler (val) {
-        this.isVisible = val
+        val ? this.show() : this.hide()
         if (this.lockScroll) {
           document.body.style.overflow = val ? 'hidden' : ''
         }
