@@ -1,11 +1,18 @@
 <template>
-    <transition name="fade">
-      <div class="owl-toast" v-show="isVisible">
-        <div class="owl-toast-mask">
-        </div>
+  <transition name="fade">
+    <div class="owl-toast"
+         :style="{ 'z-index': zIndex }"
+         v-show="isVisible">
+      <div class="owl-toast-mask"
+           :style="{ ...maskStyle, 'z-index': zIndex - 1 }"
+           v-show="maskVisible">
+      </div>
+      <div class="owl-toast-container"
+           :style="{ ...containerStyle, 'z-index': zIndex }">
         <p v-html="text"></p>
       </div>
-    </transition>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -22,6 +29,22 @@ export default {
     time: {
       type: Number,
       default: 3000
+    },
+    maskVisible: {
+      type: Boolean,
+      default: false
+    },
+    maskStyle: {
+      type: Object,
+      default: () => {}
+    },
+    containerStyle: {
+      type: Object,
+      default: () => {}
+    },
+    zIndex: {
+      type: Number,
+      default: 100
     }
   },
   methods: {
