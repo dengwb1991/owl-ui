@@ -25,6 +25,7 @@ npm install owl-ui -S
 ### Usage
 
 ```js
+import 'owl-ui/lib/flexible' // Mobile adaptive solution
 import Vue from 'vue'
 import Owl from 'owl-ui'
 import 'owl-ui/lib/styles/owl-ui.css'
@@ -47,10 +48,13 @@ npm run dev
 
 npm run docs
 ```
+### Docs
+
+[[Home]](http://owl-ui.dengwb.com)
 
 ### Examples
 
-[[Home]](http://owl-ui.dengwb.com)
+[[Example]](http://owl-ui.dengwb.com/examples)
 
 ### Author
 
