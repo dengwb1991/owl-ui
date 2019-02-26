@@ -5,6 +5,7 @@ const commonConfig = require('./webpack.common.config.js')
 const config = require('../config')
 const cleanWebpackPlugin = require('clean-webpack-plugin')
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 process.env.NODE_ENV = 'production'
 
@@ -30,7 +31,14 @@ const configuration = merge(commonConfig, {
     }
   },
   plugins: [
-    new cleanWebpackPlugin(['lib']),
+    new cleanWebpackPlugin(['../lib']),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/utils/flexible/index.js'),
+        to: path.resolve(__dirname, '../lib/flexible.[ext]'),
+        ignore: ['.*']
+      }
+    ]),
     new uglifyJsPlugin({
       uglifyOptions: {
         compress: {

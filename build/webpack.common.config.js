@@ -36,6 +36,7 @@ module.exports = {
       'images': resolve('src/images'),
       'dist': resolve('dist'),
       'create-api': resolve('src/utils/create-api'),
+      'flexible': resolve('src/utils/flexible')
     }
   },
   plugins: [],
