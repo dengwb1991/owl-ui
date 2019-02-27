@@ -23,6 +23,12 @@
     "type": "git",
     "url": "git@github.com:dengwb1991/owl-ui.git"
   },
+  "keywords": [
+    "owl-ui",
+    "owl",
+    "vue",
+    "components"
+  ],
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^9.4.2",
