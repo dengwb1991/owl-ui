@@ -29,15 +29,19 @@
           {
             "key": "Logo",
             "router": "/logo"
+          },
+          {
+            "key": "Tabs",
+            "router": "/tabs"
           }
         ]
       },
       {
-        "name": "导航",
+        "name": "弹出层",
         "items": [
           {
-            "key": "Tabs",
-            "router": "/tabs"
+            "key": "Toast",
+            "router": "/toast"
           }
         ]
       }

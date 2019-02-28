@@ -1,4 +1,18 @@
 .md {
+  .language-js, .language-html {
+    color: #F1F1F1;
+    .hljs-keyword, .hljs-name {
+      color: #F5006A;
+    }
+    .hljs-attr {
+      color: #78A523;
+    }
+    .hljs-string, .hljs-variable, .hljs-template-variable, .hljs-strong, .hljs-emphasis, .hljs-quote {
+      color: #E4DB6D;
+    }
+  }
+
+  #E4DB6D
   h1, h2, h3, h4 {
     position: relative;
     color: #444;
@@ -42,12 +56,13 @@
   border-bottom: 1Px solid #f0f0f0;
 }
 .md pre {
-  background-color: #f8f8f8;
+  background-color: #22231D;
   padding: 20Px;
+  border-radius: 10Px;
   margin: 1.2em 0;
   overflow: auto;
 }
-.md p > code {
+.md p > code, li > code, td > code {
   background-color: #eee;
   padding: 2Px;
   color: #26a2ff;
