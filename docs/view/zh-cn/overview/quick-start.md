@@ -22,7 +22,7 @@ Vue.use(Owl)
 ### 按需加载
 
 ```js
-/** main.js **/
+/** main.js **/-
 
 import 'owl-ui/lib/flexible'
 import Vue from 'vue'
@@ -31,8 +31,7 @@ import 'owl-ui/lib/button/button.css'
 
 Vue.use(OwlButton)
 
-
-/** main.vue **/
+/** main.vue */-
 
 <template>
   <owl-button :text="'按钮'"/>

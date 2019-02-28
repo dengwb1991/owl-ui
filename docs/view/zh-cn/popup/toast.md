@@ -63,6 +63,7 @@ export default {
  --- | ---  | --- | --- | ---
  visible | 显示/隐藏, 支持`.sync`关键字 |  boolean | false | true/false
  text | 展示文案 | string | - | -
+ time | 显示时间（单位毫秒）| number | 3000 | -
  maskVisible | 显示/隐藏遮罩层 |boolean | false | true/false
  zIndex | 元素的堆叠顺序 | number | 100 | -
  maskStyle | 自定义遮罩层样式 | object | - | -
