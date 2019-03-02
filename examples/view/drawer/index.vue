@@ -10,6 +10,7 @@
                   text="left"/>
     <OwlDrawer :visible.sync="visible"
                :placement="placement"
+               :z-index="zIndex"
                @callback="callback"/>
   </OwlPage>
 </template>
@@ -19,7 +20,8 @@ export default {
   data () {
     return {
       visible: false,
-      placement: 'down'
+      placement: 'down',
+      zIndex: 1200
     }
   },
   methods: {

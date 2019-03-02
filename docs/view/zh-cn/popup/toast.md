@@ -57,6 +57,26 @@ export default {
 }
 ```
 
+* 展示蒙层
+
+```html
+<owl-button @click="show"
+            text="show mask"/>
+```
+
+```js
+export default {
+  methods: {
+    show () {
+      this.$toast({
+        text: '欢迎光临',
+        maskVisible: true
+      }).show()
+    }
+  }
+}
+```
+
 ## Props 配置
 
  参数 | 说明 | 类型 | 默认值 | 可选值

@@ -1,9 +1,11 @@
 <template>
   <OwlPage class="examples-toast">
-    <OwlButton @click="open1"
-               text="show default"/>
-    <OwlButton @click="open2"
-               text="show 1s"/>
+    <owl-button @click="open1"
+                text="show default"/>
+    <owl-button @click="open2"
+                text="show 1s"/>
+    <owl-button @click="open3"
+                text="show mask"/>
   </OwlPage>
 </template>
 
@@ -25,6 +27,12 @@ export default {
       this.$toast({
         text: '欢迎光临',
         time: 1000
+      }).show()
+    },
+    open3 () {
+      this.$toast({
+        text: '欢迎光临',
+        maskVisible: true
       }).show()
     }
   }
