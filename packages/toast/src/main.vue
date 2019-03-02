@@ -33,18 +33,6 @@ export default {
     maskVisible: {
       type: Boolean,
       default: false
-    },
-    maskStyle: {
-      type: Object,
-      default: () => {}
-    },
-    containerStyle: {
-      type: Object,
-      default: () => {}
-    },
-    zIndex: {
-      type: Number,
-      default: 100
     }
   },
   methods: {

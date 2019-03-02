@@ -9,6 +9,18 @@ export default {
     visible: {
       type: Boolean,
       default: false
+    },
+    zIndex: {
+      type: Number,
+      default: 100
+    },
+    maskStyle: {
+      type: Object,
+      default: () => {}
+    },
+    containerStyle: {
+      type: Object,
+      default: () => {}
     }
   },
   data () {

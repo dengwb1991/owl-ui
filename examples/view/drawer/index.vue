@@ -6,11 +6,11 @@
                   text="up"/>
     <OwlButton @click="open('right')"
                   text="right"/>
-    <OwlButton @click="open('left')"
+    <OwlButton @click="open2('left')"
                   text="left"/>
     <OwlDrawer :visible.sync="visible"
                :placement="placement"
-               @callback="getStatus"/>
+               @callback="callback"/>
   </OwlPage>
 </template>
 
@@ -27,8 +27,18 @@ export default {
       this.placement = placement
       this.visible = true
     },
-    getStatus (val) {
-      console.log('visible', val)
+    callback (val) {
+      console.log('callback', val)
+    },
+    open2 (placement) {
+      this.$drawer({
+        $props: {
+          placement
+        },
+        $events: {
+          callback: e => console.log('$drawer callback', e)
+        }
+      }).show()
     }
   }
 }

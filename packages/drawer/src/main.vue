@@ -2,13 +2,13 @@
   <div class="owl-drawer">
     <transition name="fade">
       <div class="owl-drawer-mask"
-           :style="maskStyle"
+           :style="{ ...maskStyle, zIndex: zIndex - 1}"
            @click="handleMask"
            v-show="isVisible"></div>
     </transition>
     <transition :name="`move-${placement}`">
       <div class="owl-drawer-container"
-           :style="[container, containerStyle]" v-show="isVisible">
+           :style="[container, containerStyle, { zIndex }]" v-show="isVisible">
         <slot/>
       </div>
     </transition>
@@ -61,14 +61,6 @@ export default {
     lockScroll: {
       type: Boolean,
       default: true
-    },
-    maskStyle: {
-      type: Object,
-      default: () => {}
-    },
-    containerStyle: {
-      type: Object,
-      default: () => {}
     }
   },
   computed: {

@@ -6,8 +6,8 @@ OwlToast.install = function (Vue) {
   Vue.component(OwlToast.name, OwlToast)
 }
 
-Vue.use(CreateAPI, { componentName: 'toast' })
+Vue.use(CreateAPI)
 
-Vue.createAPI(OwlToast, true)
+Vue.createAPI(OwlToast)
 
 export default OwlToast
