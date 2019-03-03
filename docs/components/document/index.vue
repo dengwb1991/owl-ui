@@ -3,7 +3,8 @@
     <section class="nav">
       <nav-list/>
     </section>
-    <section class="md">
+    <section ref="md"
+             class="md">
       <router-view/>
     </section>
     <section class="phone">
@@ -38,7 +39,20 @@ export default {
   beforeDestroy () {
     bus.$off('showDrawer')
   },
+  watch: {
+    '$route.path': {
+      handler: function (path) {
+        this.$nextTick(() => {
+          this.$refs.md.scrollTop = 0
+        })
+      },
+      immediate: true
+    }
+  },
   created () {
+    this.$nextTick(() => {
+      console.dir(this.$refs.md.scrollTop)
+    })
     bus.$on('showDrawer', () => {
       this.visible = true
     })

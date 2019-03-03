@@ -1,17 +1,19 @@
 <template>
   <OwlPage class="examples-drawer">
-    <OwlButton @click="open('down')"
-                  text="down"/>
-    <OwlButton @click="open('up')"
-                  text="up"/>
-    <OwlButton @click="open('right')"
-                  text="right"/>
-    <OwlButton @click="open2('left')"
-                  text="left"/>
-    <OwlDrawer :visible.sync="visible"
-               :placement="placement"
-               :z-index="zIndex"
-               @callback="callback"/>
+    <owl-button @click="open('down')"
+                text="down"/>
+    <owl-button @click="open('up')"
+                text="up"/>
+    <owl-button @click="open('right')"
+                text="right"/>
+    <owl-button @click="open2('left')"
+                text="left"/>
+    <owl-drawer :visible.sync="visible"
+                :placement="placement"
+                :z-index="zIndex"
+                @callback="callback">
+      <p>内容部分</p>
+    </owl-drawer>
   </OwlPage>
 </template>
 
@@ -40,6 +42,14 @@ export default {
         $events: {
           callback: e => console.log('$drawer callback', e)
         }
+      }, createElement => {
+        return [
+          createElement('p', {
+            'class': {
+              'content': true
+            }
+          }, '内容部分')
+        ]
       }).show()
     }
   }

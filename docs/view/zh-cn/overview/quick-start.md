@@ -34,7 +34,7 @@ Vue.use(OwlButton)
 /** main.vue */-
 
 <template>
-  <owl-button :text="'按钮'"/>
+  <owl-button text="按钮"/>
 </template>
 ```
 
