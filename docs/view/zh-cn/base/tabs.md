@@ -1,101 +1,177 @@
 # Tabs
 
-## Install
+> 选型卡
 
-``` bash
-npm i dwb-vue-tab --save
-```
+---
 
-## Mount
+## 示例
 
-### mount with global
-
-``` javascript
-import Vue from 'vue'
-import TabBar from 'dwb-vue-tab'
-
-Vue.use(TabBar)
-```
-
-### mount with component
-
-``` javascript
-import { DwbVueTab } from 'dwb-vue-tab'
-
-export default {
-  components: {
-    DwbVueTab
-  }
-}
-```
-
-## Props
-
- Attribute | Type | Default | Description 
- --- | ---  | --- | --- 
- data  | array | [] | for data rendered with tab-bar
- active | [number,string] | 0 | the element selected by default, supports the .sync modifier
- tabWidth | string | '110px' | tab-bar width
- tabHeight | string | '40px' | tab-bar height
- tabColor | string | '#999' | tab-bar color
- tabStyle | object | {} | custom style of tab-bar
- fontSize | string | '14px' | font size of tab-bar
- fontFamily | string | 'PingFangSC-Regular' | font family of tab-bar
- name | [string, obejct] | null | if the data-element is an object, render data with name
- background | string | '#FFF' | tab-bar background
- highlight | string | '#A5884D' | activated the colors shown
- activeStyle | object | {} | activated the style shown
- lineUse | boolean | true | use underlining or not
- lineHeight | string | '2px' | underline height
- lineWidth | [string, object] | null | underline width
- lineColor | string | '#A5884D' | underline color
- lineStyle | object | {} | custom style of underline
- initCallback | boolean | false | initialize execution callback
- 
- ## Events
-
-Attribute | Value | Description
----- | --- | ---
-callback | (activated element) | execute when switching activation elements
-
-## Demo
+* 默认
 
 ```html
-<template>
-    <DwbVueTab :data="tabs"
-               :active.sync="active"
-               :initCallback="initCallback"
-               @callback="getData"/>
-</template>
-<script>
+<owl-tabs :data="data"
+          :active.sync="active"
+          @callback="callback"/>
+```
+
+```js
 export default {
   data () {
     return {
-      tabs: ['Tab', 'Bar'],
-      active: 0,
-      initCallback: true,
+      data: ['Google', 'IBM'],
+      active: 0
     }
   },
   methods: {
-    getData (res) {
-      console.log(res)
+    callback (val) {
+      console.log(val)
     }
   }
 }
-</script>
 ```
 
+* 不使用下划线
 
-## Example
-```bash
-npm install
-
-npm run dev
+```html
+<owl-tabs :data="data"
+          :active.sync="active"
+          :lineUse="lineUse"
+          @callback="callback"/>
 ```
 
-[[Vue Tab Bar]](http://vuetool.dengwb.com/#/tab)
+```js
+export default {
+  data () {
+    return {
+      data: ['Google', 'IBM', 'Apple', 'Oracle'],
+      active: 0,
+      lineUse: false
+    }
+  }
+}
+```
 
-[[More Example]](https://github.com/dengwb1991/Tool/tree/master/src/components/Tab)
+* 多元素 & 修改样式
 
-## Author
-[[Dengwb]](http://www.dengwb.com/app/welcome.html)
+```html
+<owl-tabs :data="data"
+          :active.sync="active"
+          :initCallback="initCallback"
+          :tabWidth="tabWidth"
+          :tabHeight="tabHeight"
+          :lineWidth="lineWidth"
+          @callback="callback"/>
+```
+
+```js
+export default {
+  data () {
+    return {
+      data: ['Google', 'IBM', 'Apple', 'Oracle', 'Facebook', 'Baidu'],
+      active: 0,
+      tabWidth: '100px',
+      tabHeight: '40px',
+      lineWidth: '30px'
+    }
+  }
+}
+```
+
+* 数据对象
+
+```html
+<owl-tabs :data="data"
+          :active.sync="active"
+          :initCallback="initCallback"
+          :lineWidth="lineWidth"
+          :highlight="highlight"
+          :lineColor="lineColor"
+          @callback="callback"/>
+```
+
+```js
+export default {
+  data () {
+    return {
+      data: [{key: 'Google'}, {key: 'IBM'}, {key: 'Apple'}, {key: 'Oracle'}, {key: 'Facebook'}, {key: 'Baidu'}],
+      active: 1,
+      name: 'key',
+      lineWidth: '40px',
+      highlight: '#24292e',
+      lineColor: '#24292e'
+    }
+  }
+}
+```
+
+* 自定义
+
+```html
+<owl-tabs :data="data"
+          :active.sync="active"
+          :initCallback="initCallback"
+          :background="background"
+          :activeStyle="activeStyle"
+          :lineStyle="lineStyle"
+          :name="name"
+          @callback="callback"/>
+```
+
+```js
+export default {
+  data () {
+    return {
+      data: [{key: 'Google'}, {key: 'IBM'}, {key: 'Apple'}, {key: 'Oracle'}, {key: 'Facebook'}, {key: 'Baidu'}],
+      active: 0,
+      name: 'key',
+      background: '#24292e',
+      activeStyle: {
+        'color': '#FFF',
+        'font-family': 'PingFangSC-Medium'
+      },
+      lineStyle: {
+        'width': '40px',
+        'background': '#FFF',
+        'height': '4px',
+        'border-radius': '2px'
+      },
+      initCallback: true
+    }
+  }
+}
+```
+
+## Props 配置
+
+ 参数 | 说明 | 类型 | 默认值 | 可选值
+ --- | ---  | --- | --- | ---
+ data | 选型卡数据 |  array | [] | -
+ active | 选中元素的下标，支持`.sync`关键字 | number | 0 | -
+ tabWidth | 标签宽度 | string | '110px' | -
+ tabHeight | 标签高度 | string | '40px' | -
+ tabColor | 标签字体颜色 | string | '#999' | -
+ tabStyle | 标签自定义样式 | object | {} | -
+ fontSize | 标签字体大小 | string | '14px' | -
+ fontFamily | 标签字体库 | string | 'PingFangSC-Regular' | -
+ name | 如果数据元素为对象，name作为对象的key值 | string | null | -
+ background | 背景颜色 | string | '#FFF' | -
+ highlight | 选中高亮颜色 | string | '#A5884D' | -
+ activeStyle | 选中自定义样式 | object | {} | -
+ lineUse | 是否使用线 | boolean | true | -
+ lineHeight | 线高度 | string | '2px' | -
+ lineWidth | 线宽度 | string | null | -
+ lineColor | 线颜色 | string | '#A5884D' | -
+ lineStyle | 线自定义样式 | object | {} | -
+ initCallback | 是否初始化执行回调 | boolean | false | -
+
+## 事件
+
+事件名 | 说明 | 参数
+---- | --- | ---
+callback | 每次切换标签会执行 | 当前选中标签的值
+
+## 实例方法
+
+事件名  | 说明 | 参数
+---- | --- | ---
+getCurrData | 返回当前选中标签的值 | -
