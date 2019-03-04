@@ -9,7 +9,7 @@
       </div>
       <div class="owl-toast-container"
            :style="{ ...containerStyle, 'z-index': zIndex }">
-        <p v-html="text"></p>
+        <p v-html="text" :class="[`owl-iconfont-${type}`]"></p>
       </div>
     </div>
   </transition>
@@ -25,6 +25,10 @@ export default {
     text: {
       type: String,
       default: ''
+    },
+    type: {
+      type: String,
+      default: 'text' // caution、failure、success
     },
     time: {
       type: Number,

@@ -69,8 +69,68 @@ export default {
   methods: {
     show () {
       this.$toast({
-        text: '欢迎光临',
+        text: '当文字超过一行最长的限制后折行',
         maskVisible: true
+      }).show()
+    }
+  }
+}
+```
+
+* 展示成功提示
+
+```html
+<owl-button @click="show"
+            text="show success"/>
+```
+
+```js
+export default {
+  methods: {
+    show () {
+      this.$toast({
+        text: '成功提示',
+        type: 'success'
+      }).show()
+    }
+  }
+}
+```
+
+* 展示失败提示
+
+```html
+<owl-button @click="show"
+            text="show failure"/>
+```
+
+```js
+export default {
+  methods: {
+    show () {
+      this.$toast({
+        text: '失败提示',
+        type: 'failure'
+      }).show()
+    }
+  }
+}
+```
+
+* 展示警示提示
+
+```html
+<owl-button @click="show"
+            text="show caution"/>
+```
+
+```js
+export default {
+  methods: {
+    show () {
+      this.$toast({
+        text: '警示信息',
+        type: 'caution'
       }).show()
     }
   }
@@ -83,6 +143,7 @@ export default {
  --- | ---  | --- | --- | ---
  visible | 显示/隐藏, 支持`.sync`关键字 |  boolean | false | true/false
  text | 展示文案 | string | - | -
+ type | 展示类型 | string | text | text/caution/failure/success
  time | 显示时间（单位毫秒）| number | 3000 | -
  maskVisible | 显示/隐藏遮罩层 |boolean | false | true/false
  zIndex | 元素的堆叠顺序 | number | 100 | -

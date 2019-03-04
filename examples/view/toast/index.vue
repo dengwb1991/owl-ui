@@ -6,6 +6,12 @@
                 text="show 1s"/>
     <owl-button @click="open3"
                 text="show mask"/>
+    <owl-button @click="open4"
+                text="show success"/>
+    <owl-button @click="open5"
+                text="show failure"/>
+    <owl-button @click="open6"
+                text="show caution"/>
   </OwlPage>
 </template>
 
@@ -31,8 +37,26 @@ export default {
     },
     open3 () {
       this.$toast({
-        text: '欢迎光临',
+        text: '当文字超过一行最长的限制后折行',
         maskVisible: true
+      }).show()
+    },
+    open4 () {
+      this.$toast({
+        text: '成功提示',
+        type: 'success'
+      }).show()
+    },
+    open5 () {
+      this.$toast({
+        text: '失败提示',
+        type: 'failure'
+      }).show()
+    },
+    open6 () {
+      this.$toast({
+        text: '警示信息',
+        type: 'caution'
       }).show()
     }
   }

@@ -20,7 +20,10 @@
 }
 
 .owl-iconfont-char(@filename) {
-  @close: "\E001";
+  @caution: "\E001";
+  @close: "\E002";
+  @failure: "\E003";
+  @success: "\E004";
   
   content: @@filename;
 }
@@ -34,6 +37,15 @@
   }
 }
 
+.owl-iconfont-caution {
+  .owl-iconfont(caution);
+}
 .owl-iconfont-close {
   .owl-iconfont(close);
+}
+.owl-iconfont-failure {
+  .owl-iconfont(failure);
+}
+.owl-iconfont-success {
+  .owl-iconfont(success);
 }
