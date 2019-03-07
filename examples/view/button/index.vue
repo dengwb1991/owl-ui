@@ -1,7 +1,7 @@
 <template>
   <OwlPage>
     <div class="button-wrap">
-      <OwlButton :text="'按钮'"/>
+      <owl-button>按钮</owl-button>
     </div>
   </OwlPage>
 </template>

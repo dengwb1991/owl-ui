@@ -1,14 +1,14 @@
 <template>
   <div class="example">
     <p class="title">Multiple</p>
-    <OwlTabs :data="data"
-         :active.sync="active"
-         :initCallback="initCallback"
-         :tabWidth="tabWidth"
-         :tabHeight="tabHeight"
-         :lineWidth="lineWidth"
-         @callback="getData"/>
-    <Params :data="paramsData"/>
+    <owl-tabs :data="data"
+              :active.sync="active"
+              :initCallback="initCallback"
+              :tabWidth="tabWidth"
+              :tabHeight="tabHeight"
+              :lineWidth="lineWidth"
+              @callback="getData"/>
+    <params :data="paramsData"/>
   </div>
 </template>
 

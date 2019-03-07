@@ -1,15 +1,15 @@
 <template>
   <div class="example">
     <p class="title">Custom</p>
-    <OwlTabs :data="data"
-               :active.sync="active"
-               :initCallback="initCallback"
-               :background="background"
-               :activeStyle="activeStyle"
-               :lineStyle="lineStyle"
-               :name="name"
-               @callback="getData"/>
-    <Params :data="paramsData"/>
+    <owl-tabs :data="data"
+              :active.sync="active"
+              :initCallback="initCallback"
+              :background="background"
+              :activeStyle="activeStyle"
+              :lineStyle="lineStyle"
+              :name="name"
+              @callback="getData"/>
+    <params :data="paramsData"/>
   </div>
 </template>
 

@@ -9,7 +9,7 @@
          :highlight="highlight"
          :lineColor="lineColor"
          @callback="getData"/>
-    <Params :data="paramsData"/>
+    <params :data="paramsData"/>
   </div>
 </template>
 

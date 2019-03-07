@@ -1,13 +1,9 @@
 <template>
   <OwlPage class="examples-drawer">
-    <owl-button @click="open('down')"
-                text="down"/>
-    <owl-button @click="open('up')"
-                text="up"/>
-    <owl-button @click="open('right')"
-                text="right"/>
-    <owl-button @click="open2('left')"
-                text="left"/>
+    <owl-button @click="open('down')">down</owl-button>
+    <owl-button @click="open('up')">up</owl-button>
+    <owl-button @click="open('right')">right</owl-button>
+    <owl-button @click="open2('left')">left</owl-button>
     <owl-drawer :visible.sync="visible"
                 :placement="placement"
                 :z-index="zIndex"

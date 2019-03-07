@@ -1,12 +1,12 @@
 <template>
   <div class="example">
     <p class="title">Not use underline</p>
-    <OwlTabs :data="data"
-         :active.sync="active"
-         :lineUse="lineUse"
-         :initCallback="initCallback"
-         @callback="getData"/>
-    <Params :data="paramsData"/>
+    <owl-tabs :data="data"
+              :active.sync="active"
+              :lineUse="lineUse"
+              :initCallback="initCallback"
+              @callback="getData"/>
+    <params :data="paramsData"/>
   </div>
 </template>
 

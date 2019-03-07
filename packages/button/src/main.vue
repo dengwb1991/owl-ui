@@ -1,5 +1,7 @@
 <template>
-  <button :class="['owl-button', type]" @click="$emit('click')">{{text}}</button>
+  <button :class="['owl-button', type]" @click="$emit('click')">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
@@ -9,8 +11,7 @@ export default {
     type: {
       type: String,
       default: 'default'
-    },
-    text: String
+    }
   }
 }
 </script>
