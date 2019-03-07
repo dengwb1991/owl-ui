@@ -1,0 +1,73 @@
+@import "../animation/index";
+@import '../common/custom';
+
+@dialog-prefix-cls: ~"@{css-prefix}dialog";
+
+.@{dialog-prefix-cls} {
+  font-family: PingFangSC-Regular;
+  &-content {
+    font-size: 32px;
+    color: #323232;
+    line-height: 44px;
+    text-align: center;
+    padding: 50px 60px;
+  }
+  &-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  &-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 590px;
+    margin: 0 auto;
+    background: #FFF;
+    overflow: hidden;
+    color: #323232;
+    border-radius: 10px;
+    transform-origin: center;
+    vertical-align: middle;
+  }
+  &-btns {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    div {
+      position: relative;
+      width: 100%;
+      line-height: 88px;
+      height: 88px;
+      font-size: 36px;
+      text-align: center;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: scaleX(.5);
+        height: 100%;
+        border-left: 1px solid #DDD;
+        transform-origin: 0 0;
+      }
+      &:first-child::before {
+        content: none;
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: scaleY(.5);
+      width: 100%;
+      border-top: 1px solid #DDD;
+      transform-origin: 0 0;
+    }
+  }
+}

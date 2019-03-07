@@ -3,14 +3,17 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const requireRouter = require.context('.', false, /\.js/)
+const requireRouter = require.context('../view', true, /\index.vue/)
 
 let routes = []
+
 requireRouter.keys().forEach(fileName => {
-  if (fileName === './index.js') return
-  const requireConfig = requireRouter(fileName)
-  const routerArr = requireConfig.default || requireConfig
-  routes = [ ...routes, ...routerArr ]
+  const name = fileName.split('/')[1]
+  const route = {
+    path: `/${name}`,
+    component: (resolve) => require([`../view/${name}/index.vue`], resolve)
+  }
+  routes.push(route)
 })
 
 export default new Router({ routes })

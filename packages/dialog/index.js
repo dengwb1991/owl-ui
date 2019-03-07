@@ -6,4 +6,8 @@ OwlDialog.install = function (Vue) {
   Vue.component(OwlDialog.name, OwlDialog)
 }
 
+Vue.use(CreateAPI)
+
+Vue.createAPI(OwlDialog)
+
 export default OwlDialog
