@@ -5,6 +5,9 @@
 
 .@{dialog-prefix-cls} {
   font-family: PingFangSC-Regular;
+  position: fixed;
+  top: 0;
+  left: 0;
   &-content {
     font-size: 32px;
     color: #323232;
@@ -25,7 +28,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 590px;
+    width: 580px;
     margin: 0 auto;
     background: #FFF;
     overflow: hidden;
@@ -52,8 +55,12 @@
         top: 0;
         transform: scaleX(.5);
         height: 100%;
-        border-left: 1px solid #DDD;
+        width: 1Px;
+        background: #DDD;
         transform-origin: 0 0;
+        @media screen and (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+          transform: scaleX(.33);
+        }
       }
       &:first-child::before {
         content: none;
@@ -66,8 +73,12 @@
       top: 0;
       transform: scaleY(.5);
       width: 100%;
-      border-top: 1px solid #DDD;
+      height: 1Px;
+      background: #DDD;
       transform-origin: 0 0;
+      @media screen and (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+        transform: scaleY(.33);
+      }
     }
   }
 }

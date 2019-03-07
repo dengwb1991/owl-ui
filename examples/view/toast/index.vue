@@ -1,11 +1,11 @@
 <template>
   <owl-page class="examples-toast">
-    <owl-button @click="open1">show default</owl-button>
-    <owl-button @click="open2">show 1s</owl-button>
-    <owl-button @click="open3">show mask</owl-button>
-    <owl-button @click="open4">show success</owl-button>
-    <owl-button @click="open5">show failure</owl-button>
-    <owl-button @click="open6">show caution</owl-button>
+    <owl-button @click="open1">Show default</owl-button>
+    <owl-button @click="open2">Show 1s</owl-button>
+    <owl-button @click="open3">Show mask</owl-button>
+    <owl-button @click="open4">Show success</owl-button>
+    <owl-button @click="open5">Show failure</owl-button>
+    <owl-button @click="open6">Show caution</owl-button>
   </owl-page>
 </template>
 

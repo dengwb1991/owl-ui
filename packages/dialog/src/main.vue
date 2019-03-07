@@ -1,12 +1,16 @@
 <template>
   <transition name="fade">
     <div class="owl-dialog"
+         :style="{ zIndex }"
          v-show="isVisible">
       <div class="owl-dialog-mask"
+           :style="{ ...maskStyle, zIndex: zIndex - 1}"
            @click="handleMask"></div>
-      <div class="owl-dialog-container">
+      <div class="owl-dialog-container"
+           :style="{ ...containerStyle, zIndex }">
         <div class="owl-dialog-content">
-          <p v-html="content"></p>
+          <p v-if="content"
+             v-html="content"></p>
           <slot></slot>
         </div>
         <div class="owl-dialog-btns">
@@ -31,7 +35,7 @@ export default {
   props: {
     content: {
       type: String,
-      default: ''
+      default: null
     },
     maskClosable: {
       type: Boolean,
