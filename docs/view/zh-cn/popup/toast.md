@@ -15,8 +15,7 @@
 * 默认调用
 
 ```html
-<owl-button @click="show"
-            text="show default"/>
+<owl-button @click="show">Show default</owl-button>
 ```
 
 ```js
@@ -40,8 +39,7 @@ export default {
 * 设置时间
 
 ```html
-<owl-button @click="show"
-            text="show 1s"/>
+<owl-button @click="show">Show 1s</owl-button>
 ```
 
 ```js
@@ -60,8 +58,7 @@ export default {
 * 展示蒙层
 
 ```html
-<owl-button @click="show"
-            text="show mask"/>
+<owl-button @click="show">Show mask</owl-button>
 ```
 
 ```js
@@ -80,8 +77,7 @@ export default {
 * 展示成功提示
 
 ```html
-<owl-button @click="show"
-            text="show success"/>
+<owl-button @click="show">Show success</owl-button>
 ```
 
 ```js
@@ -100,8 +96,7 @@ export default {
 * 展示失败提示
 
 ```html
-<owl-button @click="show"
-            text="show failure"/>
+<owl-button @click="show">Show failure</owl-button>
 ```
 
 ```js
@@ -120,8 +115,7 @@ export default {
 * 展示警示提示
 
 ```html
-<owl-button @click="show"
-            text="show caution"/>
+<owl-button @click="show">Show caution</owl-button>
 ```
 
 ```js

@@ -15,8 +15,7 @@
 * 组件引入
 
 ```html
-<owl-button @click="show"
-            text="down"/>
+<owl-button @click="show">Down</owl-button>
 <owl-drawer :visible.sync="visible"
             :placement="placement"
             @callback="callback">
@@ -46,8 +45,7 @@ export default {
 * 调用api
 
 ```html
-<owl-button @click="show"
-            text="left"/>
+<owl-button @click="show">Left</owl-button>
 ```
 
 ```js
