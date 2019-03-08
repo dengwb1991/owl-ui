@@ -1,7 +1,7 @@
-import Vue from 'vue';
-// import OwlUI from '../../src/index.js'
+import Vue from 'vue'
+import OwlUI from '../../src/index.js'
 
-// Vue.use(OwlUI);
+Vue.use(OwlUI);
 
 let id = 0;
 
