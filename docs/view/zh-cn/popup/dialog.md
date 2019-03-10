@@ -41,7 +41,7 @@ export default {
 * 多个按钮配置
 
 ```html
-<owl-button @click="show">Two button</owl-button>
+<owl-button @click="show">Multiple button</owl-button>
 ```
 
 ```js

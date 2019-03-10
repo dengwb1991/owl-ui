@@ -2,7 +2,7 @@
   <owl-page class="examples-dialog">
     <owl-button @click="show1">One button</owl-button>
 
-    <owl-button @click="show2">Two button</owl-button>
+    <owl-button @click="show2">Multiple button</owl-button>
 
     <owl-button @click="show3">Click the button not to close</owl-button>
 
