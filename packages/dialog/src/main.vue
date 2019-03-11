@@ -17,9 +17,7 @@
           <div v-for="(btn, index) in btns"
                :key="index"
                @click.stop="handleBtn(btn)"
-               :style="[ btn.style, { color: btn.color } ]">
-            {{btn.text}}
-          </div>
+               :style="[ btn.style, { color: btn.color } ]">{{btn.text}}</div>
         </div>
       </div>
     </div>

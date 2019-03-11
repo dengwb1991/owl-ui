@@ -19,7 +19,9 @@ const createElm = function() {
  * @param  {Object} vm
  */
 exports.destroyVM = function(vm) {
+  if (!vm) return
   vm.$destroy && vm.$destroy();
+  vm.$parent && vm.$parent.destroy()
   vm.$el &&
   vm.$el.parentNode &&
   vm.$el.parentNode.removeChild(vm.$el);
