@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { createTest, destroyVM, createVue} from '../util'
+import { destroyVM, createVue } from '../util'
 import instantiateComponent from 'create-api/instantiate'
 import Dialog from 'packages/dialog'
 
@@ -37,11 +37,11 @@ describe('Dialog', () => {
     expect(btns[1].style.color).to.equal('rgb(75, 144, 255)')
   })
 
-  it('should trigger events', done => {
+  it('visible callback events', done => {
     const callbackHandler = sinon.spy()
 
     vm = createDialog({
-      content: 'dialog',
+      content: '内容部分',
       btns: [{ text: '确定' }]
     }, {
       callback: callbackHandler
@@ -56,9 +56,69 @@ describe('Dialog', () => {
       expect(callbackHandler).to.be.calledOnce
       done()
     }, 500)
-    // console.log(elm.style.display)
-    // expect(elm.style.display).to.equal('')
+  })
 
+  it('btns callback events', () => {
+    const cancelHandler = sinon.spy()
+    const confirmHandler = sinon.spy()
 
+    vm = createDialog({
+      content: '内容部分',
+      btns: [
+        { text: '取消', callback: cancelHandler },
+        { text: '取消', callback: confirmHandler }
+      ]
+    })
+
+    vm.show()
+    const cancel = vm.$el.querySelector('.owl-dialog-btns div:first-child')
+    cancel.click()
+    expect(cancelHandler).to.be.calledOnce
+
+    vm.show()
+    const confirm = vm.$el.querySelector('.owl-dialog-btns div:last-child')
+    confirm.click()
+    expect(confirmHandler).to.be.calledOnce
+  })
+
+  it('dialog api', () => {
+    const cancelHandler = sinon.spy()
+    const confirmHandler = sinon.spy()
+    vm = createVue({
+      template: `<div></div>`,
+      data () {
+        return {
+          ins: null
+        }
+      },
+      methods: {
+        createDialog () {
+          this.ins = this.$dialog({
+            content: '内容部分',
+            btns: [
+              { text: '取消', callback: cancelHandler },
+              { text: '确定', callback: confirmHandler }
+            ]
+          })
+        },
+        show () {
+          this.ins.show()
+        },
+        hide () {
+          this.ins.hide()
+        }
+      }
+    })
+    vm.createDialog()
+    vm.show()
+
+    const cancel = vm.ins.$el.querySelector('.owl-dialog-btns  div:first-child')
+    cancel.click()
+    expect(cancelHandler).to.be.calledOnce
+
+    vm.show()
+    const confirm = vm.ins.$el.querySelector('.owl-dialog-btns  div:last-child')
+    confirm.click()
+    expect(confirmHandler).to.be.calledOnce
   })
 })
