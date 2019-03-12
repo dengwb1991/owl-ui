@@ -7,7 +7,7 @@ describe('Drawer', () => {
     destroyVM(vm)
   })
 
-  it('create', () => {
+  it('use', () => {
     vm = createTest(Drawer, {
     }, true)
     let buttonElm = vm.$el

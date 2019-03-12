@@ -1,7 +1,7 @@
 import { createTest, destroyVM } from '../util'
 import Button from 'packages/button'
 
-describe('Button.vue', () => {
+describe('Button', () => {
   let vm
   afterEach(() => {
     destroyVM(vm)
