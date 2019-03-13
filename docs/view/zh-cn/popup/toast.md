@@ -12,6 +12,22 @@
 
 ## 示例
 
+* 快速使用
+
+```html
+<owl-button @click="show">Use</owl-button>
+```
+
+```js
+export default {
+  methods: {
+    show () {
+      this.$toast('欢迎光临')
+    }
+  }
+}
+```
+
 * 默认调用
 
 ```html

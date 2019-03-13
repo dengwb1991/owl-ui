@@ -1,5 +1,6 @@
 <template>
   <owl-page class="examples-toast">
+    <owl-button @click="open">Use</owl-button>
     <owl-button @click="open1">Show default</owl-button>
     <owl-button @click="open2">Show 1s</owl-button>
     <owl-button @click="open3">Show mask</owl-button>
@@ -12,6 +13,9 @@
 <script>
 export default {
   methods: {
+    open () {
+      this.$toast('欢迎光临')
+    },
     open1 () {
       const toast = this.$toast({
         $props: {

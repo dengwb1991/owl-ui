@@ -2,12 +2,13 @@
 @import '../common/custom';
 
 @toast-prefix-cls: ~"@{css-prefix}toast";
+@iconfont-prefix-cls: ~"@{css-prefix}iconfont";
 
 .@{toast-prefix-cls} {
   position: fixed;
   top: 0;
   left: 0;
-  .owl-iconfont {
+  .@{iconfont-prefix-cls} {
     &-caution, &-failure, &-success {
       &:before {
         font-size: 72px;

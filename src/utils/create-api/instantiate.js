@@ -10,7 +10,7 @@ export default function instantiateComponent(Vue, Component, data, renderFn, opt
         children = [children]
       }
 
-      return createElement(Component, {...renderData}, children || [])
+      return createElement(Component, { ...renderData }, children || [])
     },
     methods: {
       init() {

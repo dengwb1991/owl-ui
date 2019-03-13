@@ -9,7 +9,7 @@
       </div>
       <div class="owl-toast-container"
            :style="{ ...containerStyle, 'z-index': zIndex }">
-        <p v-html="text" :class="[`owl-iconfont-${type}`]"></p>
+        <p v-html="value || text" :class="[`owl-iconfont-${type}`]"></p>
       </div>
     </div>
   </transition>
@@ -18,10 +18,16 @@
 <script>
 import visibilityMixin from 'mixins/visibility'
 
+const REMOVE_TIME = 300
+
 export default {
   name: 'OwlToast',
   mixins: [visibilityMixin],
   props: {
+    value: {
+      type: String,
+      default: ''
+    },
     text: {
       type: String,
       default: ''
@@ -46,6 +52,7 @@ export default {
         if (this.time !== 0) {
           this.timer = setTimeout(() => {
             this.hide()
+            setTimeout(() => this.remove(), REMOVE_TIME)
           }, this.time)
         }
       })
@@ -58,6 +65,9 @@ export default {
       clearTimeout(this.timer)
       this.timer = null
     }
+  },
+  mounted () {
+    this.value && this.show()
   }
 }
 </script>
