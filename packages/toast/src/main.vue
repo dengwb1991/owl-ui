@@ -1,5 +1,6 @@
 <template>
-  <transition name="fade">
+  <transition name="fade"
+              @after-leave="afterLeaveHandle">
     <div class="owl-toast"
          :style="{ 'z-index': zIndex }"
          v-show="isVisible">
@@ -18,7 +19,7 @@
 <script>
 import visibilityMixin from 'mixins/visibility'
 
-const REMOVE_TIME = 300
+// const REMOVE_TIME = 300
 
 export default {
   name: 'OwlToast',
@@ -53,18 +54,20 @@ export default {
         if (this.time !== 0) {
           this.timer = setTimeout(() => {
             this.hide()
-            this.remove && (this.timer = setTimeout(() => this.remove(), REMOVE_TIME))
           }, this.time)
         }
       })
     },
-    hide() {
+    hide () {
       this.isVisible = false
       this.clearTimer()
     },
-    clearTimer() {
+    clearTimer () {
       clearTimeout(this.timer)
       this.timer = null
+    },
+    afterLeaveHandle () {
+      this.remove && this.remove()
     }
   },
   mounted () {

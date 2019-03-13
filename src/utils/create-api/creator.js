@@ -4,7 +4,7 @@ import { isFunction, isUndef, isStr } from './util'
 
 const eventBeforeDestroy = 'hook:beforeDestroy'
 
-export default function apiCreator(Component, events = [], single = false) {
+export default function apiCreator(Component, events = [], single = false, isDestroy) {
   let Vue = this
   let currentSingleComp
   let singleMap = {}
@@ -163,10 +163,9 @@ export default function apiCreator(Component, events = [], single = false) {
 
       component = createComponent(renderData, renderFn, options, _single)
 
-      if (isInVueInstance) {
+      if (isInVueInstance && isDestroy) {
         ownerInstance.$on(eventBeforeDestroy, beforeDestroy)
       }
-
       function beforeDestroy() {
         cancelWatchProps(ownerInstance)
         component.remove()

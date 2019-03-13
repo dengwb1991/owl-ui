@@ -6,12 +6,12 @@ import instantiateComponent from './instantiate'
 function install(Vue, options = {}) {
   const { componentPrefix = 'Owl', apiPrefix = '$' } = options
 
-  Vue.createAPI = function (Component, events = true, single) {
+  Vue.createAPI = function (Component, events = true, single, isDestroy = true) {
     if (isBoolean(events)) {
       single = events
       events = []
     }
-    const api = apiCreator.call(this, Component, events, single)
+    const api = apiCreator.call(this, Component, events, single, isDestroy)
     const createName = processComponentName(Component, {
       componentPrefix,
       apiPrefix

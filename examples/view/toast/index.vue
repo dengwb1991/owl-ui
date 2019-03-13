@@ -12,9 +12,14 @@
 
 <script>
 export default {
+  data () {
+    return {
+      ins: null
+    }
+  },
   methods: {
     open () {
-      this.$toast('欢迎光临')
+      this.ins = this.$toast('欢迎光临')
     },
     open1 () {
       const toast = this.$toast({
@@ -60,6 +65,9 @@ export default {
         type: 'caution'
       }).show()
     }
+  },
+  beforeDestroy () {
+    this.ins && this.ins.hide()
   }
 }
 </script>
