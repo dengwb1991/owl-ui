@@ -47,12 +47,13 @@ export default {
   },
   methods: {
     show () {
+      if (this.isVisible || this.timer) return
       this.isVisible = true
       this.$nextTick(() => {
         if (this.time !== 0) {
           this.timer = setTimeout(() => {
             this.hide()
-            setTimeout(() => this.remove(), REMOVE_TIME)
+            this.remove && (this.timer = setTimeout(() => this.remove(), REMOVE_TIME))
           }, this.time)
         }
       })
