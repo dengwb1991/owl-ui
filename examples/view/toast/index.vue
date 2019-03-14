@@ -31,9 +31,6 @@ export default {
         }
       })
       toast.show()
-      setTimeout(() => {
-        toast.hide()
-      }, 1000)
     },
     open2 () {
       this.$toast({

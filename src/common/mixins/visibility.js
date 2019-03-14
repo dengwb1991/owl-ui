@@ -40,15 +40,18 @@ export default {
     isVisible (val) {
       this.$emit('update:visible', val)
       this.$emit('callback', val)
+      if (this.lockScroll) {
+        document.body.style.overflow = val ? 'hidden' : ''
+      }
     },
     visible: {
       handler (val) {
         val ? this.show() : this.hide()
-        if (this.lockScroll) {
-          document.body.style.overflow = val ? 'hidden' : ''
-        }
       },
       immediate: true
     }
+  },
+  beforeDestroy () {
+    this.lockScroll && (document.body.style.overflow = '')
   }
 }
