@@ -19,8 +19,6 @@
 <script>
 import visibilityMixin from 'mixins/visibility'
 
-// const REMOVE_TIME = 300
-
 export default {
   name: 'OwlToast',
   mixins: [visibilityMixin],

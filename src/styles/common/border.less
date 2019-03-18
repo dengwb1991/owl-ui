@@ -1,0 +1,33 @@
+.border-left-1px(@color: #DDD) {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scaleX(.5);
+    height: 100%;
+    border-left: 1Px solid @color;
+    transform-origin: 0 0;
+    @media screen and (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+      transform: scaleX(.33);
+    }
+  }
+}
+
+.border-top-1px(@color: #DDD) {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scaleY(.5);
+    width: 100%;
+    border-top: 1Px solid @color;
+    transform-origin: 0 0;
+    @media screen and (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+      transform: scaleY(.33);
+    }
+  }
+}
