@@ -1,6 +1,7 @@
 @import "../animation/index";
-@import '../common/custom';
+@import "../common/custom";
 @import "../common/border";
+@import "../common/mixin";
 
 @dialog-prefix-cls: ~"@{css-prefix}dialog";
 
@@ -17,12 +18,7 @@
     padding: 50px 60px;
   }
   &-mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    .popup-mask
   }
   &-container {
     position: fixed;
