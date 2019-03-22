@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { createTest, destroyVM } from '../util'
 import Button from 'packages/button'
 
@@ -7,12 +8,10 @@ describe('Button', () => {
     destroyVM(vm)
   })
 
-  it('create', () => {
-    vm = createTest(Button, {
-      type: 'mall'
-    }, true)
-    let buttonElm = vm.$el
-    expect(buttonElm.classList.contains('mall')).to.be.true
+  it('use', () => {
+    Vue.use(Button)
+    expect(Vue.component(Button.name))
+      .to.be.a('function')
   })
 
 })
