@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { createTest, destroyVM } from '../util'
+import { destroyVM, createVue } from '../util'
 import Button from 'packages/button'
 
 describe('Button', () => {
@@ -14,4 +14,20 @@ describe('Button', () => {
       .to.be.a('function')
   })
 
+  it('default btn', () => {
+    const btnHandler = sinon.spy()
+
+    vm = createVue({
+      template: `
+        <owl-button @click="handle">Default Button</owl-button>
+      `,
+      methods: {
+        handle () {
+          return btnHandler()
+        }
+      }
+    })
+    vm.$el.click()
+    expect(btnHandler).to.be.calledOnce
+  })
 })
