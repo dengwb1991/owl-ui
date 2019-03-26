@@ -17,7 +17,7 @@
   {
     "num": "02",
     "name": "组件",
-    "max-height": "350px",
+    "max-height": "450px",
     "items": [
       {
         "name": "基础",
@@ -33,6 +33,15 @@
           {
             "key": "Tabs",
             "router": "/tabs"
+          }
+        ]
+      },
+      {
+        "name": "表单",
+        "items": [
+          {
+            "key": "Switch",
+            "router": "/switch"
           }
         ]
       },

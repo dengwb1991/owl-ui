@@ -2,13 +2,20 @@
   <owl-page class="examples-switch">
     <ul>
       <li>
-        <owl-switch v-model="val">{{val}}</owl-switch>
+        <owl-switch v-model="val"
+                    :initCallback="true"
+                    @callback="handle">
+          {{val}}
+        </owl-switch>
       </li>
       <li>
-        <owl-switch v-model="val2" disabled>disabled</owl-switch>
+        <owl-switch v-model="val2" :color="color">{{this.color}}</owl-switch>
       </li>
       <li>
         <owl-switch v-model="val3" disabled>disabled</owl-switch>
+      </li>
+      <li>
+        <owl-switch v-model="val4" disabled>disabled</owl-switch>
       </li>
     </ul>
   </owl-page>
@@ -19,8 +26,15 @@ export default {
   data () {
     return {
       val: false,
-      val2: false,
-      val3: true
+      val2: true,
+      color: '#584628',
+      val3: false,
+      val4: true
+    }
+  },
+  methods: {
+    handle (val) {
+      console.log(val)
     }
   }
 }

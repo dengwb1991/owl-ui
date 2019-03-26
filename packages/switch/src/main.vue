@@ -4,7 +4,7 @@
            type="checkbox"
            v-model="checkboxValue"
            :disabled="disabled"/>
-    <i class="owl-switch-ui"></i>
+    <i class="owl-switch-ui" :style="uiStyle"></i>
     <span class="owl-switch-label"><slot></slot></span>
   </div>
 </template>
@@ -17,7 +17,15 @@ export default {
       type: Boolean,
       default: false
     },
+    color: {
+      type: String,
+      default: null
+    },
     disabled: {
+      type: Boolean,
+      default: false
+    },
+    initCallback: {
       type: Boolean,
       default: false
     }
@@ -27,13 +35,30 @@ export default {
       checkboxValue: this.value
     }
   },
-  watch: {
-    value (newVal) {
-      this.checkboxValue = newVal
-    },
-    checkboxValue (newVal) {
-      this.$emit('input', newVal)
+  computed: {
+    uiStyle () {
+      return this.color && this.value && {
+        'border-color': this.color,
+        'background-color': this.color
+      }
     }
+  },
+  methods: {
+    callback (val) {
+      this.$emit('callback', val)
+    }
+  },
+  watch: {
+    value (val) {
+      this.checkboxValue = val
+    },
+    checkboxValue (val) {
+      this.$emit('input', val)
+      this.callback(val)
+    }
+  },
+  mounted () {
+    this.initCallback && this.callback(this.value)
   }
 }
 </script>
