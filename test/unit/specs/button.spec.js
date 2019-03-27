@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { destroyVM, createVue } from '../util'
+import { destroyVM, createVue, createTest } from '../util'
 import Button from 'packages/button'
 
 describe('Button', () => {
@@ -12,6 +12,14 @@ describe('Button', () => {
     Vue.use(Button)
     expect(Vue.component(Button.name))
       .to.be.a('function')
+  })
+
+  it('disabled btn', () => {
+    vm = createTest(Button, {
+      type: 'disabled'
+    }, true)
+    let buttonElm = vm.$el
+    expect(buttonElm.classList.contains('owl-button-disabled')).to.be.true
   })
 
   it('default btn', () => {
