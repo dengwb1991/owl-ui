@@ -17,13 +17,16 @@
   font-weight: normal;
   text-decoration: none;
   text-transform: none;
+  vertical-align: middle;
 }
 
 .owl-iconfont-char(@filename) {
   @caution: "\E001";
   @close: "\E002";
-  @failure: "\E003";
-  @success: "\E004";
+  @eye-invisible: "\E003";
+  @eye-visible: "\E004";
+  @failure: "\E005";
+  @success: "\E006";
   
   content: @@filename;
 }
@@ -42,6 +45,12 @@
 }
 .owl-iconfont-close {
   .owl-iconfont(close);
+}
+.owl-iconfont-eye-invisible {
+  .owl-iconfont(eye-invisible);
+}
+.owl-iconfont-eye-visible {
+  .owl-iconfont(eye-visible);
 }
 .owl-iconfont-failure {
   .owl-iconfont(failure);
