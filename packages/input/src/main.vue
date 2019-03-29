@@ -3,7 +3,7 @@
     <input class="owl-input-field"
            ref="input"
            v-model="inputValue"
-           :type="type"
+           :type="_type"
            :placeholder="placeholder"
            :disabled="disabled"
            :readonly="readonly"
@@ -13,12 +13,17 @@
            @blur="handleBlur"
            @change="handleChange"/>
     <div class="owl-input-append"
-         v-if="_showClear">
+         v-if="_showClear || _showPwdEye">
       <div class="owl-input-clear"
            v-if="_showClear"
            @touchstart="handleClear"
            @mousedown="handleClear">
         <i class="owl-iconfont-close"></i>
+      </div>
+      <div class="owl-input-eye"
+           v-if="_showPwdEye"
+           @click="handlePwdEye">
+        <i :class="eyeClass"></i>
       </div>
     </div>
   </div>
@@ -59,7 +64,7 @@ export default {
     },
     eye: {
       type: [Boolean, Object],
-      default: false
+      default: true
     }
   },
   data () {
@@ -70,16 +75,37 @@ export default {
       formatedClearable: {
         visible: false,
         blurHidden: true
+      },
+      formatedEye: {
+        open: false,
+        reverse: false
       }
     }
   },
   computed: {
+    _type () {
+      const type = this.type
+      if (type === 'password' && this.formatedEye && this.pwdVisible) {
+        return 'text'
+      }
+      return type
+    },
+    eyeClass () {
+      return this.formatedEye.open ? 'owl-iconfont-eye-visible' : 'owl-iconfont-eye-invisible'
+    },
+    _showPwdEye() {
+      return this.type === 'password' && this.eye && !this.disabled
+    },
     _showClear () {
       let visible = this.formatedClearable.visible && this.inputValue && !this.readonly && !this.disabled
       if (this.formatedClearable.blurHidden && !this.isFocus) {
         visible = false
       }
       return visible
+    },
+    pwdVisible() {
+      const eye = this.formatedEye
+      return eye.reverse ? !eye.open : eye.open
     }
   },
   methods: {
@@ -98,11 +124,21 @@ export default {
       this.inputValue = ''
       this.$refs.input.focus()
     },
+    handlePwdEye () {
+      this.formatedEye.open = !this.formatedEye.open
+    },
     formatClearable() {
       if (typeof this.clearable === 'boolean') {
         this.formatedClearable.visible = this.clearable
       } else {
         Object.assign(this.formatedClearable, this.clearable)
+      }
+    },
+    formateEye() {
+      if (typeof this.eye === 'boolean') {
+        this.formatedEye.open = !this.eye
+      } else {
+        Object.assign(this.formatedEye, this.eye)
       }
     }
   },
@@ -116,6 +152,13 @@ export default {
     clearable: {
       handler () {
         this.formatClearable()
+      },
+      deep: true,
+      immediate: true
+    },
+    eye: {
+      handler() {
+        this.formateEye()
       },
       deep: true,
       immediate: true

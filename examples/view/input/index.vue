@@ -2,6 +2,7 @@
   <owl-page>
     <div class="examples-input">
       <owl-input :placeholder="placeholder"
+                 :type="type"
                  v-model="val"/>
     </div>
   </owl-page>
@@ -11,6 +12,7 @@
 export default {
   data () {
     return {
+      type: 'password',
       val: '',
       placeholder: '请输入'
     }
