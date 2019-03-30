@@ -126,6 +126,7 @@ export default {
     },
     handlePwdEye () {
       this.formatedEye.open = !this.formatedEye.open
+      this.$emit('eyeType', this.formatedEye.open)
     },
     formatClearable() {
       if (typeof this.clearable === 'boolean') {
