@@ -9,6 +9,7 @@
            :readonly="readonly"
            :autofocus="autofocus"
            :autocomplete="autocomplete"
+           :maxLength="maxLength"
            @focus="handleFocus"
            @blur="handleBlur"
            @change="handleChange"/>
@@ -58,6 +59,7 @@ export default {
       type: Boolean,
       default: false
     },
+    maxLength: Number,
     clearable: {
       type: [Boolean, Object],
       default: true

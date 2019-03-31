@@ -6,6 +6,7 @@
                  :disabled="arr[0].type"
                  :readonly="arr[1].type"
                  :clearable="arr[2].type"
+                 :maxLength="maxLength"
                  :eye="showEye"
                  v-model="val"/>
       <p class="value-wrap">Type: {{_type}} Value：{{val}}</p>
@@ -21,9 +22,11 @@
                        name="show eye"
                        v-model="showEye"/>
       <br>
-      <owl-prop-switch name="tel"
+      <owl-prop-switch name="telphone"
                        v-model="tel"/>
-
+      <owl-prop-switch v-if="tel"
+                       name="tel length"
+                       v-model="phoneLength"/>
     </div>
   </owl-page>
 </template>
@@ -46,7 +49,9 @@ export default {
       ],
       password: false,
       showEye: true,
-      tel: false
+      tel: false,
+      phoneLength: false,
+      maxLength: null
     }
   },
   computed: {
@@ -66,10 +71,15 @@ export default {
         this.password = false
         this.val = ''
       }
+      this.phoneLength = val
+    },
+    phoneLength (val) {
+      this.maxLength = val ? 11 : null
     },
     password (val) {
       if (val) {
         this.tel = false
+        this.phoneLength = false
       }
     }
   }
