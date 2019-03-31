@@ -40,6 +40,10 @@
         "name": "表单",
         "items": [
           {
+            "key": "Input",
+            "router": "/input"
+          },
+          {
             "key": "Switch",
             "router": "/switch"
           }

@@ -59,7 +59,10 @@ export default {
       type: Boolean,
       default: false
     },
-    maxLength: Number,
+    maxLength: {
+      type: Number,
+      default: 60
+    },
     clearable: {
       type: [Boolean, Object],
       default: true
