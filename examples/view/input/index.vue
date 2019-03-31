@@ -8,7 +8,7 @@
                  :clearable="arr[2].type"
                  :eye="showEye"
                  v-model="val"/>
-      <p class="value-wrap">Value：{{val}}</p>
+      <p class="value-wrap">Type: {{_type}} Value：{{val}}</p>
 
       <owl-prop-switch v-for="item in arr"
                        :key="item.name"
@@ -20,6 +20,10 @@
       <owl-prop-switch v-if="password"
                        name="show eye"
                        v-model="showEye"/>
+      <br>
+      <owl-prop-switch name="tel"
+                       v-model="tel"/>
+
     </div>
   </owl-page>
 </template>
@@ -41,12 +45,32 @@ export default {
         { name: 'clearable', type: true }
       ],
       password: false,
-      showEye: true
+      showEye: true,
+      tel: false
     }
   },
   computed: {
     _type () {
-      return this.password ? 'password' : 'text'
+      switch (true) {
+        case this.tel:
+          return 'tel'
+        case this.password:
+          return 'password'
+        default: return 'text'
+      }
+    }
+  },
+  watch: {
+    tel (val) {
+      if (val) {
+        this.password = false
+        this.val = ''
+      }
+    },
+    password (val) {
+      if (val) {
+        this.tel = false
+      }
     }
   }
 }

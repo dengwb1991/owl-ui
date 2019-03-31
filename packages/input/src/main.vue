@@ -145,7 +145,7 @@ export default {
   },
   watch: {
     value (val) {
-      this.inputValue = val
+      this.inputValue = this.type === 'tel' ? !/\D/.test(val.slice(-1)) ? val : val.slice(0, -1) : val
     },
     inputValue (val) {
       this.$emit('input', val)
