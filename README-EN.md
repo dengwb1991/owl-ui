@@ -6,7 +6,7 @@
 </p>
 <!--<br/>-->
 
-<p font-size="40px" align="center">基于 Vue 和 Webpack 构建的移动端UI组件库</p>
+<p font-size="40px" align="center">Mobile UI component library built on Vue and Webpack</p>
 
 <p align="center">
   <a href="https://github.com/vuejs/vue" rel="nofollow" target="_blank">
@@ -38,13 +38,13 @@
   </a>
 </p>
 
-### 安装
+### Install
 
 ```bash
 npm install owl-ui -S
 ```
 
-### 使用
+### Usage
 
 ```js
 import 'owl-ui/lib/flexible' // Mobile adaptive solution
@@ -55,7 +55,7 @@ import 'owl-ui/lib/styles/owl-ui.css'
 Vue.use(Owl)
 ```
 
-### 开发
+### Development
 
 ```bash
 git clone git@github.com:dengwb1991/owl-ui.git
@@ -71,19 +71,19 @@ npm run dev
 npm run docs
 ```
 
-### 文档链接
+### Docs
 
 [[Home]](http://owl-ui.dengwb.com)
 
-### 示例链接
+### Examples
 
 [[Example]](http://owl-ui.dengwb.com/examples)
 
-### 个人主页
+### Author
 
 [[Dengwb]](http://www.dengwb.com)
 
-### 其他
+### Connection
 
 [[JueJin]](https://juejin.im/post/5c6504d06fb9a049c6445a25)
 
