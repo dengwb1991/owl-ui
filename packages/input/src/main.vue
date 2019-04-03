@@ -69,8 +69,8 @@ export default {
       default: true
     },
     eye: {
-      type: [Boolean, Object],
-      default: true
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -82,6 +82,7 @@ export default {
         visible: false,
         blurHidden: true
       },
+      // formatedEye: true
       formatedEye: {
         open: false,
         reverse: false
@@ -91,13 +92,13 @@ export default {
   computed: {
     _type () {
       const type = this.type
-      if (type === 'password' && this.formatedEye && this.pwdVisible) {
+      if (type === 'password' && !this.formatedEye.open && this.eye && !this.pwdVisible) {
         return 'text'
       }
       return type
     },
     eyeClass () {
-      return this.formatedEye.open ? 'owl-iconfont-eye-visible' : 'owl-iconfont-eye-invisible'
+      return this.formatedEye.open ? 'owl-iconfont-eye-invisible' : 'owl-iconfont-eye-visible'
     },
     _showPwdEye() {
       return this.type === 'password' && this.eye && !this.disabled
@@ -112,7 +113,7 @@ export default {
     pwdVisible() {
       const eye = this.formatedEye
       return eye.reverse ? !eye.open : eye.open
-    }
+    },
   },
   methods: {
     handleFocus (event) {
@@ -132,7 +133,7 @@ export default {
     },
     handlePwdEye () {
       this.formatedEye.open = !this.formatedEye.open
-      this.$emit('eyeType', this.formatedEye.open)
+      this.$emit('eyeType', this.formatedEye)
     },
     formatClearable() {
       if (typeof this.clearable === 'boolean') {
@@ -143,7 +144,7 @@ export default {
     },
     formateEye() {
       if (typeof this.eye === 'boolean') {
-        this.formatedEye.open = !this.eye
+        this.formatedEye.open = this.eye
       } else {
         Object.assign(this.formatedEye, this.eye)
       }
@@ -164,7 +165,7 @@ export default {
       immediate: true
     },
     eye: {
-      handler() {
+      handler () {
         this.formateEye()
       },
       deep: true,
