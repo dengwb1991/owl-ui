@@ -81,6 +81,6 @@ describe('Input', () => {
     setTimeout(() => {
       expect(vm.$el.querySelector('input').type).to.equal('text')
       done()
-    }, 200)
+    })
   })
 })
