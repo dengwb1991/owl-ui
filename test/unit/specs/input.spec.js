@@ -61,7 +61,7 @@ describe('Input', () => {
       template: `
         <owl-input :type="type"
                    v-model="val"
-                   @eyeType="handle"/>
+                   @eyeToggle="handle"/>
       `,
       data: {
         type: 'password',

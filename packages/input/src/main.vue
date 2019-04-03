@@ -70,7 +70,7 @@ export default {
     },
     eye: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data () {
@@ -82,7 +82,6 @@ export default {
         visible: false,
         blurHidden: true
       },
-      // formatedEye: true
       formatedEye: {
         open: false,
         reverse: false
@@ -133,7 +132,7 @@ export default {
     },
     handlePwdEye () {
       this.formatedEye.open = !this.formatedEye.open
-      this.$emit('eyeType', this.formatedEye)
+      this.$emit('eyeToggle', this.formatedEye.open)
     },
     formatClearable() {
       if (typeof this.clearable === 'boolean') {

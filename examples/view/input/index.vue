@@ -8,6 +8,10 @@
                  :clearable="arr[2].type"
                  :maxLength="maxLength"
                  :eye="showEye"
+                 @focus="focusHandle"
+                 @blur="blurHandle"
+                 @change="changeHandle"
+                 @eyeToggle="eyeHandle"
                  v-model="val"/>
       <p class="value-wrap">Type: {{_type}} Value：{{val}}</p>
 
@@ -63,6 +67,20 @@ export default {
           return 'password'
         default: return 'text'
       }
+    }
+  },
+  methods: {
+    focusHandle (event) {
+      console.log('focus', event)
+    },
+    blurHandle (event) {
+      console.log('blur', event)
+    },
+    changeHandle (event) {
+      console.log('change', event)
+    },
+    eyeHandle (type) {
+      console.log('toggle', type)
     }
   },
   watch: {
