@@ -18,7 +18,8 @@
       <div class="owl-input-clear"
            v-if="_showClear"
            @touchstart="handleClear"
-           @mousedown="handleClear">
+           @mousedown="handleClear"
+           @click="handleClear">
         <i class="owl-iconfont-close"></i>
       </div>
       <div class="owl-input-eye"
