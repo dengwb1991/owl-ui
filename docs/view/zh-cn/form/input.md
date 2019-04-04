@@ -38,6 +38,41 @@ export default {
            v-mode="val"/>
 ```
 
+* 事件
+
+```html
+<owl-input type="password"
+           v-mode="val"
+           @focus="focusHandle"
+           @blur="blurHandle"
+           @change="changeHandle"
+           @eyeToggle="eyeHandle"/>
+```
+
+```js
+export default {
+  data () {
+    return {
+      val: null
+    }
+  },
+  methods: {
+    focusHandle (event) {
+      console.log('focus', event)
+    },
+    blurHandle (event) {
+      console.log('blur', event)
+    },
+    changeHandle (event) {
+      console.log('change', event)
+    },
+    eyeHandle (type) {
+      console.log('toggle', type)
+    }
+  }
+}
+```
+
 ## Props 配置
 
  参数 | 说明 | 类型 | 默认值 | 可选值
@@ -63,3 +98,6 @@ export default {
 ---- | --- | ---
 focus | 输入框聚焦后触发此事件，如果禁用状态，则不触发 | event事件对象
 blur | 输入框失焦后触发此事件 | event事件对象
+change | 值发生改变失去焦点后触发此事件 | event时间对象
+eyeToggle | 点击眼睛后触发此事件 | 显示、隐藏状态
+
