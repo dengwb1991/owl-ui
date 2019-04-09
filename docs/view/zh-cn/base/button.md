@@ -46,6 +46,18 @@ export default {
 <owl-button :outline="true">Outline Button</owl-button>
 ```
 
+* 横向布局
+
+```html
+<owl-button-group>
+  <owl-button type="light"
+              :outline="true"
+              :inline="true">Inline Button</owl-button>
+  <owl-button type="light"
+              :inline="true">Light Button</owl-button>
+</owl-button-group>
+```
+
 * 自定义样式按钮
 
 ```html
