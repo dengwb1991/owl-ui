@@ -11,6 +11,14 @@
 
       <owl-button :outline="true">Outline Button</owl-button>
 
+      <owl-button-group>
+        <owl-button type="light"
+                    :outline="true"
+                    :inline="true">Inline Button</owl-button>
+        <owl-button type="light"
+                    :inline="true">Light Button</owl-button>
+      </owl-button-group>
+
       <owl-button :btnStyle="btnStyle">Custom Button</owl-button>
     </div>
   </OwlPage>
@@ -38,6 +46,7 @@ export default {
 <style lang="less" scoped>
 .button-wrap {
   text-align: center;
+  padding: 30px;
 }
 button {
   margin: 20px 0;
