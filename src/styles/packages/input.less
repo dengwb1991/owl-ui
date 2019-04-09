@@ -6,17 +6,19 @@
 .@{input-prefix-cls} {
   position: relative;
   display: flex;
+  width: 100%;
   align-items: center;
   font-size: 28px;
-  line-height: 1.429;
+  // line-height: 1.429;
   background-color: #FFF;
-  padding: 10px;
+  height: 88px;
+  padding: 20px 10px;
   color: #333;
   &-field {
     font-size: inherit;
     display: block;
     flex: 1;
-    width: 100%;
+    max-width: 90%;
     box-sizing: border-box;
     border: 0;
     color: inherit;
@@ -29,6 +31,8 @@
     text-align: center;
   }
   &-clear, &-eye {
-    width: 2em;
+    font-size: 28px;
+    min-width: 2em;
+    padding: 0 8px;
   }
 }

@@ -31,6 +31,11 @@
       <owl-prop-switch v-if="tel"
                        name="tel length"
                        v-model="phoneLength"/>
+      <br>
+      <h2>layout</h2>
+      <owl-input-group text="姓名">
+        <owl-input placeholder="请输入"/>
+      </owl-input-group>
     </div>
   </owl-page>
 </template>
@@ -104,9 +109,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.owl-input {
-  padding: 20px 10px;
-}
 .examples-input {
   padding: 30px;
   .value-wrap {
