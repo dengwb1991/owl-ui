@@ -3,7 +3,6 @@
   "button": "./packages/button/index.js",
   "tabs": "./packages/tabs/index.js",
   "input": "./packages/input/index.js",
-  "logo": "./packages/logo/index.js",
   "drawer": "./packages/drawer/index.js",
   "dialog": "./packages/dialog/index.js",
   "toast": "./packages/toast/index.js",
