@@ -1,12 +1,14 @@
 <template>
-  <owl-page class="examples-dialog">
-    <owl-button @click="show1">One button</owl-button>
+  <owl-page>
+    <div class="examples-dialog">
+      <owl-button @click="show1">One button</owl-button>
 
-    <owl-button @click="show2">Multiple button</owl-button>
+      <owl-button @click="show2">Multiple button</owl-button>
 
-    <owl-button @click="show3">Click the button not to close</owl-button>
+      <owl-button @click="show3">Click the button not to close</owl-button>
 
-    <owl-button @click="show4">Content slot</owl-button>
+      <owl-button @click="show4">Content slot</owl-button>
+    </div>
   </owl-page>
 </template>
 
@@ -89,6 +91,7 @@ export default {
 <style lang="less" scoped>
 .examples-dialog {
   text-align: center;
+  padding: 0 30px;
 }
 button {
   margin: 20px 0;

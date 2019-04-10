@@ -1,12 +1,14 @@
 <template>
-  <owl-page class="examples-toast">
-    <owl-button @click="open">Use</owl-button>
-    <owl-button @click="open1">Show default</owl-button>
-    <owl-button @click="open2">Show 1s</owl-button>
-    <owl-button @click="open3">Show mask</owl-button>
-    <owl-button @click="open4">Show success</owl-button>
-    <owl-button @click="open5">Show failure</owl-button>
-    <owl-button @click="open6">Show caution</owl-button>
+  <owl-page>
+    <div class="examples-toast">
+      <owl-button @click="open">Use</owl-button>
+      <owl-button @click="open1">Show default</owl-button>
+      <owl-button @click="open2">Show 1s</owl-button>
+      <owl-button @click="open3">Show mask</owl-button>
+      <owl-button @click="open4">Show success</owl-button>
+      <owl-button @click="open5">Show failure</owl-button>
+      <owl-button @click="open6">Show caution</owl-button>
+    </div>
   </owl-page>
 </template>
 
@@ -72,6 +74,7 @@ export default {
 <style lang="less" scoped>
 .examples-toast {
   text-align: center;
+  padding: 0 30px;
 }
 button {
   margin: 20px 0;

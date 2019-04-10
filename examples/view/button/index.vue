@@ -46,7 +46,7 @@ export default {
 <style lang="less" scoped>
 .button-wrap {
   text-align: center;
-  padding: 30px;
+  padding: 0 30px;
 }
 button {
   margin: 20px 0;

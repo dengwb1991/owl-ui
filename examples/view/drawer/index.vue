@@ -1,15 +1,17 @@
 <template>
-  <OwlPage class="examples-drawer">
-    <owl-button @click="open('down')">Down</owl-button>
-    <owl-button @click="open('up')">Up</owl-button>
-    <owl-button @click="open('right')">Right</owl-button>
-    <owl-button @click="open2('left')">Left</owl-button>
-    <owl-drawer :visible.sync="visible"
-                :placement="placement"
-                :z-index="zIndex"
-                @callback="callback">
-      <p>内容部分</p>
-    </owl-drawer>
+  <OwlPage>
+    <div class="examples-drawer">
+      <owl-button @click="open('down')">Down</owl-button>
+      <owl-button @click="open('up')">Up</owl-button>
+      <owl-button @click="open('right')">Right</owl-button>
+      <owl-button @click="open2('left')">Left</owl-button>
+      <owl-drawer :visible.sync="visible"
+                  :placement="placement"
+                  :z-index="zIndex"
+                  @callback="callback">
+        <p>内容部分</p>
+      </owl-drawer>
+    </div>
   </OwlPage>
 </template>
 
@@ -55,6 +57,7 @@ export default {
 <style lang="less" scoped>
 .examples-drawer {
   text-align: center;
+  padding: 0 30px;
 }
 button {
   margin: 20px 0;
