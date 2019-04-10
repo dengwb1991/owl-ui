@@ -73,6 +73,14 @@ export default {
 }
 ```
 
+* 布局
+
+```html
+<owl-input-group text="姓名">
+  <owl-input placeholder="请输入"/>
+</owl-input-group>
+```
+
 ## Props 配置
 
  参数 | 说明 | 类型 | 默认值 | 可选值
