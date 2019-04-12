@@ -10,7 +10,8 @@
       <i></i>
       <p @click="introduction">文档</p>
       <p @click="example">示例</p>
-      <p @click="git">GIT</p>
+      <p class="owl-iconfont-github" @click="git"></p>
+      <!-- <i ></i> -->
     </div>
     <span class="toggle-nav" @click="toggle">
       <i></i>
@@ -147,6 +148,9 @@ export default {
           transform-origin: right bottom;
         }
       }
+      .owl-iconfont-github {
+        font-size: 20Px;
+      }
       p {
         font-size: 12Px;
         display: block;
@@ -212,7 +216,10 @@ export default {
 .tabs-wrap {
   padding-right: 40Px;
   float: right;
-  i {
+  .owl-iconfont-github {
+    font-size: 24Px;
+  }
+  i::frist-child {
     display: none;
   }
   p {
