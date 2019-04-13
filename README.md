@@ -41,6 +41,7 @@
 
 [示例（移动端体验较好）](http://owl-ui.dengwb.com/examples)
 
+<img src="https://owl-ui.dengwb.com/static/images/qr-code.png"/>
 
 ### 开发心得链接
 
