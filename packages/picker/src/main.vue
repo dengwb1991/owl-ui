@@ -46,6 +46,10 @@ export default {
     OwlDrawer
   },
   props: {
+    data: {
+      type: Array,
+      default: () => []
+    },
     title: String,
     maskClosable: {
       type: Boolean,
