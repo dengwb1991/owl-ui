@@ -10,7 +10,11 @@
 export default {
   methods: {
     show1 () {
-      this.$picker().show()
+      this.$picker({
+        $props: {
+          data: [1, 2, 3, 4, 5, 6]
+        }
+      }).show()
     }
   }
 }

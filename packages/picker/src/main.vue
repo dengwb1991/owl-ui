@@ -18,15 +18,8 @@
                 @touchstart.stop.prevent="onTouchStart($event)"
                 @touchmove.stop.prevent="onTouchMove($event)"
                 @touchend.stop.prevent="onTouchEnd($event)">
-              <li>1111</li>
-              <li>2222</li>
-              <li>3333</li>
-              <li>4444</li>
-              <li>5555</li>
-              <li>6666</li>
-              <li>7777</li>
-              <li>8888</li>
-              <li>9999</li>
+              <li v-for="(item, index) in data"
+                  :key="index">{{item}}</li>
             </ul>
           </div>
         </div>
@@ -75,6 +68,17 @@ export default {
       return {
         '-webkit-transform': `translate3d(0, ${this.transY}em, 0)`,
         'transition-duration': `${this.duration}ms`
+      }
+    },
+    pickerData () {
+      const data = this.data[0]
+      if (Object.prototype.toString.call(this.data[0]) === '[object Object]') {
+        if (data.key === void 0) {
+          throw new Error('[owl-picker error]: Object parameters are incorrect and must have a key value')
+        }
+        return this.data
+      } else {
+        return this.data
       }
     }
   },
@@ -128,7 +132,7 @@ export default {
           this.duration = 500
           stopGear = true
         }
-        let minTop = -(9 - 1) * 2
+        let minTop = -(this.data.length - 1) * 2
         if (pos < minTop) {
           pos = minTop
           this.duration = 500
