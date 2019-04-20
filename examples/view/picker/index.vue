@@ -1,6 +1,6 @@
 <template>
   <owl-page>
-    <div class="examples-select">
+    <div class="examples-picker">
       <owl-button @click="show1">show</owl-button>
     </div>
   </owl-page>
@@ -13,6 +13,9 @@ export default {
       this.$picker({
         $props: {
           data: [1, 2, 3, 4, 5, 6]
+        },
+        $events: {
+          select: data => console.log('select:', data)
         }
       }).show()
     }
@@ -21,7 +24,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.examples-select {
+.examples-picker {
   padding: 30px;
 }
 </style>

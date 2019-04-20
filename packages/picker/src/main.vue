@@ -7,7 +7,7 @@
       <div class="owl-picker-choose">
         <div class="owl-picker-cancel" @click="hide">取消</div>
         <div class="owl-picker-title">{{title}}</div>
-        <div class="owl-picker-confirm">确定</div>
+        <div class="owl-picker-confirm" @click="confirm">确定</div>
       </div>
       <div class="owl-picker-wheel-wrap">
         <div class="owl-picker-wheel">
@@ -18,8 +18,8 @@
                 @touchstart.stop.prevent="onTouchStart($event)"
                 @touchmove.stop.prevent="onTouchMove($event)"
                 @touchend.stop.prevent="onTouchEnd($event)">
-              <li v-for="(item, index) in data"
-                  :key="index">{{item}}</li>
+              <li v-for="(item, index) in pickerData"
+                  :key="index">{{item.value}}</li>
             </ul>
           </div>
         </div>
@@ -78,11 +78,15 @@ export default {
         }
         return this.data
       } else {
-        return this.data
+        return this.data.map(item => ({ key: item, value: item }))
       }
     }
   },
   methods: {
+    confirm () {
+      this.$emit('select', this.pickerData[this.valIndex].key)
+      this.$refs.drawer.hide()
+    },
     onTouchStart (event) {
       this.startScreenY = event.targetTouches[0].screenY
       this.startTime = Date.now()
