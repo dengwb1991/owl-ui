@@ -46,9 +46,8 @@ export default {
     },
     visible: {
       handler (val) {
-        val ? this.show() : this.hide()
-      },
-      immediate: true
+        this.isVisible = val
+      }
     }
   },
   beforeDestroy () {

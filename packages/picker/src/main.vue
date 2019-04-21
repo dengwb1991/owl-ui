@@ -3,9 +3,10 @@
     <owl-drawer ref="drawer"
                 :visible.sync="isVisible"
                 :maskClosable="maskClosable"
-                :z-index="zIndex">
+                :z-index="zIndex"
+                @maskClose="cancel">
       <div class="owl-picker-choose">
-        <div class="owl-picker-cancel" @click="hide">取消</div>
+        <div class="owl-picker-cancel" @click="cancel">取消</div>
         <div class="owl-picker-title">{{title}}</div>
         <div class="owl-picker-confirm" @click="confirm">确定</div>
       </div>
@@ -53,7 +54,6 @@ export default {
     return {
       transY: 0,        // 记录滑动位置距离
       startTop: 0,      // 记录开始滑动位置
-      endTop: 0,        // 记录开始滑动位置
       valIndex: 0,      // 记录数组下标
       startScreenY: 0,  // 记录开始屏幕距离
       endScreenY: 0,    // 记录结束屏幕距离
@@ -84,19 +84,32 @@ export default {
   },
   methods: {
     confirm () {
-      this.$emit('select', this.pickerData[this.valIndex].key)
-      this.$refs.drawer.hide()
+      this.$emit('confirm', this.pickerData[this.valIndex].key)
+      this.isVisible = false
+    },
+    cancel () {
+      this.isVisible = false
+      this.$emit('cancel', this.pickerData[this.oldValIndex] && this.pickerData[this.oldValIndex].key)
+      this.transY = this.oldTransY
+      this.startTop = this.oldStartTop
+      this.valIndex = this.oldValIndex
+    },
+    show () {
+      this.oldTransY = this.transY
+      this.oldStartTop = this.startTop
+      this.oldValIndex = this.valIndex
+      this.isVisible = true
     },
     onTouchStart (event) {
       this.startScreenY = event.targetTouches[0].screenY
       this.startTime = Date.now()
-      this.startTop = this.endTop
+      this.startTop = this.transY
     },
     onTouchMove (event) {
       this.endScreenY = event.targetTouches[0].screenY
       this.endTime = Date.now()
       const moveY = (this.endScreenY - this.startScreenY) * 18 / 370
-      this.endTop = this.transY = this.startTop + moveY
+      this.transY = this.startTop + moveY
     },
     onTouchEnd (event) {
       const flag = (this.startScreenY - this.endScreenY) / (this.startTime - this.endTime)

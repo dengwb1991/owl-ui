@@ -15,7 +15,8 @@ export default {
           data: [1, 2, 3, 4, 5, 6]
         },
         $events: {
-          select: data => console.log('select:', data)
+          confirm: data => console.log('confirm:', data),
+          cancel: data => console.log('cancel:', data)
         }
       }).show()
     }

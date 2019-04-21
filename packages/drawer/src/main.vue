@@ -72,6 +72,7 @@ export default {
     handleMask () {
       if (!this.maskClosable) return
       this.hide()
+      this.$emit('maskClose')
     }
   }
 }
