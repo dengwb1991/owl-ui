@@ -3,7 +3,7 @@
     <transition name="fade">
       <div class="owl-drawer-mask"
            :style="{ ...maskStyle, zIndex: zIndex - 1}"
-           @click="handleMask"
+           @click.stop.prevent="handleMask"
            v-show="isVisible"></div>
     </transition>
     <transition :name="`move-${placement}`">

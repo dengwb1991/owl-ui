@@ -2,23 +2,23 @@
   <div class="example">
     <p class="title">Array & Object</p>
     <owl-tabs :data="data"
-         :active.sync="active"
-         :initCallback="initCallback"
-         :name="name"
-         :lineWidth="lineWidth"
-         :highlight="highlight"
-         :lineColor="lineColor"
-         @callback="getData"/>
+              :active.sync="active"
+              :initCallback="initCallback"
+              :name="name"
+              :lineWidth="lineWidth"
+              :highlight="highlight"
+              :lineColor="lineColor"
+              @callback="getData"/>
     <params :data="paramsData"/>
   </div>
 </template>
 
 <script>
-import Params from './Params'
+import params from '../../components/params'
 
 export default {
   components: {
-    Params
+    params
   },
   data () {
     return {

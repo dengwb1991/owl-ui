@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import Params from './Params'
+import params from '../../components/params'
 
 export default {
   components: {
-    Params
+    params
   },
   data () {
     return {
