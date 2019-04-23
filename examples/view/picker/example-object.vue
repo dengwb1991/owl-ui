@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="title">Default</p>
+    <p class="title">Object</p>
     <owl-button @click="show">show</owl-button>
     <params :data="pickerParams"/>
   </div>
@@ -14,7 +14,14 @@ export default {
   },
   data () {
     return {
-      pickerData: [1, 2, 3, 4, 5, 6],
+      pickerData: [
+        { key: '001', value: 'Cat' },
+        { key: '002', value: 'Dog' },
+        { key: '003', value: 'Pig' },
+        { key: '004', value: 'Cow' },
+        { key: '005', value: 'Sheep' },
+        { key: '006', value: 'Owl' }
+      ],
       pickerParams: [],
       result: null
     }
