@@ -1,25 +1,16 @@
 <template>
   <owl-page>
     <div class="examples-picker">
-      <owl-button @click="show1">show</owl-button>
+      <example-default/>
     </div>
   </owl-page>
 </template>
 
 <script>
+import exampleDefault from './example-default'
 export default {
-  methods: {
-    show1 () {
-      this.$picker({
-        $props: {
-          data: [1, 2, 3, 4, 5, 6]
-        },
-        $events: {
-          confirm: data => console.log('confirm:', data),
-          cancel: data => console.log('cancel:', data)
-        }
-      }).show()
-    }
+  components: {
+    exampleDefault
   }
 }
 </script>
