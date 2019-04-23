@@ -3,6 +3,7 @@
     <owl-drawer ref="drawer"
                 :visible.sync="isVisible"
                 :maskClosable="maskClosable"
+                :lockScroll="lockScroll"
                 :z-index="zIndex"
                 @maskClose="cancel">
       <div class="owl-picker-choose">
@@ -18,7 +19,11 @@
                 :style="scrollStyle"
                 @touchstart.stop.prevent="onTouchStart($event)"
                 @touchmove.stop.prevent="onTouchMove($event)"
-                @touchend.stop.prevent="onTouchEnd($event)">
+                @touchend.stop.prevent="onTouchEnd($event)"
+                @mousedown="onTouchStart($event, 'mounse')"
+                @mousemove="onTouchMove($event, 'mounse')"
+                @mouseup="onTouchEnd($event, 'mounse')"
+                @mouseleave="onTouchEnd($event, 'mounse')">
               <li v-for="(item, index) in pickerData"
                   :key="index">{{item.value}}</li>
             </ul>
@@ -45,6 +50,10 @@ export default {
       default: () => []
     },
     title: String,
+    lockScroll: {
+      type: Boolean,
+      default: true
+    },
     maskClosable: {
       type: Boolean,
       default: true
@@ -60,7 +69,8 @@ export default {
       startTime: 0,     // 记录开始时间戳
       endTime: 0,       // 记录结束时间戳
       speed: 0,         // 记录速度
-      duration: 0
+      duration: 0,
+      mounseLock: true
     }
   },
   computed: {
@@ -100,18 +110,34 @@ export default {
       this.oldValIndex = this.valIndex
       this.isVisible = true
     },
-    onTouchStart (event) {
-      this.startScreenY = event.targetTouches[0].screenY
+    getPos (event) {
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      return event.clientY + scrollTop
+    },
+    onTouchStart (event, name) {
+      if (name === 'mounse') this.mounseLock = false
+
+      this.startScreenY = name === 'mounse' ? this.getPos(event) : event.targetTouches[0].screenY
       this.startTime = Date.now()
       this.startTop = this.transY
     },
-    onTouchMove (event) {
-      this.endScreenY = event.targetTouches[0].screenY
+    onTouchMove (event, name) {
+      if (name === 'mounse' && this.mounseLock) return
+
+      this.endScreenY = name === 'mounse' ? this.getPos(event) : event.targetTouches[0].screenY
       this.endTime = Date.now()
       const moveY = (this.endScreenY - this.startScreenY) * 18 / 370
       this.transY = this.startTop + moveY
     },
-    onTouchEnd (event) {
+    onTouchEnd (event, name) {
+      if (name === 'mounse') {
+        if (!this.mounseLock) {
+          this.mounseLock = true
+        } else {
+          return
+        }
+      }
+
       const flag = (this.startScreenY - this.endScreenY) / (this.startTime - this.endTime)
       if (Math.abs(flag) <= 0.2) {
         this.speed = flag < 0 ? -0.08 : 0.08
