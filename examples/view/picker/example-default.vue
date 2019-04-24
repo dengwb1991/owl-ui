@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     show () {
-      this.$picker({
+      const picker = this.$picker({
         $props: {
           data: this.pickerData
         },
@@ -35,7 +35,8 @@ export default {
             console.log('cancel:', data)
           }
         }
-      }).show()
+      })
+      picker.setData(111).show()
     },
     load () {
       this.pickerParams = Object.entries({

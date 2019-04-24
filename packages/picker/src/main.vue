@@ -45,6 +45,10 @@ export default {
     OwlDrawer
   },
   props: {
+    value: {
+      type: [String, Number],
+      default: null
+    },
     data: {
       type: Array,
       default: () => []
@@ -70,7 +74,8 @@ export default {
       endTime: 0,       // 记录结束时间戳
       speed: 0,         // 记录速度
       duration: 0,
-      mounseLock: true
+      mounseLock: true,
+      pickerValue: this.value
     }
   },
   computed: {
@@ -81,6 +86,11 @@ export default {
       }
     },
     pickerData () {
+      return this.dataInit()
+    }
+  },
+  methods: {
+    dataInit () {
       const data = this.data[0]
       if (Object.prototype.toString.call(this.data[0]) === '[object Object]') {
         if (data.key === void 0) {
@@ -90,9 +100,11 @@ export default {
       } else {
         return this.data.map(item => ({ key: item, value: item }))
       }
-    }
-  },
-  methods: {
+    },
+    setData (val) {
+      console.log(this.dataInit())
+      return this
+    },
     confirm () {
       this.$emit('confirm', this.pickerData[this.valIndex].key)
       this.isVisible = false
@@ -104,7 +116,7 @@ export default {
       this.startTop = this.oldStartTop
       this.valIndex = this.oldValIndex
     },
-    show () {
+    show (val) {
       this.oldTransY = this.transY
       this.oldStartTop = this.startTop
       this.oldValIndex = this.valIndex
