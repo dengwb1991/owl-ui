@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="title">Default</p>
+    <p class="title">Set Data</p>
     <owl-button @click="show">show</owl-button>
     <params :data="pickerParams"/>
   </div>
@@ -14,9 +14,9 @@ export default {
   },
   data () {
     return {
-      pickerData: [1, 2, 3, 4, 5, 6],
+      pickerData: ['Google', 'IBM', 'Apple', 'Facebook', 'Baidu'],
       pickerParams: [],
-      result: null,
+      result: 'Apple',
       picker: null
     }
   },
@@ -48,7 +48,7 @@ export default {
           console.log('cancel:', data)
         }
       }
-    })
+    }).setData(this.result)
     this.load()
   }
 }

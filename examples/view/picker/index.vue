@@ -3,6 +3,7 @@
     <div class="examples-picker">
       <example-default/>
       <example-object/>
+      <example-set-data/>
     </div>
   </owl-page>
 </template>
@@ -10,11 +11,13 @@
 <script>
 import exampleDefault from './example-default'
 import exampleObject from './example-object'
+import exampleSetData from './example-set-data'
 
 export default {
   components: {
     exampleDefault,
-    exampleObject
+    exampleObject,
+    exampleSetData
   }
 }
 </script>

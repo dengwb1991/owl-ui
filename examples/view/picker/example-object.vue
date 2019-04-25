@@ -38,7 +38,6 @@ export default {
             console.log('confirm:', data)
           },
           cancel: data => {
-            this.result = data
             console.log('cancel:', data)
           }
         }

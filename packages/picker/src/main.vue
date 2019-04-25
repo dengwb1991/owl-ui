@@ -67,7 +67,7 @@ export default {
     return {
       transY: 0,        // 记录滑动位置距离
       startTop: 0,      // 记录开始滑动位置
-      valIndex: 0,      // 记录数组下标
+      valIndex: null,   // 记录数组下标
       startScreenY: 0,  // 记录开始屏幕距离
       endScreenY: 0,    // 记录结束屏幕距离
       startTime: 0,     // 记录开始时间戳
@@ -102,23 +102,24 @@ export default {
       }
     },
     setData (val) {
-      console.log(this.dataInit())
+      const index = this.dataInit().findIndex(item => String(item.key) === String(val))
+      this.transY = index * -2
+      this.valIndex = index
       return this
     },
     confirm () {
-      this.$emit('confirm', this.pickerData[this.valIndex].key)
+      this.$emit('confirm', this.pickerData[this.valIndex || 0].key)
       this.isVisible = false
     },
     cancel () {
       this.isVisible = false
-      this.$emit('cancel', this.pickerData[this.oldValIndex] && this.pickerData[this.oldValIndex].key)
+
+      this.$emit('cancel', this.oldValIndex !== void 0 ? this.pickerData[this.oldValIndex] && this.pickerData[this.oldValIndex].key : void 0)
       this.transY = this.oldTransY
-      this.startTop = this.oldStartTop
       this.valIndex = this.oldValIndex
     },
     show (val) {
       this.oldTransY = this.transY
-      this.oldStartTop = this.startTop
       this.oldValIndex = this.valIndex
       this.isVisible = true
     },
