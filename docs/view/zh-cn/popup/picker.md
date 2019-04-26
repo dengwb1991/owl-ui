@@ -75,12 +75,52 @@ export default {
 }
 ```
 
+* 设置默认值
+
+```html
+<owl-button @click="show">show</owl-button>
+```
+
+```js
+export default {
+  data () {
+    return {
+      pickerData: ['Google', 'IBM', 'Apple', 'Facebook', 'Baidu'],
+      result: 'Apple',
+      picker: null
+    }
+  },
+  methods: {
+    show () {
+      this.picker.show()
+    }
+  },
+  created () {
+    this.picker = this.$picker({
+      $props: {
+        data: this.pickerData
+      },
+      $events: {
+        confirm: data => {
+          this.result = data
+          console.log('confirm:', data)
+        },
+        cancel: data => {
+          console.log('cancel:', data)
+        }
+      }
+    }).setData(this.result)
+  }
+}
+```
+
 ## Props 配置
 
  参数 | 说明 | 类型 | 默认值 | 可选值
  --- | ---  | --- | --- | ---
  visible | 显示/隐藏, 支持`.sync`关键字 |  boolean | false | true/false
- data | 选择器数据 | Array | [] | -
+ data | 选择器数据 | array | [] | -
+ title | 选择器标题 | string | - | -
  lockScroll | 显示组件时是否禁用`body`滚动 |boolean | true | true/false
  maskClosable | 当单击遮罩层时是否隐藏组件 | boolean | true | true/false
  zIndex | 元素的堆叠顺序 | number | 100 | -
@@ -99,5 +139,6 @@ cancel | 点击取消触发，返回上次确认或默认的值 | data
 
 事件名  | 说明 | 参数
 ---- | --- | ---
+setData | 设置默认值 | 选择器值，如果数据为对象，该值为key
 show | 显示 | -
 hide | 隐藏 | -

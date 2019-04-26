@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { destroyVM, createVue, createTest } from '../util'
 import Tabs from 'packages/tabs'
 
-describe('Input', () => {
+describe('Tabs', () => {
   let vm
   afterEach(() => {
     destroyVM(vm)

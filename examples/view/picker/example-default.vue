@@ -37,7 +37,8 @@ export default {
   created () {
     this.picker = this.$picker({
       $props: {
-        data: this.pickerData
+        data: this.pickerData,
+        title: 'Title'
       },
       $events: {
         confirm: data => {

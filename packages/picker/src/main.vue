@@ -45,10 +45,6 @@ export default {
     OwlDrawer
   },
   props: {
-    value: {
-      type: [String, Number],
-      default: null
-    },
     data: {
       type: Array,
       default: () => []
@@ -74,8 +70,7 @@ export default {
       endTime: 0,       // 记录结束时间戳
       speed: 0,         // 记录速度
       duration: 0,
-      mounseLock: true,
-      pickerValue: this.value
+      mounseLock: true
     }
   },
   computed: {
