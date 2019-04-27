@@ -3,7 +3,7 @@ import { destroyVM, createVue } from '../util'
 import instantiateComponent from 'create-api/instantiate'
 import Picker from 'packages/picker'
 
-function createDialog (props = {}, events = {}) {
+function createPicker (props = {}, events = {}) {
   return instantiateComponent(Vue, Picker, {
     props,
     on: events
@@ -22,4 +22,12 @@ describe('Picker', () => {
       .to.be.a('function')
   })
 
+  it('default picker', () => {
+    vm = createPicker({
+      data: [1, 2, 3, 4, 5, 6, 7],
+      title: 'Title'
+    })
+    const data = vm.$el.querySelector('.owl-picker-container-scroll').getElementsByTagName('li')
+    expect(data.length).to.equal(7)
+  })
 })
