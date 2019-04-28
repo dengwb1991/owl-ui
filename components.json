@@ -1,10 +1,12 @@
 {
-  "button-group": "./packages/button-group/index.js",
   "button": "./packages/button/index.js",
-  "tabs": "./packages/tabs/index.js",
-  "input": "./packages/input/index.js",
-  "drawer": "./packages/drawer/index.js",
+  "button-group": "./packages/button-group/index.js",
   "dialog": "./packages/dialog/index.js",
-  "toast": "./packages/toast/index.js",
-  "switch": "./packages/switch/index.js"
+  "drawer": "./packages/drawer/index.js",
+  "input": "./packages/input/index.js",
+  "input-group": "./packages/input-group/index.js",
+  "picker": "./packages/picker/index.js",
+  "switch": "./packages/switch/index.js",
+  "tabs": "./packages/tabs/index.js",
+  "toast": "./packages/toast/index.js"
 }
