@@ -22,12 +22,34 @@ describe('Picker', () => {
       .to.be.a('function')
   })
 
-  it('default picker', () => {
+  it('picker default', () => {
     vm = createPicker({
       data: [1, 2, 3, 4, 5, 6, 7],
       title: 'Title'
     })
     const data = vm.$el.querySelector('.owl-picker-container-scroll').getElementsByTagName('li')
     expect(data.length).to.equal(7)
+  })
+
+  it('picker events', () => {
+    const cancelHandler = sinon.spy()
+    const confirmHandler = sinon.spy()
+
+    vm = createPicker({
+      data: [1, 2, 3, 4, 5, 6, 7]
+    }, {
+      confirm: confirmHandler,
+      cancel: cancelHandler
+    })
+
+    vm.show()
+    const cancel = vm.$el.querySelector('.owl-picker-cancel')
+    cancel.click()
+    expect(cancelHandler).to.be.calledOnce
+
+    vm.show()
+    const confirm = vm.$el.querySelector('.owl-picker-confirm')
+    confirm.click()
+    expect(confirmHandler).to.be.calledOnce
   })
 })
