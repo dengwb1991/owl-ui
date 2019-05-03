@@ -1,0 +1,28 @@
+@import "../common/custom";
+@import "./picker.less";
+
+@select-prefix-cls: ~"@{css-prefix}select";
+
+.@{select-prefix-cls} {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-size: 28px;
+  background-color: #FFF;
+  height: 88px;
+  padding: 20px 10px;
+  color: #333;
+  &-field {
+    font-size: inherit;
+    display: block;
+    flex: 1;
+    max-width: 90%;
+    box-sizing: border-box;
+    border: 0;
+    color: inherit;
+    line-height: inherit;
+    background-color: inherit;
+    outline: none;
+  }
+}

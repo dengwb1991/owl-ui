@@ -84,6 +84,17 @@ export default {
       return this.dataInit()
     }
   },
+  watch: {
+    visible: {
+      handler (val) {
+        if (val) {
+          this.show()
+        } else {
+          this.isVisible = val
+        }
+      }
+    }
+  },
   methods: {
     dataInit () {
       const data = this.data[0]
@@ -113,7 +124,7 @@ export default {
       this.transY = this.oldTransY
       this.valIndex = this.oldValIndex
     },
-    show (val) {
+    show () {
       this.oldTransY = this.transY
       this.oldValIndex = this.valIndex
       this.isVisible = true

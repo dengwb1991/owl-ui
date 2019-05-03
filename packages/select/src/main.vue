@@ -1,25 +1,50 @@
 <template>
   <div class="owl-select">
-    <owl-input v-model="selectValue"/>
+    <input class="owl-select-field"
+           v-model="selectValue"
+           :placeholder="placeholder"
+           @click="handle"
+           readonly/>
+    <owl-picker :visible.sync="visible"
+                :data="data"
+                :title="title"
+                @confirm="confirm"/>
   </div>
 </template>
 
 <script>
-import OwlInput from '../../input/src/main.vue'
+import OwlPicker from '../../picker/src/main.vue'
+
 export default {
   name: 'OwlSelect',
   components: {
-    OwlInput
+    OwlPicker
   },
   props: {
     value: {
       type: [String, Number],
       default: null
-    }
+    },
+    data: {
+      type: Array,
+      default: () => []
+    },
+    placeholder: String,
+    title: String
   },
   data () {
     return {
-      selectValue: this.value
+      selectValue: this.value,
+      visible: false
+    }
+  },
+  methods: {
+    handle () {
+      this.visible = true
+    },
+    confirm (val) {
+      this.selectValue = val
+      this.$emit('input', val)
     }
   }
 }
