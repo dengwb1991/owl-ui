@@ -1,20 +1,17 @@
 <template>
   <owl-page>
     <div class="examples-select">
-      <owl-select v-model="val"
-                  :data="data"
-                  placeholder="请选择"/>
+      <example-default/>
     </div>
   </owl-page>
 </template>
 
 <script>
+import exampleDefault from './example-default'
+
 export default {
-  data () {
-    return {
-      val: '',
-      data: [1, 2, 3, 4, 5, 6]
-    }
+  components: {
+    exampleDefault
   }
 }
 </script>
