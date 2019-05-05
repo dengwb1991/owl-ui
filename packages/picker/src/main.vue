@@ -24,8 +24,8 @@
                 @mousemove="onTouchMove($event, 'mounse')"
                 @mouseup="onTouchEnd($event, 'mounse')"
                 @mouseleave="onTouchEnd($event, 'mounse')">
-              <li v-for="(item, index) in pickerData"
-                  :key="index">{{item.value}}</li>
+              <li v-for="(item, index) in data"
+                  :key="index">{{type ? item.value : item}}</li>
             </ul>
           </div>
         </div>
@@ -70,7 +70,8 @@ export default {
       endTime: 0,       // 记录结束时间戳
       speed: 0,         // 记录速度
       duration: 0,
-      mounseLock: true
+      mounseLock: true,
+      type: Object.prototype.toString.call(this.data[0]) === '[object Object]'
     }
   },
   computed: {
@@ -79,9 +80,6 @@ export default {
         '-webkit-transform': `translate3d(0, ${this.transY}em, 0)`,
         'transition-duration': `${this.duration}ms`
       }
-    },
-    pickerData () {
-      return this.dataInit()
     }
   },
   watch: {
@@ -96,31 +94,22 @@ export default {
     }
   },
   methods: {
-    dataInit () {
-      const data = this.data[0]
-      if (Object.prototype.toString.call(this.data[0]) === '[object Object]') {
-        if (data.key === void 0) {
-          throw new Error('[owl-picker error]: Object parameters are incorrect and must have a key value')
-        }
-        return this.data
-      } else {
-        return this.data.map(item => ({ key: item, value: item }))
-      }
-    },
     setData (val) {
-      const index = this.dataInit().findIndex(item => String(item.key) === String(val))
+      const index = this.data.findIndex(item => {
+        return String(this.type ? item.key : item) === String(val)
+      })
       this.transY = index * -2
       this.valIndex = index
       return this
     },
     confirm () {
-      this.$emit('confirm', this.pickerData[this.valIndex || 0].key)
+      this.$emit('confirm', this.data[this.valIndex || 0])
       this.isVisible = false
     },
     cancel () {
       this.isVisible = false
 
-      this.$emit('cancel', this.oldValIndex !== void 0 ? this.pickerData[this.oldValIndex] && this.pickerData[this.oldValIndex].key : void 0)
+      this.$emit('cancel', this.oldValIndex !== void 0 ? this.data[this.oldValIndex] : void 0)
       this.transY = this.oldTransY
       this.valIndex = this.oldValIndex
     },

@@ -17,7 +17,14 @@ export default {
   },
   data () {
     return {
-      data: [1, 2, 3, 4, 5, 6],
+      data: [
+        { key: '001', value: 'Cat' },
+        { key: '002', value: 'Dog' },
+        { key: '003', value: 'Pig' },
+        { key: '004', value: 'Cow' },
+        { key: '005', value: 'Sheep' },
+        { key: '006', value: 'Owl' }
+      ],
       paramsData: [],
       result: null
     }
