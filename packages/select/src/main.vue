@@ -9,6 +9,11 @@
                 :visible.sync="visible"
                 :data="data"
                 :title="title"
+                :lockScroll="lockScroll"
+                :maskClosable="maskClosable"
+                :zIndex="zIndex"
+                :maskStyle="maskStyle"
+                :containerStyle="containerStyle"
                 @confirm="confirm"/>
   </div>
 </template>
@@ -30,8 +35,28 @@ export default {
       type: Array,
       default: () => []
     },
+    title: String,
     placeholder: String,
-    title: String
+    lockScroll: {
+      type: Boolean,
+      default: true
+    },
+    maskClosable: {
+      type: Boolean,
+      default: true
+    },
+    zIndex: {
+      type: Number,
+      default: 100
+    },
+    maskStyle: {
+      type: Object,
+      default: () => {}
+    },
+    containerStyle: {
+      type: Object,
+      default: () => {}
+    }
   },
   data () {
     return {

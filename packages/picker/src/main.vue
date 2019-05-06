@@ -5,6 +5,8 @@
                 :maskClosable="maskClosable"
                 :lockScroll="lockScroll"
                 :z-index="zIndex"
+                :maskStyle="maskStyle"
+                :containerStyle="containerStyle"
                 @maskClose="cancel">
       <div class="owl-picker-choose">
         <div class="owl-picker-cancel" @click="cancel">取消</div>
