@@ -5,7 +5,8 @@
            :placeholder="placeholder"
            @click="handle"
            readonly/>
-    <owl-picker :visible.sync="visible"
+    <owl-picker ref="picker"
+                :visible.sync="visible"
                 :data="data"
                 :title="title"
                 @confirm="confirm"/>
@@ -35,7 +36,8 @@ export default {
   data () {
     return {
       selectValue: this.value,
-      visible: false
+      visible: false,
+      type: Object.prototype.toString.call(this.data[0]) === '[object Object]'
     }
   },
   methods: {
@@ -43,8 +45,17 @@ export default {
       this.visible = true
     },
     confirm (val) {
-      this.selectValue = val
-      this.$emit('input', val)
+      this.selectValue = this.type ? val.value : val
+      this.$emit('input', this.type ? val.key : val)
+    }
+  },
+  mounted () {
+    if (this.value) {
+      const instance = this.data.find(item => String(item.key) === String(this.value))
+      if (instance) {
+        this.selectValue = this.type ? instance.value : instance
+      }
+      this.$refs.picker.setData(this.value)
     }
   }
 }

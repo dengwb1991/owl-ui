@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="title">Object</p>
+    <p class="title">Set Data</p>
     <owl-select v-model="result"
                 :data="data"
                 title="选择器"
@@ -26,7 +26,7 @@ export default {
         { key: '006', value: 'Owl' }
       ],
       paramsData: [],
-      result: null
+      result: '006'
     }
   },
   methods: {
