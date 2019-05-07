@@ -1,10 +1,12 @@
 <template>
   <div>
-    <p class="title">Default</p>
-    <owl-select v-model="result"
-                :data="data"
-                title="选择器"
-                placeholder="请选择"/>
+    <p class="title">Layout</p>
+    <owl-select-group text="阵营">
+      <owl-select v-model="result"
+                  :data="data"
+                  title="选择器"
+                  placeholder="请选择"/>
+    </owl-select-group>
     <params :data="paramsData"/>
   </div>
 </template>
@@ -17,7 +19,7 @@ export default {
   },
   data () {
     return {
-      data: [1, 2, 3, 4, 5, 6],
+      data: ['部落', '联盟'],
       paramsData: [],
       result: null
     }

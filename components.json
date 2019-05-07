@@ -6,6 +6,8 @@
   "input": "./packages/input/index.js",
   "input-group": "./packages/input-group/index.js",
   "picker": "./packages/picker/index.js",
+  "select": "./packages/select/index.js",
+  "select-group": "./packages/select-group/index.js",
   "switch": "./packages/switch/index.js",
   "tabs": "./packages/tabs/index.js",
   "toast": "./packages/toast/index.js"
