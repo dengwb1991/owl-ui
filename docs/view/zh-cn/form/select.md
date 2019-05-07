@@ -80,6 +80,39 @@ export default {
 }
 ```
 
+* 事件
+
+```html
+<owl-select ref="select"
+            v-model="result"
+            :data="data"
+            title="选择器"
+            placeholder="请选择"/>
+<owl-button @click="$refs.select.show()">show</owl-button>
+```
+
+```js
+export default {
+  data () {
+    return {
+      data: [1, 2, 3, 4, 5, 6],
+      result: null
+    }
+  }
+}
+```
+
+* 布局
+
+```html
+<owl-select-group text="阵营">
+  <owl-select v-model="result"
+              :data="data"
+              title="选择器"
+              placeholder="请选择"/>
+</owl-select-group>
+```
+
 ## Props 配置
 
  参数 | 说明 | 类型 | 默认值 | 可选值
