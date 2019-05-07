@@ -4,6 +4,7 @@
       <example-default/>
       <example-object/>
       <example-set-data/>
+      <example-event/>
     </div>
   </owl-page>
 </template>
@@ -12,12 +13,14 @@
 import exampleDefault from './example-default'
 import exampleObject from './example-object'
 import exampleSetData from './example-set-data'
+import exampleEvent from './example-event'
 
 export default {
   components: {
     exampleDefault,
     exampleObject,
-    exampleSetData
+    exampleSetData,
+    exampleEvent
   }
 }
 </script>

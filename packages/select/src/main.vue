@@ -72,6 +72,12 @@ export default {
     confirm (val) {
       this.selectValue = this.type ? val.value : val
       this.$emit('input', this.type ? val.key : val)
+    },
+    show () {
+      this.$refs.picker.show()
+    },
+    hide () {
+      this.$refs.picker.hide()
     }
   },
   mounted () {
