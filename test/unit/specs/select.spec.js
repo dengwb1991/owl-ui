@@ -41,4 +41,39 @@ describe('Select', () => {
       done()
     }, 500)
   })
+
+  it('select object', done => {
+    vm = createVue({
+      template: `
+        <owl-select v-model="result"
+                    :data="data"
+                    title="选择器"
+                    placeholder="请选择"/>
+      `,
+      data: {
+        data: [
+          { key: '001', value: 'Cat' },
+          { key: '002', value: 'Dog' },
+          { key: '003', value: 'Pig' },
+          { key: '004', value: 'Cow' },
+          { key: '005', value: 'Sheep' },
+          { key: '006', value: 'Owl' }
+        ],
+        result: null
+      }
+    })
+
+    const selectPicker = vm.$el.querySelector('.owl-drawer-container')
+    expect(selectPicker.style.display).to.equal('none')
+
+    vm.$el.querySelector('input').click()
+    setTimeout(() => {
+      expect(vm.$el.querySelector('.owl-drawer-container').style.display).to.equal('')
+
+      const confirm = vm.$el.querySelector('.owl-picker-confirm')
+      confirm.click()
+      expect(vm.result).to.equal('001')
+      done()
+    }, 500)
+  })
 })

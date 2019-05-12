@@ -30,9 +30,6 @@ export default {
     }
   },
   methods: {
-    show () {
-      this.picker.show()
-    },
     load () {
       this.paramsData = Object.entries({
         data: this.data,
