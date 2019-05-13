@@ -47,6 +47,9 @@ export default {
         },
         cancel: data => {
           console.log('cancel:', data)
+        },
+        callback: data => {
+          console.log('callback:', data)
         }
       }
     })

@@ -76,4 +76,36 @@ describe('Select', () => {
       done()
     }, 500)
   })
+
+  it('select set data', done => {
+    vm = createVue({
+      template: `
+        <owl-select v-model="result"
+                    :data="data"
+                    title="选择器"
+                    placeholder="请选择"
+                    @confirm="confirm"/>
+      `,
+      data: {
+        data: [1, 2, 3, 4, 5, 6],
+        result: 3,
+        val: null
+      },
+      methods: {
+        confirm (val) {
+          this.val = val
+        }
+      }
+    })
+
+    vm.$el.querySelector('input').click()
+    setTimeout(() => {
+      expect(vm.$el.querySelector('.owl-drawer-container').style.display).to.equal('')
+
+      const confirm = vm.$el.querySelector('.owl-picker-confirm')
+      confirm.click()
+      expect(vm.val).to.equal(3)
+      done()
+    }, 500)
+  })
 })

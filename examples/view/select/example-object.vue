@@ -4,7 +4,10 @@
     <owl-select v-model="result"
                 :data="data"
                 title="选择器"
-                placeholder="请选择"/>
+                placeholder="请选择"
+                @cancel="cancel"
+                @confirm="confirm"
+                @callback="callback"/>
     <params :data="paramsData"/>
   </div>
 </template>
@@ -35,6 +38,15 @@ export default {
         data: this.data,
         result: this.result
       })
+    },
+    confirm (val) {
+      console.log('confirm:', val)
+    },
+    cancel (val) {
+      console.log('cancel:', val)
+    },
+    callback (type) {
+      console.log('callback', type)
     }
   },
   watch: {

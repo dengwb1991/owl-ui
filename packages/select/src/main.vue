@@ -14,6 +14,8 @@
                 :zIndex="zIndex"
                 :maskStyle="maskStyle"
                 :containerStyle="containerStyle"
+                @callback="type => this.$emit('callback', type)"
+                @cancel="data => this.$emit('cancel', data)"
                 @confirm="confirm"/>
   </div>
 </template>
@@ -71,6 +73,7 @@ export default {
     },
     confirm (val) {
       this.selectValue = this.type ? val.value : val
+      this.$emit('confirm', val)
       this.$emit('input', this.type ? val.key : val)
     },
     show () {
