@@ -47,7 +47,7 @@ describe('Dialog', () => {
       callback: callbackHandler
     })
 
-    const elm = vm.$el.querySelector('.owl-dialog-mask').parentNode
+    const elm = vm.$el.querySelector('.popup-mask').parentNode
     expect(elm.style.display).to.equal('none')
     expect(vm.isVisible).to.be.false
     vm.show()

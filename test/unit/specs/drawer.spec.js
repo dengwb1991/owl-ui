@@ -43,7 +43,7 @@ describe('Drawer', () => {
         }
       }
     })
-    const mask = vm.$el.querySelector('.owl-drawer-mask')
+    const mask = vm.$el.querySelector('.popup-mask')
     expect(mask.style.display).to.equal('none')
 
     vm.visible = true

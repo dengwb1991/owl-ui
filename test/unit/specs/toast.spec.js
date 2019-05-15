@@ -27,7 +27,7 @@ describe('Toast', () => {
       text: '欢迎光临'
     })
 
-    const elm = vm.$el.querySelector('.owl-toast-mask').parentNode
+    const elm = vm.$el.querySelector('.popup-mask').parentNode
     expect(elm.style.display).to.equal('none')
     expect(vm.isVisible).to.be.false
     vm.show()
