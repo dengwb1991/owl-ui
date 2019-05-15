@@ -108,4 +108,78 @@ describe('Select', () => {
       done()
     }, 500)
   })
+
+  it('select callback', done => {
+    const callbackHandler = sinon.spy()
+
+    vm = createVue({
+      template: `
+        <owl-select v-model="result"
+                    :data="data"
+                    title="选择器"
+                    placeholder="请选择"
+                    @callback="callback"/>
+      `,
+      data: {
+        data: [1, 2, 3, 4, 5, 6],
+        result: null,
+      },
+      methods: {
+        callback () {
+          return callbackHandler()
+        }
+      }
+    })
+
+    vm.$el.querySelector('input').click()
+    setTimeout(() => {
+      expect(callbackHandler).to.be.calledOnce
+      done()
+    }, 500)
+  })
+
+  it('select events', done => {
+    const cancelHandler = sinon.spy()
+    const confirmHandler = sinon.spy()
+
+    vm = createVue({
+      template: `
+        <owl-select v-model="result"
+                    :data="data"
+                    title="选择器"
+                    placeholder="请选择"
+                    @cancel="cancel"
+                    @confirm="confirm"/>
+      `,
+      data: {
+        data: [1, 2, 3, 4, 5, 6],
+        result: null,
+      },
+      methods: {
+        cancel () {
+          return cancelHandler()
+        },
+        confirm () {
+          return confirmHandler()
+        }
+      }
+    })
+
+    vm.$el.querySelector('input').click()
+    setTimeout(() => {
+      expect(vm.$el.querySelector('.owl-drawer-container').style.display).to.equal('')
+
+      const confirm = vm.$el.querySelector('.owl-picker-confirm')
+      confirm.click()
+      expect(confirmHandler).to.be.calledOnce
+
+      vm.$el.querySelector('input').click()
+      setTimeout(() => {
+        const cancel = vm.$el.querySelector('.owl-picker-cancel')
+        cancel.click()
+        expect(cancelHandler).to.be.calledOnce
+        done()
+      }, 500)
+    }, 500)
+  })
 })
