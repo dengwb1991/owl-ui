@@ -1,10 +1,10 @@
 <template>
   <div class="owl-drawer">
     <transition name="fade">
-      <div class="owl-drawer-mask"
-           :style="{ ...maskStyle, zIndex: zIndex - 1}"
-           @click.stop.prevent="handleMask"
-           v-show="isVisible"></div>
+      <popup-mask :mask-style="maskStyle"
+                  :z-index="zIndex"
+                  @click="handleMask"
+                  v-show="isVisible"/>
     </transition>
     <transition :name="`move-${placement}`">
       <div class="owl-drawer-container"
@@ -18,6 +18,7 @@
 <script>
 
 import visibilityMixin from 'mixins/visibility'
+import popupMask from 'components/popup-mask'
 
 const STYLE = {
   down: {
@@ -49,6 +50,7 @@ const STYLE = {
 export default {
   name: 'OwlDrawer',
   mixins: [visibilityMixin],
+  components: { popupMask },
   props: {
     maskClosable: {
       type: Boolean,

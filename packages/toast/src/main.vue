@@ -4,10 +4,9 @@
     <div class="owl-toast"
          :style="{ 'z-index': zIndex }"
          v-show="isVisible">
-      <div class="owl-toast-mask"
-           :style="{ ...maskStyle, 'z-index': zIndex - 1 }"
-           v-show="maskVisible">
-      </div>
+      <popup-mask :mask-style="maskStyle"
+                  :z-index="zIndex"
+                  v-show="maskVisible"/>
       <div class="owl-toast-container"
            :style="{ ...containerStyle, 'z-index': zIndex }">
         <p v-html="value || text" :class="[`owl-iconfont-${type}`]"></p>
@@ -18,10 +17,12 @@
 
 <script>
 import visibilityMixin from 'mixins/visibility'
+import popupMask from 'components/popup-mask'
 
 export default {
   name: 'OwlToast',
   mixins: [visibilityMixin],
+  components: { popupMask },
   props: {
     value: {
       type: String,

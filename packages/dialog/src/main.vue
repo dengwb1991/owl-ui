@@ -3,9 +3,9 @@
     <div class="owl-dialog"
          :style="{ zIndex }"
          v-show="isVisible">
-      <div class="owl-dialog-mask"
-           :style="{ ...maskStyle, zIndex: zIndex - 1}"
-           @click="handleMask"></div>
+      <popup-mask :mask-style="maskStyle"
+                  :z-index="zIndex"
+                  @click="handleMask"/>
       <div class="owl-dialog-container"
            :style="{ ...containerStyle, zIndex }">
         <div class="owl-dialog-content">
@@ -26,10 +26,12 @@
 
 <script>
 import visibilityMixin from 'mixins/visibility'
+import popupMask from 'components/popup-mask'
 
 export default {
   name: 'OwlDialog',
   mixins: [visibilityMixin],
+  components: { popupMask },
   props: {
     content: {
       type: String,
