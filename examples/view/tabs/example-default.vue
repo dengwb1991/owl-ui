@@ -3,7 +3,7 @@
     <p class="title">Default</p>
     <owl-tabs :data="data"
               :active.sync="active"
-              :initCallback="initCallback"
+              :init-callback="initCallback"
               @callback="getData"/>
     <params :data="paramsData"/>
   </div>

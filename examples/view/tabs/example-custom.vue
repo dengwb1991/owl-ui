@@ -3,9 +3,9 @@
     <p class="title">Custom</p>
     <owl-tabs :data="data"
               :active.sync="active"
-              :initCallback="initCallback"
+              :init-callback="initCallback"
               :background="background"
-              :activeStyle="activeStyle"
+              :active-style="activeStyle"
               :lineStyle="lineStyle"
               :name="name"
               @callback="getData"/>

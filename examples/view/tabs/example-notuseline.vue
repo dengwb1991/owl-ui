@@ -3,8 +3,8 @@
     <p class="title">Not use underline</p>
     <owl-tabs :data="data"
               :active.sync="active"
-              :lineUse="lineUse"
-              :initCallback="initCallback"
+              :line-use="lineUse"
+              :init-callback="initCallback"
               @callback="getData"/>
     <params :data="paramsData"/>
   </div>

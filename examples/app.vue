@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Directory/>
-    <OwlView/>
+    <directory/>
+    <owl-view/>
   </div>
 </template>
 

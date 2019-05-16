@@ -1,15 +1,11 @@
 <template>
-  <OwlPage>
-    <ExampleDefault/>
-
-    <ExampleNotUseLine/>
-
-    <ExampleMultiple/>
-
-    <ExampleObject/>
-
-    <ExampleCustom/>
-  </OwlPage>
+  <owl-page>
+    <example-default/>
+    <example-not-use-line/>
+    <example-multiple/>
+    <example-object/>
+    <example-custom/>
+  </owl-page>
 </template>
 
 <script>

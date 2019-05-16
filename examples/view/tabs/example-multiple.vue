@@ -3,10 +3,10 @@
     <p class="title">Multiple</p>
     <owl-tabs :data="data"
               :active.sync="active"
-              :initCallback="initCallback"
-              :tabWidth="tabWidth"
-              :tabHeight="tabHeight"
-              :lineWidth="lineWidth"
+              :init-callback="initCallback"
+              :tab-width="tabWidth"
+              :tab-height="tabHeight"
+              :line-width="lineWidth"
               @callback="getData"/>
     <params :data="paramsData"/>
   </div>

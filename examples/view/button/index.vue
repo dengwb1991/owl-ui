@@ -1,5 +1,5 @@
 <template>
-  <OwlPage>
+  <owl-page>
     <div class="button-wrap">
       <owl-button @click="handle">Default Button</owl-button>
 
@@ -21,7 +21,7 @@
 
       <owl-button :btnStyle="btnStyle">Custom Button</owl-button>
     </div>
-  </OwlPage>
+  </owl-page>
 </template>
 
 <script>

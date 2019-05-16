@@ -3,11 +3,11 @@
     <p class="title">Array & Object</p>
     <owl-tabs :data="data"
               :active.sync="active"
-              :initCallback="initCallback"
+              :init-callback="initCallback"
               :name="name"
-              :lineWidth="lineWidth"
+              :line-width="lineWidth"
               :highlight="highlight"
-              :lineColor="lineColor"
+              :line-color="lineColor"
               @callback="getData"/>
     <params :data="paramsData"/>
   </div>

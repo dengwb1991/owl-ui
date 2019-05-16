@@ -1,5 +1,5 @@
 <template>
-  <OwlPage>
+  <owl-page>
     <div class="examples-drawer">
       <owl-button @click="open('down')">Down</owl-button>
       <owl-button @click="open('up')">Up</owl-button>
@@ -12,7 +12,7 @@
         <p>内容部分</p>
       </owl-drawer>
     </div>
-  </OwlPage>
+  </owl-page>
 </template>
 
 <script>

@@ -3,7 +3,7 @@
     <ul>
       <li>
         <owl-switch v-model="val"
-                    :initCallback="true"
+                    :init-callback="true"
                     @callback="handle">
           {{val}}
         </owl-switch>
