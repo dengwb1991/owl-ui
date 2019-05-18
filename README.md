@@ -1,7 +1,9 @@
+
 <p align="center">
 <img style="padding-right: 20px"src="https://www.dengwb.com/static/logo/owl.png" width="120px"/>
 <img src="https://www.dengwb.com/static/logo/Dengwb.png" width="100px"/>
 </p>
+<!--<br/>-->
 
 <p font-size="40px" align="center">基于 Vue 和 Webpack 构建的移动端UI组件库</p>
 
@@ -35,11 +37,17 @@
   </a>
 </p>
 
+### 官网链接
+
+[传送门](http://owl-ui.dengwb.com)
+
+<p align="left">
+    <img src="https://owl-ui.dengwb.com/static/images/owl-ui-home.png"  width="600px">
+</p>
+
 ### 文档链接
 
-[官网](http://owl-ui.dengwb.com)
-
-[示例（移动端体验较好）](http://owl-ui.dengwb.com/examples)
+[传送门](http://owl-ui.dengwb.com/examples)
 
 <img src="https://owl-ui.dengwb.com/static/images/qr-code.png"/>
 
