@@ -45,7 +45,7 @@
     <img src="https://owl-ui.dengwb.com/static/images/owl-ui-home.png"  width="600px">
 </p>
 
-### 文档链接
+### 示例链接
 
 [传送门](http://owl-ui.dengwb.com/examples)
 
