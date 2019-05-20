@@ -26,6 +26,7 @@ export default function instantiateComponent(Vue, Component, data, renderFn, opt
     renderData = data
     childrenRenderFn = render
   }
+
   instance.updateRenderData(data, renderFn)
   instance.$mount()
   instance.init()

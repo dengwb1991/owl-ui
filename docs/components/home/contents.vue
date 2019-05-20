@@ -4,6 +4,11 @@
     <div class="contents">
       <p class="name">Owl UI Design</p>
       <p class="introduce">服务于企业产品的设计体系，基于确定和自然的设计价值观上<br>的模块化解决方案，让设计者和开发者专注于更好的用户体验。</p>
+      <div class="badge-wrap">
+        <badge v-for="item in badges"
+               :type="item"
+               :key="item"/>
+      </div>
       <button @click="quickStart"><span>开始探索</span></button>
       <button @click="introduction"><span>介绍</span></button>
     </div>
@@ -12,11 +17,16 @@
 
 <script>
 import bg from '../../assets/images/bg.png'
+import badge from './badge'
 
 export default {
+  components: {
+    badge
+  },
   data () {
     return {
-      bg
+      bg,
+      badges: ['watch', 'star', 'fork']
     }
   },
   methods: {
@@ -113,6 +123,7 @@ export default {
   }
   .introduce {
     padding-top: 26Px;
+    padding-bottom: 13Px;
     font-family: PingFangSC-Light;
     font-size: 20Px;
     color: #666666;
