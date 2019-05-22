@@ -43,7 +43,7 @@ function task (taskName) {
     .pipe(gulp.dest(resolve('lib/styles')))
 }
 
-function iconfontTash () {
+function iconfontTask () {
   return gulp.src(resolve('src/styles/iconfont/iconfont.less'))
     .pipe(less())
     .pipe(autoprefixer(ap))
@@ -64,7 +64,7 @@ function packageTask (taskName) {
   })
 }
 gulp.task('all', function () {
-  return [task('owl-ui'), task('owl-ui-px'), iconfontTash(),
+  return [task('owl-ui'), task('owl-ui-px'), iconfontTask(),
     packageTask('packages'), packageTask('packages-px')]
 })
 
