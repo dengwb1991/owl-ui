@@ -43,6 +43,14 @@ function task (taskName) {
     .pipe(gulp.dest(resolve('lib/styles')))
 }
 
+function iconfontTash () {
+  return gulp.src(resolve('src/styles/iconfont/iconfont.less'))
+    .pipe(less())
+    .pipe(autoprefixer(ap))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest(resolve('lib/styles')))
+}
+
 function packageTask (taskName) {
   const folders = getFolders(cssPath)
   return folders.map(function (folder) {
@@ -56,7 +64,7 @@ function packageTask (taskName) {
   })
 }
 gulp.task('all', function () {
-  return [task('owl-ui'), task('owl-ui-px'),
+  return [task('owl-ui'), task('owl-ui-px'), iconfontTash(),
     packageTask('packages'), packageTask('packages-px')]
 })
 
