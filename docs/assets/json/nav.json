@@ -75,6 +75,17 @@
   {
     "num": "03",
     "name": "模块",
-    "items": []
+    "max-height": "100px",
+    "items": [
+      {
+        "name": "style",
+        "items": [
+          {
+            "key": "iconfont",
+            "router": "/iconfont"
+          }
+        ]
+      }
+    ]
   }
 ]
