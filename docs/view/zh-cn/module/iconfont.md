@@ -8,7 +8,7 @@
 import 'owl-ui/styles/iconfont.css'
 ```
 
-## 库
+## icon列表
 
 <style>
 i {
