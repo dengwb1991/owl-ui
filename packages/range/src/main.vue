@@ -1,8 +1,8 @@
 <template>
   <drag :disabled="disabled"
-            @dragstart="dragStart"
-            @drag="drag"
-            @dragend="dragEnd">
+        @dragstart="dragStart"
+        @drag="drag"
+        @dragend="dragEnd">
     <div class="owl-range">
         <div ref="inner" class="owl-range-wrap">
           <input type="hidden" value="val"/>

@@ -17,7 +17,7 @@
   {
     "num": "02",
     "name": "组件",
-    "max-height": "520px",
+    "max-height": "550px",
     "items": [
       {
         "name": "基础",
@@ -38,6 +38,10 @@
           {
             "key": "Input",
             "router": "/input"
+          },
+          {
+            "key": "Range",
+            "router": "/range"
           },
           {
             "key": "Select",
