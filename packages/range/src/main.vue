@@ -1,14 +1,22 @@
 <template>
-  <div class="owl-range">
-    <div class="owl-range-wrap">
-      <input type="hidden" value="val"/>
-      <div class="owl-range-bar" style="width: 30%"/>
-      <div class="owl-range-button-wrap" style="left: 30%"></div>
+  <drag :disabled="disabled"
+            @dragstart="dragStart"
+            @drag="drag"
+            @dragend="dragEnd">
+    <div class="owl-range">
+        <div ref="inner" class="owl-range-wrap">
+          <input type="hidden" value="val"/>
+          <div class="owl-range-bar"
+              :style="{ width: valuePercent + '%' }"/>
+          <div class="owl-range-button-wrap" ref="knob" :style="{ left: valuePercent + '%' }"></div>
+        </div>
     </div>
-  </div>
+  </drag>
 </template>
 
 <script>
+import drag from 'helper/drag.js'
+
 export default {
   name: 'OwlRange',
   props: {
@@ -30,9 +38,13 @@ export default {
       default: 1
     }
   },
+  components: {
+    drag
+  },
   data () {
     return {
-      actualValue: null
+      actualValue: null,
+      dragStartValue: null
     }
   },
   computed: {
@@ -50,6 +62,36 @@ export default {
     }
   },
   methods: {
+    dragStart (event, offset) {
+      this.dragStartValue = this.actualValue
+      if (event.target === this.$refs.knob) {
+        return
+      }
+      // If the click is out of knob, move it to mouse position
+      this.drag(event, offset)
+    },
+    drag (event, offset) {
+      const { offsetWidth } = this.$refs.inner
+      this.actualValue = this.round(this.valueFromBounds(offset.left, offsetWidth), this._min, this._max, this._step)
+      this.emitInput(this.actualValue)
+    },
+    dragEnd (event, offset) {
+      const { offsetWidth } = this.$refs.inner
+      this.actualValue = this.round(this.valueFromBounds(offset.left, offsetWidth), this._min, this._max, this._step)
+
+      if (this.dragStartValue !== this.actualValue) {
+        this.emitChange(this.actualValue)
+      }
+    },
+    emitInput (value) {
+      this.$emit('input', value)
+    },
+    emitChange (value) {
+      this.$emit('change', value)
+    },
+    valueFromBounds (point, width) {
+      return (point / width) * (this._max - this._min) + this._min
+    },
     round (value, min, max, step) {
       if (value <= min) {
         return min
@@ -72,8 +114,8 @@ export default {
         return step * (decimal + 1) + min
       }
     },
-    getVal (val) {
-      this.round(val, this._min, this._max, this._step)
+    getVal (val = 0) {
+      return this.round(val, this._min, this._max, this._step)
     }
   },
   watch: {

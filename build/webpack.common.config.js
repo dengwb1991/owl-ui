@@ -34,6 +34,7 @@ module.exports = {
       'packages': resolve('packages'),
       'mixins': resolve('src/common/mixins'),
       'components': resolve('src/common/components'),
+      'helper': resolve('src/common/helper'),
       'images': resolve('src/images'),
       'dist': resolve('dist'),
       'create-api': resolve('src/utils/create-api'),

@@ -1,7 +1,10 @@
+import documentEvent from '../mixins/document-event.js'
+
 export default {
   props: {
     disabled: Boolean
   },
+  mixins: [documentEvent],
   data () {
     return {
       isDrag: false
@@ -31,6 +34,13 @@ export default {
     }
   },
   methods: {
+    relativeMouseOffset (offset, base) {
+      const bounds = base.getBoundingClientRect()
+      return {
+        left: offset.clientX - bounds.left,
+        top: offset.clientY - bounds.top
+      }
+    },
     isInTarget (el) {
       if (!el) return false
 
@@ -41,13 +51,13 @@ export default {
       }
     },
     offsetByMouse (event) {
-      return relativeMouseOffset(event, this.$el)
+      return this.relativeMouseOffset(event, this.$el)
     },
     offsetByTouch (event) {
       const touch = event.touches.length === 0 ? event.changedTouches[0] : event.touches[0]
-      return relativeMouseOffset(touch, this.$el)
+      return this.relativeMouseOffset(touch, this.$el)
     },
-    dragStart (event, fn) {
+    dragStart (event, f) {
       if (
         this.disabled ||
         (event.button !== undefined && event.button !== 0) ||
@@ -55,21 +65,20 @@ export default {
       ) {
         return
       }
-
       event.preventDefault()
       this.isDrag = true
-      this.$emit('dragstart', event, fn(event), this.$el)
+      this.$emit('dragstart', event, f(event), this.$el)
     },
-    dragMove (event, fn) {
+    dragMove (event, f) {
       if (!this.isDrag) return
       event.preventDefault()
-      this.$emit('drag', event, fn(event), this.$el)
+      this.$emit('drag', event, f(event), this.$el)
     },
-    dragEnd (event, fn) {
+    dragEnd (event, f) {
       if (!this.isDrag) return
       event.preventDefault()
       this.isDrag = false
-      this.$emit('dragend', event, fn(event), this.$el)
+      this.$emit('dragend', event, f(event), this.$el)
     }
   },
   render () {
