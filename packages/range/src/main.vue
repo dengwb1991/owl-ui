@@ -55,7 +55,7 @@ export default {
       return +this.max
     },
     _step () {
-      return +this.step
+      return +this.step || 1
     },
     valuePercent () {
       return (this.actualValue - this._min) / (this._max - this._min) * 100
@@ -129,6 +129,9 @@ export default {
       this.actualValue = this.getVal(this.actualValue)
     },
     max () {
+      this.actualValue = this.getVal(this.actualValue)
+    },
+    step () {
       this.actualValue = this.getVal(this.actualValue)
     }
   }
