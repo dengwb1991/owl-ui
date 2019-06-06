@@ -5,7 +5,8 @@
                  :disabled="disabled"
                  :min="min"
                  :max="max"
-                 :step="step"/>
+                 :step="step"
+                 @change="change"/>
 
       <p class="value-wrap">Value：{{val}}</p>
 
@@ -40,11 +41,16 @@ export default {
   },
   data () {
     return {
-      val: 0,
+      val: 20,
       disabled: false,
       min: 0,
       max: 100,
       step: 1
+    }
+  },
+  methods: {
+    change (val) {
+      console.log('change:', val)
     }
   }
 }
