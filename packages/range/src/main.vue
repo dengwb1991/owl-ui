@@ -3,9 +3,9 @@
         @dragstart="dragStart"
         @drag="drag"
         @dragend="dragEnd">
-    <div class="owl-range">
+    <div :class="['owl-range', { 'owl-range-disabled': disabled }]">
         <div ref="inner" class="owl-range-wrap">
-          <input type="hidden" value="val"/>
+          <input type="hidden" :value="actualValue"/>
           <div class="owl-range-bar"
               :style="{ width: valuePercent + '%' }"/>
           <div class="owl-range-button-wrap" ref="knob" :style="{ left: valuePercent + '%' }"></div>
