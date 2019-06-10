@@ -3,6 +3,7 @@
     <div class="range-example">
       <owl-range v-model="val"
                  :disabled="disabled"
+                 :show-stops="showStops"
                  :min="min"
                  :max="max"
                  :step="step"
@@ -12,6 +13,8 @@
 
       <owl-prop-switch name="disabled"
                        v-model="disabled"/>
+      <owl-prop-switch name="showStops"
+                       v-model="showStops"/>
       <br>
       <owl-input-group text="最小值">
         <owl-input placeholder="请输入"
@@ -43,6 +46,7 @@ export default {
     return {
       val: 20,
       disabled: false,
+      showStops: false,
       min: 0,
       max: 100,
       step: 1
