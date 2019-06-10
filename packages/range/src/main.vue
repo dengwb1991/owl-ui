@@ -4,12 +4,20 @@
         @drag="drag"
         @dragend="dragEnd">
     <div :class="['owl-range', { 'owl-range-disabled': disabled }]">
-        <div ref="inner" class="owl-range-wrap">
-          <input type="hidden" :value="actualValue"/>
-          <div class="owl-range-bar"
-              :style="{ width: valuePercent + '%' }"/>
-          <div class="owl-range-button-wrap" ref="knob" :style="{ left: valuePercent + '%' }"></div>
-        </div>
+      <div ref="inner" class="owl-range-wrap">
+        <template v-if="showStops">
+          <div class="owl-stop"
+               v-for="item in stops"
+               :key="item"
+               :style="{ left: item + '%' }"
+               @dragstart="dragStart">
+          </div>
+        </template>
+        <input type="hidden" :value="actualValue"/>
+        <div class="owl-range-bar"
+            :style="{ width: valuePercent + '%' }"/>
+        <div class="owl-range-button-wrap" ref="knob" :style="{ left: valuePercent + '%' }"></div>
+      </div>
     </div>
   </drag>
 </template>
@@ -36,6 +44,10 @@ export default {
     step: {
       type: [String, Number],
       default: 1
+    },
+    showStops: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -59,6 +71,16 @@ export default {
     },
     valuePercent () {
       return (this.actualValue - this._min) / (this._max - this._min) * 100
+    },
+    stops () {
+      let valueRange = this._max - this._min
+      let stopCount = valueRange / this.step
+      let result = []
+      let stepWidth = 100 * this.step / valueRange
+      for (let i = 1; i < stopCount; i++) {
+        result.push(i * stepWidth)
+      }
+      return result
     }
   },
   methods: {
