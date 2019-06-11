@@ -46,4 +46,16 @@ describe('Range', () => {
     let rangeElm = vm.$el
     expect(rangeElm.classList.contains('owl-range-disabled')).to.be.true
   })
+
+  it('show-stops range', () => {
+    vm = createTest(Range, {
+      showStops: true,
+      step: 20,
+      min: 0,
+      max: 100
+    }, true)
+
+    const len = vm.$el.querySelectorAll('.owl-range-stop').length
+    expect(len).to.equal(4)
+  })
 })
