@@ -1,14 +1,15 @@
 # Range
 
-> 滑块范围取值
+> 范围滑块
 
 ---
 
 ## 示例
 
+* 默认
+
 ```html
 <owl-range v-model="val"
-           :disabled="disabled"
            :min="min"
            :max="max"
            :step="step"
@@ -20,7 +21,6 @@ export default {
   data () {
     return {
       val: 20,
-      disabled: false,
       min: 0,
       max: 100,
       step: 1
@@ -32,6 +32,19 @@ export default {
 }
 ```
 
+* 禁用
+
+```html
+<owl-range v-model="val"
+           disabled/>
+```
+
+* 显示间断点
+```html
+<owl-range v-model="val"
+           show-stops/>
+```
+
 ## Props 配置
 
  参数 | 说明 | 类型 | 默认值 | 可选值
@@ -40,6 +53,7 @@ export default {
  min | 最小取值范围 | number | 0 | -
  max | 最大取值范围 | number | 100 | -
  step | 间隔长度 | number | 1 | -
+ showStops | 是否显示间断点，建议在 step 不密集时使用 | boolean | false | true / false
  disabled | 禁用状态 | boolean | false | true / false
  
 ## 事件
