@@ -124,7 +124,8 @@ export default {
         return min
       }
 
-      const roundedMax = Math.floor((max - min) / step) * step + min
+      let roundedMax = Math.floor((max - min) / step) * step + min
+      roundedMax = max > roundedMax ? max : roundedMax
       if (value >= roundedMax) {
         return roundedMax
       }
@@ -138,7 +139,8 @@ export default {
       if (fraction < 0.5) {
         return step * decimal + min
       } else {
-        return step * (decimal + 1) + min
+        const num = step * (decimal + 1) + min
+        return num > max ? max : num
       }
     },
     getVal (val = 0) {
