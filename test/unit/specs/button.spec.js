@@ -14,12 +14,30 @@ describe('Button', () => {
       .to.be.a('function')
   })
 
-  it('disabled btn', () => {
+  it('light btn', () => {
     vm = createTest(Button, {
-      type: 'disabled'
-    }, true)
+      type: 'light'
+    })
+    expect(vm.$el.classList.contains('owl-button-light')).to.be.true
+  })
+
+  it('disabled btn', () => {
+    const btnHandler = sinon.spy()
+    vm = createVue({
+      template: `
+        <owl-button @click="handle" type="disabled">Default Button</owl-button>
+      `,
+      methods: {
+        handle () {
+          return btnHandler()
+        }
+      }
+    })
     let buttonElm = vm.$el
     expect(buttonElm.classList.contains('owl-button-disabled')).to.be.true
+
+    buttonElm.click()
+    expect(btnHandler).to.not.be.called
   })
 
   it('default btn', () => {

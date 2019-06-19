@@ -40,12 +40,9 @@ export default {
   },
   methods: {
     handleClick (event) {
-      if (this.type === 'disabled') {
-        event.preventDefault()
-        event.stopPropagation()
-        return
+      if (this.type !== 'disabled') {
+        this.$emit('click', event)
       }
-      this.$emit('click', event)
     }
   }
 }
