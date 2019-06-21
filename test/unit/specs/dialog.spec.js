@@ -22,6 +22,17 @@ describe('Dialog', () => {
       .to.be.a('function')
   })
 
+  it('should render correct contents - not btns', () => {
+    vm = createDialog({
+      content: '内容部分'
+    })
+    const btns = vm.$el.querySelector('.owl-dialog-btns').getElementsByTagName('div')
+    expect(btns.length).to.equal(0)
+    const popupMask = vm.$el.querySelector('.popup-mask')
+    popupMask.click()
+    expect(vm.isVisible).to.be.false
+  })
+
   it('multiple button', () => {
     vm = createDialog({
       content: '内容部分',
