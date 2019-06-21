@@ -27,6 +27,32 @@ describe('Drawer', () => {
     const container = vm.$el.querySelector('.owl-drawer-container')
     expect(container.textContent).to.equal('slot content')
   })
+
+  it('should maskClose not called', () => {
+    const maskCloseHandler = sinon.spy()
+
+    vm = createVue({
+      template: `
+        <owl-drawer :visible.sync="visible"
+                    :maskClosable="state"
+                    @maskClose="handler"></owl-drawer>
+      `,
+      data: {
+        visible: true,
+        state: false
+      },
+      methods: {
+        handler () {
+          return maskCloseHandler()
+        }
+      }
+    })
+
+    const mask = vm.$el.querySelector('.popup-mask')
+    mask.click()
+    expect(maskCloseHandler).to.not.be.called
+  })
+
   it('visible && callback', done => {
     vm = createVue({
       template: `
