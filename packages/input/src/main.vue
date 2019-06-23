@@ -111,7 +111,8 @@ export default {
     },
     pwdVisible() {
       const eye = this.formatedEye
-      return eye.reverse ? !eye.open : eye.open
+      return eye.open
+      // return eye.reverse ? !eye.open : eye.open
     },
   },
   methods: {
@@ -142,16 +143,18 @@ export default {
       }
     },
     formateEye() {
-      if (typeof this.eye === 'boolean') {
-        this.formatedEye.open = this.eye
-      } else {
-        Object.assign(this.formatedEye, this.eye)
-      }
+      // if (typeof this.eye === 'boolean') {
+      this.formatedEye.open = this.eye
+      // }
+      // Object.assign(this.formatedEye, this.eye)
     }
   },
   watch: {
-    value (val) {
-      this.inputValue = this.type === 'tel' ? !/\D/.test(val.slice(-1)) ? val : val.slice(0, -1) : val
+    value: {
+      handler (val) {
+        this.inputValue = this.type === 'tel' ? !/\D/.test(val.slice(-1)) ? val : val.slice(0, -1) : val
+      },
+      immediate: true
     },
     inputValue (val) {
       this.$emit('input', val)

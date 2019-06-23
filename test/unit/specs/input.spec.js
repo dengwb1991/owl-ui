@@ -32,6 +32,34 @@ describe('Input', () => {
     expect(buttonElm.querySelector('input').readOnly).to.be.true
   })
 
+  it('input type of tel', () => {
+    vm = createVue({
+      template: `
+        <owl-input v-model="val"
+                   :type="type"/>
+      `,
+      data: {
+        val: '13720017500',
+        type: 'tel'
+      }
+    }, true)
+    expect(vm.$el.querySelector('input').type).to.equal('tel')
+  })
+
+  it('do not enter non-numeric characters when type is tel', () => {
+    vm = createVue({
+      template: `
+        <owl-input v-model="val"
+                   :type="type"/>
+      `,
+      data: {
+        val: '123a',
+        type: 'tel'
+      }
+    }, true)
+    expect(vm.$el.querySelector('input').value).to.equal('123')
+  })
+
   it('value should be empty when clear button clicked', done => {
     vm = createVue({
       template: `
@@ -82,5 +110,44 @@ describe('Input', () => {
       expect(vm.$el.querySelector('input').type).to.equal('text')
       done()
     })
+  })
+
+  it('handle events', () => {
+    const focusHandler = sinon.spy()
+    const blurHandler = sinon.spy()
+    const changeHandler = sinon.spy()
+
+    vm = createVue({
+      template: `
+        <owl-input v-model="val"
+                   ref="owlInput"
+                   @focus="focusHandler"
+                   @blur="blurHandler"
+                   @change="changeHandler"/>
+      `,
+      data: {
+        val: ''
+      },
+      methods: {
+        focusHandler () {
+          return focusHandler()
+        },
+        blurHandler () {
+          return blurHandler()
+        },
+        changeHandler () {
+          return changeHandler()
+        }
+      }
+    })
+    const owlInput = vm.$refs.owlInput
+    owlInput.handleFocus()
+    expect(focusHandler).to.be.called
+
+    owlInput.handleBlur()
+    expect(blurHandler).to.be.called
+
+    owlInput.handleChange()
+    expect(changeHandler).to.be.called
   })
 })
