@@ -152,7 +152,7 @@ export default {
   watch: {
     value: {
       handler (val) {
-        this.inputValue = this.type === 'tel' ? !/\D/.test(val.slice(-1)) ? val : val.slice(0, -1) : val
+        this.inputValue = this.type === 'tel' ? !/\D/.test(String(val).slice(-1)) ? val : String(val).slice(0, -1) : val
       },
       immediate: true
     },
