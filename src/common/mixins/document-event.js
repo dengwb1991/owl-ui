@@ -38,19 +38,20 @@ const hasPassive = isBrowser && (() => {
   return supported
 })()
 
-function forEachListener(vm, f) {
+function forEachListener (vm, f) {
   const events = vm.$options.events
   Object.keys(events).forEach(key => {
     f(key, (event) => events[key].call(vm, event))
   })
 }
 
+const options = () => hasPassive ? { passive: false } : false
+
 function on (el, name, fn) {
-  const options = hasPassive ? { passive: false } : undefined
-  el.addEventListener(name, fn, options)
+  el.addEventListener(name, fn, options())
 }
 
 function off(el, name, fn) {
-  const options = hasPassive ? { passive: false } : undefined
-  el.removeEventListener(name, fn, options)
+  el.removeEventListener(name, fn, options())
 }
+
