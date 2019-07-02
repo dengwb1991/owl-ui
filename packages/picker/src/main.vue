@@ -97,9 +97,10 @@ export default {
   },
   methods: {
     setData (val) {
-      const index = this.data.findIndex(item => {
+      let index = this.data.findIndex(item => {
         return String(this.type ? item.key : item) === String(val)
       })
+      index = index === -1 ? 0 : index
       this.transY = index * -2
       this.valIndex = index
       return this

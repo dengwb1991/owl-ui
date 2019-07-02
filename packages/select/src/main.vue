@@ -64,7 +64,7 @@ export default {
     return {
       selectValue: this.value,
       visible: false,
-      type: Object.prototype.toString.call(this.data[0]) === '[object Object]'
+      isObject: Object.prototype.toString.call(this.data[0]) === '[object Object]'
     }
   },
   methods: {
@@ -72,9 +72,9 @@ export default {
       this.visible = true
     },
     confirm (val) {
-      this.selectValue = this.type ? val.value : val
+      this.selectValue = this.isObject ? val.value : val
       this.$emit('confirm', val)
-      this.$emit('input', this.type ? val.key : val)
+      this.$emit('input', this.isObject ? val.key : val)
     },
     show () {
       this.$refs.picker.show()
@@ -85,9 +85,11 @@ export default {
   },
   mounted () {
     if (this.value) {
-      const instance = this.data.find(item => String(item.key) === String(this.value))
-      if (instance) {
-        this.selectValue = this.type ? instance.value : instance
+      if (this.isObject) {
+        let checkedValue = this.data.find(item => String(item.key) === String(this.value))
+        this.selectValue = checkedValue ? checkedValue.value : null
+      } else {
+        this.selectValue = this.data.find(item => String(item) === String(this.value))
       }
       this.$refs.picker.setData(this.value)
     }
