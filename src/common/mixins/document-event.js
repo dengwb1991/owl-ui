@@ -1,17 +1,18 @@
 /**
  * global window, document
+ * document.querySelector(`.${this.className}`)
  */
 export default {
-  created () {
+  mounted () {
     if (typeof document === 'undefined') return
     forEachListener(this, (key, listener) => {
-      on(document, key, listener)
+      on(this.$el, key, listener)
     })
   },
   beforeDestroy () {
     if (typeof document === 'undefined') return
     forEachListener(this, (key, listener) => {
-      off(document, key, listener)
+      off(this.$el, key, listener)
     })
   }
 }
@@ -38,6 +39,7 @@ const hasPassive = isBrowser && (() => {
   return supported
 })()
 
+
 function forEachListener (vm, f) {
   const events = vm.$options.events
   Object.keys(events).forEach(key => {
@@ -45,13 +47,13 @@ function forEachListener (vm, f) {
   })
 }
 
-const options = () => hasPassive ? { passive: false } : false
+const options = hasPassive ? { passive: false } : undefined
 
 function on (el, name, fn) {
-  el.addEventListener(name, fn, options())
+  el.addEventListener(name, fn, options)
 }
 
 function off(el, name, fn) {
-  el.removeEventListener(name, fn, options())
+  el.removeEventListener(name, fn, options)
 }
 
