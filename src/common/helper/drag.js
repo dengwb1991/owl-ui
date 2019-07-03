@@ -65,7 +65,7 @@ export default {
       ) {
         return
       }
-      event.preventDefault()
+      event.cancelable && event.preventDefault()
       this.isDrag = true
       this.$emit('dragstart', event, f(event), this.$el)
     },
