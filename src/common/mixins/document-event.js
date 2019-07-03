@@ -1,6 +1,6 @@
 /**
  * global window, document
- * document.querySelector(`.${this.className}`)
+ *
  */
 export default {
   mounted () {

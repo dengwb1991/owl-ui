@@ -17,18 +17,15 @@
         <div class="owl-picker-wheel">
           <div class="owl-picker-container">
             <div class="owl-picker-grid"></div>
-            <ul class="owl-picker-container-scroll"
-                :style="scrollStyle"
-                @touchstart.stop.prevent="onTouchStart($event)"
-                @touchmove.stop.prevent="onTouchMove($event)"
-                @touchend.stop.prevent="onTouchEnd($event)"
-                @mousedown="onTouchStart($event, 'mounse')"
-                @mousemove="onTouchMove($event, 'mounse')"
-                @mouseup="onTouchEnd($event, 'mounse')"
-                @mouseleave="onTouchEnd($event, 'mounse')">
-              <li v-for="(item, index) in data"
-                  :key="index">{{type ? item.value : item}}</li>
-            </ul>
+            <drag @dragstart="onTouchStart"
+                  @drag="onTouchMove"
+                  @dragend="onTouchEnd">
+              <ul class="owl-picker-container-scroll"
+                  :style="scrollStyle">
+                <li v-for="(item, index) in data"
+                    :key="index">{{type ? item.value : item}}</li>
+              </ul>
+            </drag>
           </div>
         </div>
       </div>
@@ -38,13 +35,17 @@
 
 <script>
 import OwlDrawer from '../../drawer/src/main.vue'
+import Drag from 'helper/drag.js'
 import visibilityMixin from 'mixins/visibility'
+
+const EVENTS_MOUSE = 'EVENTS_MOUSE'
 
 export default {
   name: 'OwlPicker',
   mixins: [visibilityMixin],
   components: {
-    OwlDrawer
+    OwlDrawer,
+    Drag
   },
   props: {
     data: {
@@ -125,23 +126,23 @@ export default {
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       return event.clientY + scrollTop
     },
-    onTouchStart (event, name) {
-      if (name === 'mounse') this.mounseLock = false
+    onTouchStart (event, offset, name) {
+      if (name === EVENTS_MOUSE) this.mounseLock = false
 
-      this.startScreenY = name === 'mounse' ? this.getPos(event) : event.targetTouches[0].screenY
+      this.startScreenY = name === EVENTS_MOUSE ? event.clientY : event.targetTouches[0].screenY
       this.startTime = Date.now()
       this.startTop = this.transY
     },
-    onTouchMove (event, name) {
-      if (name === 'mounse' && this.mounseLock) return
+    onTouchMove (event, offset, name) {
+      if (name === EVENTS_MOUSE && this.mounseLock) return
 
-      this.endScreenY = name === 'mounse' ? this.getPos(event) : event.targetTouches[0].screenY
+      this.endScreenY = name === EVENTS_MOUSE ? event.clientY : event.targetTouches[0].screenY
       this.endTime = Date.now()
       const moveY = (this.endScreenY - this.startScreenY) * 18 / 370
       this.transY = this.startTop + moveY
     },
-    onTouchEnd (event, name) {
-      if (name === 'mounse') {
+    onTouchEnd (event, offset, name) {
+      if (name === EVENTS_MOUSE) {
         if (!this.mounseLock) {
           this.mounseLock = true
         } else {
