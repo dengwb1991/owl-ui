@@ -129,14 +129,14 @@ export default {
     onTouchStart (event, offset, name) {
       if (name === EVENTS_MOUSE) this.mounseLock = false
 
-      this.startScreenY = name === EVENTS_MOUSE ? event.clientY : event.targetTouches[0].screenY
+      this.startScreenY = name === EVENTS_MOUSE ? this.getPos(event) : event.targetTouches[0].screenY
       this.startTime = Date.now()
       this.startTop = this.transY
     },
     onTouchMove (event, offset, name) {
       if (name === EVENTS_MOUSE && this.mounseLock) return
 
-      this.endScreenY = name === EVENTS_MOUSE ? event.clientY : event.targetTouches[0].screenY
+      this.endScreenY = name === EVENTS_MOUSE ? this.getPos(event) : event.targetTouches[0].screenY
       this.endTime = Date.now()
       const moveY = (this.endScreenY - this.startScreenY) * 18 / 370
       this.transY = this.startTop + moveY
