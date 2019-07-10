@@ -7,8 +7,10 @@ const config = require('../config')
 const utils = require('./utils')
 const portfinder = require('portfinder')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const configuration = merge(commonConfig, {
+  mode: 'development',
   devtool: 'inline-source-map',
   entry: {
     app: './examples/main',
@@ -45,9 +47,8 @@ const configuration = merge(commonConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      filename: path.join(__dirname, '../examples/dist/index.html'),
+      filename: 'index.html',
       template: path.join(__dirname, '../examples/index.html'),
       inject: true
     })

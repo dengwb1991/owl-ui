@@ -7,10 +7,8 @@ const cleanWebpackPlugin = require('clean-webpack-plugin')
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-process.env.NODE_ENV = 'production'
-
 const configuration = merge(commonConfig, {
-  devtool: 'source-map',
+  mode: 'production',
   entry: {
     app: './src/index.js',
   },
@@ -22,6 +20,25 @@ const configuration = merge(commonConfig, {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
+  // optimization: {
+  //   minimize: true,
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendors: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         chunks: 'initial',
+  //         name: 'vendors',
+  //       },
+  //       'async-vendors': {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         minChunks: 2,
+  //         chunks: 'async',
+  //         name: 'async-vendors'
+  //       }
+  //     }
+  //   },
+  //   runtimeChunk: { name: 'runtime' }
+  // },
   externals: {
     vue: {
       root: 'Vue',

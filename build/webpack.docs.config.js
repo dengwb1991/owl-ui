@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = new Promise((resolve, reject) => {
   const configuration = {
+    mode: 'development',
     entry: {
       app: './docs/main',
       vendors: ['vue', 'vue-router']
@@ -22,7 +23,7 @@ module.exports = new Promise((resolve, reject) => {
       return plugin instanceof HtmlWebpackPlugin
     })
     devConfig.plugins.splice(index, 1, new HtmlWebpackPlugin({
-      filename: path.join(__dirname, '../docs/dist/index.html'),
+      filename: 'index.html',
       template: path.join(__dirname, '../docs/index.html'),
       inject: true
     }))

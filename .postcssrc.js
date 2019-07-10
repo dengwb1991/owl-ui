@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     require('autoprefixer')({
-      'browsers': ['> 1%', 'last 2 versions']
+      'overrideBrowserslist': ['> 1%', 'last 5 versions']
     }),
     require('postcss-pxtorem')({
       rootValue: 75,

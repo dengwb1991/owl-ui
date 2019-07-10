@@ -11,6 +11,7 @@ const Components = require('../components.json')
 process.env.NODE_ENV = 'production'
 
 const configuration = merge(commonConfig, {
+  mode: 'production',
   entry: Components,
   output: {
     path: config.build.assetsRoot,
