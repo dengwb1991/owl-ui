@@ -9,13 +9,17 @@
 
 <p align="center">
   <a href="https://github.com/vuejs/vue" rel="nofollow" target="_blank">
-    <img src="https://img.shields.io/badge/vue-2.5.16-brightgreen.svg" alt="vue">
+    <img src="https://img.shields.io/badge/vue-v2.5.16-brightgreen.svg" alt="vue">
   </a>
 
   <a href="https://www.npmjs.com/package/owl-ui" rel="nofollow" target="_blank">
     <img src="https://img.shields.io/npm/v/owl-ui.svg?style=flat" alt="npm">
   </a>
-    
+
+  <a href="https://github.com/webpack/webpack" rel="nofollow" target="_blank">
+    <img src="https://img.shields.io/badge/webpack-v4.29.6-blue.svg" alt="webpack">
+  </a>
+  
   <a href="https://github.com/dengwb1991/owl-ui/blob/master/LICENSE" rel="nofollow" target="_blank">
     <img src="https://img.shields.io/npm/l/owl-ui.svg" alt="LICENSE">
   </a>
