@@ -64,21 +64,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         include: [resolve('src'), resolve('test')]
-        // options: {
-        //   plugins: [
-        //     'dynamic-import-webpack'
-        //   ]
-        // }
       },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'babel-loader',
-      //   options: {
-      //     presets: ['es2015']
-      //   },
-      //   include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
-      //   exclude: /node_modules/
-      // },
       {
         test: /\.otf|ttf|woff2?|eot(\?\S*)?$/,
         loader: 'url-loader',
