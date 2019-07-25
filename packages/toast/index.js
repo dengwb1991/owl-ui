@@ -8,6 +8,6 @@ OwlToast.install = function (Vue) {
 
 Vue.use(CreateAPI)
 
-Vue.createAPI(OwlToast, true, true)
+Vue.createAPI(OwlToast, true, true, true)
 
 export default OwlToast
