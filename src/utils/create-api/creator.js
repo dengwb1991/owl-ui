@@ -4,7 +4,7 @@ import { isFunction, isUndef, isStr } from './util'
 
 const eventBeforeDestroy = 'hook:beforeDestroy'
 
-export default function apiCreator(Component, events = [], single = false, isDestroy) {
+export default function apiCreator(Component, events = [], single = false) {
   let Vue = this
   let currentSingleComp
   let singleMap = {}
@@ -162,8 +162,7 @@ export default function apiCreator(Component, events = [], single = false, isDes
       process$(renderData)
 
       component = createComponent(renderData, renderFn, options, _single)
-
-      if (isInVueInstance && isDestroy) {
+      if (isInVueInstance) {
         ownerInstance.$on(eventBeforeDestroy, beforeDestroy)
       }
       function beforeDestroy() {
