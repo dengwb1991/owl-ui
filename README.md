@@ -20,6 +20,10 @@
     <img src="https://img.shields.io/badge/webpack-v4.29.6-blue.svg" alt="webpack">
   </a>
   
+  <a href="https://github.com/gulpjs/gulp" rel="nofollow" target="_blank">
+    <img src="https://img.shields.io/badge/gulp-v4.0.2-critical.svg" alt="gulp">
+  </a>
+
   <a href="https://github.com/dengwb1991/owl-ui/blob/master/LICENSE" rel="nofollow" target="_blank">
     <img src="https://img.shields.io/npm/l/owl-ui.svg" alt="LICENSE">
   </a>
