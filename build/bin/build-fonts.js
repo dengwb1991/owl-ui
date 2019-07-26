@@ -8,4 +8,5 @@ gulp.task('copy-fonts', () => {
     .pipe(gulp.dest(resolve('lib/fonts')))
 })
 
-gulp.task('default', ['copy-fonts'])
+// gulp.task('default', ['copy-fonts'])
+gulp.task('default', gulp.series('copy-fonts'))

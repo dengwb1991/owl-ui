@@ -3,7 +3,7 @@ const gulp = require('gulp')
 const iconfont = require('gulp-iconfont')
 const iconfontCss = require('gulp-iconfont-css')
 const clean = require('del')
-const sequence = require('gulp-sequence')
+// const sequence = require('gulp-sequence')
 
 const resolve = (dir) => path.join(__dirname, '../..', dir)
 
@@ -40,6 +40,4 @@ gulp.task('move', () => {
     .pipe(gulp.dest(resolve('src/styles/fonts')))
 })
 
-gulp.task('build', sequence('iconfont', 'move', 'clean'))
-
-gulp.task('default', ['build'])
+gulp.task('default', gulp.series('iconfont', 'move', 'clean'))

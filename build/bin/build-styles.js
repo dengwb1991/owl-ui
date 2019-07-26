@@ -33,15 +33,25 @@ function getFolders(dir) {
   })
 }
 
-function task (taskName) {
+function taskOwlUi () {
   return gulp.src(resolve('src/styles/index.less'))
     .pipe(less())
     .pipe(autoprefixer(ap))
-    .pipe(gulpif(taskName === 'owl-ui', postcss(processors)))
+    .pipe(postcss(processors))
     .pipe(cleanCSS())
-    .pipe(rename(taskName + '.css'))
+    .pipe(rename('owl-ui.css'))
     .pipe(gulp.dest(resolve('lib/styles')))
 }
+
+function taskOwlUiPx () {
+  return gulp.src(resolve('src/styles/index.less'))
+    .pipe(less())
+    .pipe(autoprefixer(ap))
+    .pipe(cleanCSS())
+    .pipe(rename('owl-ui-px.css'))
+    .pipe(gulp.dest(resolve('lib/styles')))
+}
+
 
 function iconfontTask () {
   return gulp.src(resolve('src/styles/iconfont/iconfont.less'))
@@ -51,21 +61,30 @@ function iconfontTask () {
     .pipe(gulp.dest(resolve('lib/styles')))
 }
 
-function packageTask (taskName) {
+function taskPackages (done) {
   const folders = getFolders(cssPath)
-  return folders.map(function (folder) {
+  folders.map(function (folder) {
     return gulp.src(resolve('src/styles/packages/' + folder + '.less'))
       .pipe(less())
       .pipe(autoprefixer(ap))
-      .pipe(gulpif(taskName === 'packages', postcss(processors)))
+      .pipe(postcss(processors))
       .pipe(cleanCSS())
-      .pipe(gulpif(taskName === 'packages-px', rename(folder + '-px.css')))
       .pipe(gulp.dest(resolve('lib/' + folder +'/')))
   })
+  done()
 }
-gulp.task('all', function () {
-  return [task('owl-ui'), task('owl-ui-px'), iconfontTask(),
-    packageTask('packages'), packageTask('packages-px')]
-})
 
-gulp.task('default', ['all'])
+function taskPackagesPx (done) {
+  const folders = getFolders(cssPath)
+  folders.map(function (folder) {
+    return gulp.src(resolve('src/styles/packages/' + folder + '.less'))
+      .pipe(less())
+      .pipe(autoprefixer(ap))
+      .pipe(cleanCSS())
+      .pipe(rename(folder + '-px.css'))
+      .pipe(gulp.dest(resolve('lib/' + folder +'/')))
+  })
+  done()
+}
+
+gulp.task('default', gulp.parallel(taskOwlUi, taskOwlUiPx, iconfontTask, taskPackages, taskPackagesPx))
