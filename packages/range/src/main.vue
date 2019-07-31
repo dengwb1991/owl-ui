@@ -5,7 +5,8 @@
         @dragend="dragEnd">
     <div :class="['owl-range', { 'owl-range-disabled': disabled }]">
       <div ref="inner"
-           class="owl-range-wrap">
+           class="owl-range-wrap"
+           :style="{ backgroundColor: backgroundColor }">
         <template v-if="showStops">
           <i class="owl-range-stop"
                v-for="item in stops"
@@ -17,7 +18,7 @@
         <input type="hidden"
                :value="actualValue"/>
         <div class="owl-range-bar"
-             :style="{ width: valuePercent + '%' }"/>
+             :style="{ width: valuePercent + '%', backgroundColor: color }"/>
         <div ref="knob"
              class="owl-range-button-wrap"
              :style="{ left: valuePercent + '%' }"></div>
@@ -52,6 +53,14 @@ export default {
     showStops: {
       type: Boolean,
       default: false
+    },
+    color: {
+      type: String,
+      default: '#57a3f3'
+    },
+    backgroundColor: {
+      type: String,
+      default: '#e8eaec'
     }
   },
   components: {
