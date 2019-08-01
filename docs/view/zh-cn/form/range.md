@@ -55,7 +55,8 @@ export default {
  step | 间隔长度 | number | 1 | -
  showStops | 是否显示间断点，建议在 step 不密集时使用 | boolean | false | true / false
  disabled | 禁用状态 | boolean | false | true / false
- 
+ color | 滑块区间颜色 | string | #57a3f3 | -
+ backgroundColor | 滑块背景颜色 | string | #e8eaec | -
 ## 事件
 
 事件名 | 说明 | 参数
