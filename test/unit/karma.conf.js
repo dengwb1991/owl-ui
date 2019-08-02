@@ -7,14 +7,21 @@ var webpackConfig = require('../../build/webpack.test.config')
 
 module.exports = function karmaConfig (config) {
   config.set({
-    browsers: ['Chrome'],
-    customLaunchers: {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
+    browsers: ['PhantomJS_mobile'],
+    browserDisconnectTimeout: 300000,
+    browserNoActivityTimeout: 300000,
+    customLaunchers:{
+      PhantomJS_mobile: {
+        base: 'PhantomJS',
+        options: {
+          viewportSize: {
+            width: 375,
+            height: 667
+          }
+        }
       }
     },
-    frameworks: ['mocha', 'sinon-chai'],
+    frameworks: ['mocha', 'sinon-chai', 'phantomjs-shim'],
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
@@ -30,11 +37,6 @@ module.exports = function karmaConfig (config) {
         { type: 'lcov', subdir: '.' },
         { type: 'text-summary' }
       ]
-    },
-    client: {
-      mocha: {
-        timeout: 4000
-      }
     }
   })
 }

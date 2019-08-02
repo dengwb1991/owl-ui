@@ -4,8 +4,8 @@ node_js:
   - v9
   - v10
   - v11
-services:
-  - xvfb
-before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
+branches:
+  only:
+    - master
+script:
+  - npm test
