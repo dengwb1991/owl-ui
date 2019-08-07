@@ -139,3 +139,7 @@ npm run unit            #组件单元测试
 
 npm run test            #eslint测试 & 组件单元测试
 ```
+
+### 学习交流
+
+<img width=300 src="https://www.dengwb.com/static/wechat/my-wechat-code.jpeg"/>
