@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import OwlPicker from './src/main'
-import CreateAPI from 'create-api'
+import CreateAPI from 'owl-create-api'
 
 OwlPicker.install = function (Vue) {
   Vue.component(OwlPicker.name, OwlPicker)
 }
 
-Vue.use(CreateAPI)
+Vue.use(CreateAPI, {
+  componentPrefix: 'Owl'
+})
 
 Vue.createAPI(OwlPicker)
 

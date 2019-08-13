@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import OwlDrawer from './src/main'
-import CreateAPI from 'create-api'
+import CreateAPI from 'owl-create-api'
 
 OwlDrawer.install = function (Vue) {
   Vue.component(OwlDrawer.name, OwlDrawer)
 }
 
-Vue.use(CreateAPI)
+Vue.use(CreateAPI, {
+  componentPrefix: 'Owl'
+})
 
 Vue.createAPI(OwlDrawer)
 

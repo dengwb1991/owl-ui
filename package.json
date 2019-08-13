@@ -124,6 +124,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "owl-create-api": "0.0.2",
     "vue": "^2.5.16"
   },
   "engines": {
