@@ -36,17 +36,29 @@
     }
   }
   &-wheel {
+    position: relative;
     display: -webkit-box;
     width: 100%;
     height: auto;
     overflow: hidden;
     font-weight: bold;
     background-color: transparent;
-    -webkit-mask: -webkit-gradient(linear, 0% 50%, 0% 100%, from(#debb47), to(rgba(36,142,36,0)));
-    -webkit-mask: -webkit-linear-gradient(top, #debb47 50%, rgba(36,142,36,0));
+   > i {
+    position: absolute;
+    z-index: 1;
+    height: 6.5em;
+    pointer-events: none;
+    width: 100%;
+    transform: translateZ(0);
+   }
   }
-  &-wheel-wrap {
-    -webkit-mask: -webkit-gradient(linear, 0% 30%, 0% 0%, from(#debb47), to(rgba(36,142,36,0)));
+  &-wheel-top-mask {
+    top: 0;
+    background: linear-gradient(0deg,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));
+  }
+  &-wheel-bottom-mask {
+    bottom: 0;
+    background: linear-gradient(180deg,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));
   }
   &-choose {
     width: 100%;

@@ -13,21 +13,21 @@
         <div class="owl-picker-title">{{title}}</div>
         <div class="owl-picker-confirm" @click="confirm">确定</div>
       </div>
-      <div class="owl-picker-wheel-wrap">
-        <div class="owl-picker-wheel">
-          <div class="owl-picker-container">
-            <div class="owl-picker-grid"></div>
-            <drag @dragstart="onTouchStart"
-                  @drag="onTouchMove"
-                  @dragend="onTouchEnd">
-              <ul class="owl-picker-container-scroll"
-                  :style="scrollStyle">
-                <li v-for="(item, index) in data"
-                    :style="rotate(index)"
-                    :key="index">{{type ? item.value : item}}</li>
-              </ul>
-            </drag>
-          </div>
+      <div class="owl-picker-wheel">
+        <i class="owl-picker-wheel-top-mask"></i>
+        <i class="owl-picker-wheel-bottom-mask"></i>
+        <div class="owl-picker-container">
+          <div class="owl-picker-grid"></div>
+          <drag @dragstart="onTouchStart"
+                @drag="onTouchMove"
+                @dragend="onTouchEnd">
+            <ul class="owl-picker-container-scroll"
+                :style="scrollStyle">
+              <li v-for="(item, index) in data"
+                  :style="rotate(index)"
+                  :key="index">{{type ? item.value : item}}</li>
+            </ul>
+          </drag>
         </div>
       </div>
     </owl-drawer>
