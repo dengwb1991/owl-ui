@@ -126,7 +126,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "owl-create-api": "0.0.2",
+    "owl-create-api": "0.0.3",
     "vue": "^2.5.16",
     "vue-directive-dragging": "0.0.3"
   },

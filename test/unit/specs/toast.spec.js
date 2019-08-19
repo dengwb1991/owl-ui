@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import { destroyVM, createVue } from '../util'
-import instantiateComponent from 'create-api/instantiate'
+import createAPI from 'owl-create-api'
 import Toast from 'packages/toast'
 
 function createToast (props = {}, events = {}) {
+  const { instantiateComponent } = createAPI
   return instantiateComponent(Vue, Toast, {
     props,
     on: events

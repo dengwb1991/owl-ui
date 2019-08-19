@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import { destroyVM, createVue } from '../util'
-import instantiateComponent from 'create-api/instantiate'
+import createAPI from 'owl-create-api'
 import Picker from 'packages/picker'
 
 function createPicker (props = {}, events = {}) {
+  const { instantiateComponent } = createAPI
   return instantiateComponent(Vue, Picker, {
     props,
     on: events
