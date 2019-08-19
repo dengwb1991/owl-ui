@@ -14,5 +14,6 @@ package-lock.json
 .eslintrc.js
 .gitignore
 .npmignore
+.npmrc
 .postcssrc.js
 components.json
