@@ -23,6 +23,7 @@
               <ul class="owl-picker-container-scroll"
                   :style="scrollStyle">
                 <li v-for="(item, index) in data"
+                    :style="rotate(index)"
                     :key="index">{{type ? item.value : item}}</li>
               </ul>
             </drag>
@@ -78,6 +79,13 @@ export default {
     }
   },
   computed: {
+    rotate () {
+      return function (index) {
+        return {
+          'transform': `rotateX(${(this.transY / 2 + index) * 25}deg)`
+        }
+      }
+    },
     scrollStyle () {
       return {
         '-webkit-transform': `translate3d(0, ${this.transY}em, 0)`,
@@ -196,6 +204,7 @@ export default {
         if (stopGear) {
           let gearVal = Math.abs(pos) / 2
           this.valIndex = Math.round(gearVal)
+          console.log(this.valIndex)
           setTimeout(() => {
             this.duration = 0
           }, 200)
