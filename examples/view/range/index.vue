@@ -7,6 +7,7 @@
                  :min="min"
                  :max="max"
                  :step="step"
+                 :color="color"
                  @change="change"/>
 
       <p class="value-wrap">Value：{{val}}</p>
@@ -31,25 +32,34 @@
                    type="tel"
                    v-model="step"/>
       </owl-input-group>
+      <br>
+      <owl-prop-color name="color"
+                      v-model="color"/>
     </div>
   </owl-page>
 </template>
 
 <script>
 import OwlPropSwitch from '../../components/owl-prop-switch'
+import OwlPropColor from '../../components/owl-prop-color'
 
 export default {
   components: {
-    OwlPropSwitch
+    OwlPropSwitch,
+    OwlPropColor
   },
   data () {
     return {
+      colors: {
+        hex: '#FFF'
+      },
       val: 20,
       disabled: false,
       showStops: false,
       min: 0,
       max: 100,
-      step: 1
+      step: 1,
+      color: '#57a3f3'
     }
   },
   methods: {

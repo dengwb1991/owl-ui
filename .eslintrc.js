@@ -29,6 +29,7 @@ module.exports = {
     'eqeqeq': 0,
     'camelcase': 0,
     'comma-dangle': 0,
-    'no-multi-spaces': ['error', { ignoreEOLComments: true }] // 注释格式
+    'no-multi-spaces': ['error', { ignoreEOLComments: true }], // 注释格式
+    'no-side-effects-in-computed-properties': 0
   }
 }

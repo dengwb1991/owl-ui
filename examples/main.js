@@ -7,9 +7,10 @@ import OwlUI from '../src/index.js'
 // import OwlUI from '../lib/owl-ui.common.js'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
+import dragging from 'vue-directive-dragging'
 
 Vue.use(OwlUI)
-
+Vue.use(dragging)
 const requireComponent = require.context('./components', false, /[a-zA-Z]*\.vue/)
 
 requireComponent.keys().forEach(fileName => {
