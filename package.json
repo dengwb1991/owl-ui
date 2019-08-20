@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --config ./build/webpack.dev.config.js",
     "docs": "webpack-dev-server --inline --config ./build/webpack.docs.config.js",
-    "prod": "webpack --config ./build/webpack.prod.config.js",
+    "prod": "webpack --config ./build/webpack.prod.config.js && npm run build:style && npm run build:font && npm run build:component",
     "build": "npm run build:docs && npm run build:example && webpack --config ./build/webpack.prod.config.js && npm run build:style && npm run build:font && npm run build:component",
     "build:style": "gulp --gulpfile build/bin/build-styles.js",
     "build:icon": "gulp --gulpfile build/bin/build-icons.js",
