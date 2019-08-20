@@ -9,9 +9,11 @@
                 :containerStyle="containerStyle"
                 @maskClose="cancel">
       <div class="owl-picker-choose">
-        <div class="owl-picker-cancel" @click="cancel">取消</div>
-        <div class="owl-picker-title">{{title}}</div>
-        <div class="owl-picker-confirm" @click="confirm">确定</div>
+        <slot name="title">
+          <div class="owl-picker-cancel" @click="cancel">取消</div>
+          <div class="owl-picker-title">{{title}}</div>
+          <div class="owl-picker-confirm" @click="confirm">确定</div>
+        </slot>
       </div>
       <picker-wheel ref="wheel"
                     :data="data"/>
