@@ -65,7 +65,9 @@ export default {
     },
     confirm () {
       this.isVisible = false
-      this.$emit('confirm', this.$refs.wheel.confirm())
+      const data = this.$refs.wheel.confirm()
+      this.$emit('confirm', data)
+      return data
     },
     cancel () {
       this.isVisible = false
