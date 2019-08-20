@@ -114,6 +114,47 @@ export default {
 }
 ```
 
+* title 部分使用 `slot` 插槽
+
+```html
+<owl-button @click="show">show</owl-button>
+
+<owl-picker ref="picker"
+            :data="pickerData"
+            :visible.sync="visible">
+  <template slot='title'>
+    <div class="title-wrap">
+      <p @click="cancel">取消</p>
+      <p @click="confirm">确定</p>
+    </div>
+  </template>
+</owl-picker>
+```
+
+```js
+export default {
+  data () {
+    return {
+      pickerData: ['Google', 'IBM', 'Apple', 'Facebook', 'Baidu'],
+      result: 'Google',
+      visible: false
+    }
+  },
+  methods: {
+    show () {
+      // or this.$refs.picker.show()
+      this.visible = true
+    },
+    cancel () {
+      this.$refs.picker.cancel()
+    },
+    confirm () {
+      this.result = this.$refs.picker.confirm()
+    }
+  }
+}
+```
+
 ## Props 配置
 
  参数 | 说明 | 类型 | 默认值 | 可选值
@@ -131,9 +172,9 @@ export default {
 
 事件名 | 说明 | 参数
 ---- | --- | ---
-callback | 显示或隐藏时触发，返回当前visible值 | visible
-confirm | 点击确认触发，返回当前选中的值 | data
-cancel | 点击取消触发，返回上次确认或默认的值 | data
+callback | 显示或隐藏时触发，返回当前visible值 | -
+confirm | 点击确认触发，返回当前选中的值 | -
+cancel | 点击取消触发，返回上次确认或默认的值 | -
 
 ## 实例方法
 
