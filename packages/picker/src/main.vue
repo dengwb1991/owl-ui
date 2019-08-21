@@ -8,15 +8,17 @@
                 :maskStyle="maskStyle"
                 :containerStyle="containerStyle"
                 @maskClose="cancel">
-      <div class="owl-picker-choose">
-        <slot name="title">
-          <div class="owl-picker-cancel" @click="cancel">取消</div>
-          <div class="owl-picker-title">{{title}}</div>
-          <div class="owl-picker-confirm" @click="confirm">确定</div>
-        </slot>
-      </div>
-      <picker-wheel ref="wheel"
+      <slot name="title">
+        <div class="owl-picker-choose">
+            <div class="owl-picker-cancel" @click="cancel">取消</div>
+            <div class="owl-picker-title">{{title}}</div>
+            <div class="owl-picker-confirm" @click="confirm">确定</div>
+        </div>
+      </slot>
+      <slot name="wheel">
+        <picker-wheel ref="wheel"
                     :data="data"/>
+      </slot>
     </owl-drawer>
   </div>
 </template>
@@ -71,11 +73,11 @@ export default {
     },
     cancel () {
       this.isVisible = false
-      this.$emit('cancel', this.$refs.wheel.cancel())
+      this.$refs.wheel && this.$emit('cancel', this.$refs.wheel.cancel())
     },
     show () {
       this.isVisible = true
-      return this.$refs.wheel.show()
+      return this.$refs.wheel && this.$refs.wheel.show()
     }
   }
 }

@@ -7,7 +7,7 @@
     <owl-picker ref="picker"
                 :data="pickerData"
                 :visible.sync="visible">
-      <template slot='title'>
+      <template slot="title">
         <div class="title-wrap">
           <p @click="cancel">取消</p>
           <p @click="confirm">确定</p>
@@ -62,6 +62,8 @@ export default {
 <style lang="less" scoped>
 .title-wrap {
   width: 100%;
+  height: 88px;
+  line-height: 88px;
   background-color: #333;
   display: flex;
   justify-content: space-around;

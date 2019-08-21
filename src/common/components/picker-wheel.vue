@@ -64,10 +64,13 @@ export default {
     }
   },
   methods: {
-    setData (val) {
+    setData (val, pointer) {
       let index = this.data.findIndex(item => {
         return String(this.type ? item.key : item) === String(val)
       })
+      if (pointer !== void 0) {
+        index = pointer
+      }
       index = index === -1 ? 0 : index
       this.transY = index * -2
       this.valIndex = index
@@ -92,7 +95,7 @@ export default {
     },
     onTouchStart (event, offset, name) {
       if (name === EVENTS_MOUSE) this.mounseLock = false
-
+      clearInterval(this.interval)
       this.startScreenY = name === EVENTS_MOUSE ? this.getPos(event) : event.targetTouches[0].screenY
       this.startTime = Date.now()
       this.startTop = this.transY
@@ -160,6 +163,7 @@ export default {
         if (stopGear) {
           let gearVal = Math.abs(pos) / 2
           this.valIndex = Math.round(gearVal)
+          this.$emit('valueIndex', this.valIndex)
           setTimeout(() => {
             this.duration = 0
           }, 200)
