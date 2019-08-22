@@ -133,17 +133,32 @@ export default {
       let year = this.$refs.year.confirm()
       let month = this.$refs.month.confirm()
       let day = this.$refs.day.confirm()
-      const maxDay = this._dayOfmonth(year.key, month.key)
+      let maxDay = this._dayOfmonth(year.key, month.key)
       if (year.key === this.minDate.year) {
         this._resetData('months', this.minDate.month, 12)
-        this.$refs.month.setData(null, 0)
+        if (month.key < this.minDate.month) {
+          this.$refs.month.setData(null, 0)
+          month.key = this.months[0].key
+          maxDay = this._dayOfmonth(year.key, this.months[0].key)
+        }
+        this.$refs.month.setData(null, month.key - this.minDate.month)
+        if (month.key > this.minDate.month) {
+          this._resetData('days', 1, maxDay)
+          if (+day.key > maxDay) {
+            this.$refs.day.setData(null, 0)
+          } else {
+            this.$refs.day.setData(null, day.key - 1)
+          }
+        }
+        if (month.key === this.minDate.month) {
+          this._resetData('months', this.minDate.month, maxDay)
+        }
         if (month.key <= this.minDate.month) {
           this._resetData('days', this.minDate.day, maxDay)
-          if (day.key < this.minDate.day) {
+          this.$refs.day.setData(null, day.key - this.minDate.day < 0 ? 0 : day.key - this.minDate.day)
+          if (+day.key > maxDay || +day.key < this.minDate.day) {
             this.$refs.day.setData(null, 0)
           }
-        } else {
-          this._resetData('days', 1, maxDay)
         }
         return
       }
@@ -151,20 +166,26 @@ export default {
         this._resetData('months', 1, this.maxDate.month)
         if (month.key > this.maxDate.month) {
           this.$refs.month.setData(null, 0)
+          maxDay = this._dayOfmonth(year.key, 1)
+          this._resetData('days', 1, maxDay)
+          this.$refs.day.setData(null, 0)
         }
-        if (month.key >= this.maxDate.month) {
-          let dd = +this.maxDate.day > +maxDay ? maxDay : this.maxDate.day
-          this._resetData('days', 1, dd)
-          if (day.key > +dd) {
+        if (month.key <= this.maxDate.month) {
+          this._resetData('days', 1, maxDay)
+          if (+day.key > maxDay) {
             this.$refs.day.setData(null, 0)
           }
-        } else {
-          this._resetData('days', 1, maxDay)
         }
         return
       }
       if (this.months.length !== 12) {
-        this._resetData('months', 1, 12)
+        if (+this.months[0] !== 1) {
+          this._resetData('months', 1, 12)
+          this.$refs.month.setData(null, month.key - 1)
+          this._resetData('days', 1, maxDay)
+          this.$refs.day.setData(null, day.key - 1)
+        }
+        return
       }
       if (+day.key > maxDay) {
         this.$refs.day.setData(null, 0)
@@ -246,14 +267,13 @@ export default {
       let minMonth = 1
       let maxMonth = 12
       let minDay = 1
-      let maxDay = 31
 
       if (this._isEmpty(this.data)) {
         minMonth = this.minDate.month
         minDay = this.minDate.day
       }
       this._resetData('months', minMonth, maxMonth)
-      this._resetData('days', minDay, maxDay)
+      this._resetData('days', minDay, this._dayOfmonth(this.minDate.year, this.minDate.month))
     },
     /**
      * 初始化最小日期和最大日期
