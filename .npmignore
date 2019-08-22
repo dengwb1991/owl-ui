@@ -4,6 +4,7 @@ src/
 dist/
 docs/
 examples/
+packages/
 node_modules/
 test/
 LICENSE
