@@ -171,7 +171,7 @@ export default {
           clearInterval(this.interval)
         }
         this.transY = this.endTop = pos
-      }, 30)
+      }, 15)
     }
   }
 }

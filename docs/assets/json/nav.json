@@ -65,6 +65,10 @@
             "router": "/dialog"
           },
           {
+            "key": "DatePikcer",
+            "router": "/date-picker"
+          },
+          {
             "key": "Picker",
             "router": "/picker"
           },
