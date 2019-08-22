@@ -8,11 +8,13 @@
                 :maskStyle="maskStyle"
                 :containerStyle="containerStyle">
       <template slot=title>
-        <div class="owl-picker-choose">
-            <div class="owl-picker-cancel" @click="cancel">取消</div>
-            <div class="owl-picker-title">{{title}}</div>
-            <div class="owl-picker-confirm" @click="confirm">确定</div>
-        </div>
+        <slot name="title">
+          <div class="owl-picker-choose">
+              <div class="owl-picker-cancel" @click="cancel">取消</div>
+              <div class="owl-picker-title">{{title}}</div>
+              <div class="owl-picker-confirm" @click="confirm">确定</div>
+          </div>
+        </slot>
       </template>
       <template slot="wheel">
         <div class="owl-picker-wheel-wrap">
@@ -43,19 +45,18 @@ export default {
     PickerWheel
   },
   props: {
-    value: String,
     format: {
       type: String,
-      default: 'yyyy年/MM月/dd日'
+      default: 'yyyy/MM/dd'
     },
     min: {
-      type: [Date, Array],
+      type: [Date, String],
       default () {
-        return new Date('1970/4/10')
+        return new Date('1970/1/1')
       }
     },
     max: {
-      type: [Date, Array],
+      type: [Date, String],
       default () {
         return new Date('2020/10/15')
       }
@@ -93,6 +94,16 @@ export default {
     }
   },
   methods: {
+    setData (value) {
+      this._initMinMax(value, 'data')
+      this.$nextTick(() => {
+        this.$refs.year.setData(this.data.year)
+        this.$refs.month.setData(this.data.month)
+        this.$refs.day.setData(this.data.day)
+        this._resetDay()
+      })
+      return this
+    },
     show () {
       this.isVisible = true
       this.$refs.year.show()
@@ -104,6 +115,7 @@ export default {
       this.$refs.year.cancel()
       this.$refs.month.cancel()
       this.$refs.day.cancel()
+      this.$emit('cancel')
       this.hide()
     },
     confirm () {
@@ -153,7 +165,6 @@ export default {
       }
       if (this.months.length !== 12) {
         this._resetData('months', 1, 12)
-        this.$refs.month.setData(null, 0)
       }
       if (+day.key > maxDay) {
         this.$refs.day.setData(null, 0)
@@ -197,6 +208,9 @@ export default {
       }
       return val
     },
+    /**
+     * 计算某年某月共几日
+     */
     _dayOfmonth (year, month) {
       const isLeapYear = (year) => {
         return (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0))
@@ -233,46 +247,42 @@ export default {
       let maxMonth = 12
       let minDay = 1
       let maxDay = 31
-      if (this.data.year === this.minDate.year) {
+
+      if (this._isEmpty(this.data)) {
         minMonth = this.minDate.month
         minDay = this.minDate.day
       }
-      if (this.data.year === this.maxDate.year) {
-        maxMonth = this.maxDate.month
-        maxDay = this.maxDate.day
-      }
       this._resetData('months', minMonth, maxMonth)
       this._resetData('days', minDay, maxDay)
-      this.$nextTick(() => {
-        this.$refs.year.setData(this.data.year)
-        this.$refs.month.setData(this.data.month)
-        this.$refs.day.setData(this.data.day)
-        this._resetDay()
-      })
     },
     /**
      * 初始化最小日期和最大日期
      */
-    _initMinMax () {
-      const format = (date, key) => {
-        let d = this[date] ? this[date] : this.min
-        if (Object.prototype.toString.call(d) === '[object Array]') {
-          d = new Date(this[date] ? this[date] : this.min)
-        }
-        this[key] = {
-          year: d.getFullYear(),
-          month: d.getMonth() + 1,
-          day: d.getDate()
-        }
+    _initMinMax (date, key) {
+      let d = this[date] ? this[date] : date
+      if (Object.prototype.toString.call(d) === '[object String]') {
+        d = new Date(this[date] ? this[date] : date)
       }
-      format('min', 'minDate')
-      format('max', 'maxDate')
-      format('value', 'data')
+      this[key] = {
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate()
+      }
+    },
+    _isEmpty (obj) {
+      if (obj == null) return true
+      if (obj.length > 0) return false
+      if (obj.length === 0) return true
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) return false
+      }
+      return true
     }
   },
   created () {
     this.dateFormat = this.format.split('/')
-    this._initMinMax()
+    this._initMinMax('min', 'minDate')
+    this._initMinMax('max', 'maxDate')
     this._initDateArray()
   }
 }

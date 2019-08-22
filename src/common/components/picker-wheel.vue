@@ -139,6 +139,7 @@ export default {
         let speed = this.speed * Math.exp(-0.03 * d++)
         pos += speed
         if (Math.abs(speed) <= 0.1) {
+          this.duration = 200
           speed = 0.1
           let b = Math.round(pos / 2) * 2
           if (Math.abs(pos - b) < 0.02) {
