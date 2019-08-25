@@ -244,6 +244,13 @@ export default {
       this.$emit('callback', this.data[this.activeIndex])
     }
   },
+  watch: {
+    active () {
+      this.activeIndex = this.active
+      if (this.data.length <= 4) return
+      this.tabPlace()
+    }
+  },
   mounted () {
     this.getLiWidth()
     this.getLineRealWidth()
