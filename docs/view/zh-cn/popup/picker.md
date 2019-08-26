@@ -114,6 +114,63 @@ export default {
 }
 ```
 
+* 设置多列数据
+
+```html
+<owl-button @click="show">show</owl-button>
+```
+
+```js
+export default {
+  data () {
+    return {
+      pickerData: [['星期六', '星期日'], ['上午', '中午', '下午']],
+      // pickerData: [
+      //   [
+      //     { key: '6', value: '星期六' },
+      //     { key: '7', value: '星期日' }
+      //   ],
+      //   [
+      //     { key: 'forenoon', value: '上午' },
+      //     { key: 'noon', value: '中午' },
+      //     { key: 'afternoon', value: '下午' },
+      //   ]
+      // ],
+      result: null,
+      picker: null
+    }
+  },
+  methods: {
+    show () {
+      this.picker.show()
+    }
+  },
+  created () {
+    this.picker = this.$picker({
+      $props: {
+        data: this.pickerData
+      },
+      $events: {
+        confirm: data => {
+          this.result = data
+          console.log('confirm:', data)
+        },
+        cancel: data => {
+          console.log('cancel:', data)
+        },
+        callback: data => {
+          console.log('callback:', data)
+        }
+      }
+    })
+    /**
+     * [object, String] .setData(['星期日', '中午'])
+     * [object, Object] .setData(['7', 'noon'])
+     */
+  }
+}
+```
+
 * title 部分使用 `slot` 插槽
 
 ```html
@@ -174,12 +231,12 @@ export default {
 ---- | --- | ---
 callback | 显示或隐藏时触发，返回当前visible值 | -
 confirm | 点击确认触发，返回当前选中的值 | -
-cancel | 点击取消触发，返回上次确认或默认的值 | -
+cancel | 点击取消触发 | -
 
 ## 实例方法
 
 事件名  | 说明 | 参数
 ---- | --- | ---
-setData | 设置默认值 | 选择器值，如果数据为对象，该值为key
+setData | 设置默认值 | 选择器值，如果为多列，传入数组。如果数据为对象，该值为key
 show | 显示 | -
 hide | 隐藏 | -
