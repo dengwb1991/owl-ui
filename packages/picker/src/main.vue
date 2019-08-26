@@ -16,8 +16,18 @@
         </div>
       </slot>
       <slot name="wheel">
-        <picker-wheel ref="wheel"
-                    :data="data"/>
+        <template v-if="count > 1">
+          <div class="owl-picker-wheel-wrap">
+            <picker-wheel v-for="(item, index) in data"
+                          :key="index"
+                          ref=wheel
+                          :data="item"/>
+          </div>
+        </template>
+        <template v-else>
+          <picker-wheel ref="wheel"
+                        :data="data"/>
+        </template>
       </slot>
     </owl-drawer>
   </div>
@@ -27,6 +37,11 @@
 import OwlDrawer from '../../drawer/src/main.vue'
 import PickerWheel from 'components/picker-wheel'
 import visibilityMixin from 'mixins/visibility'
+
+const HANDLER_SHOW = 'show'
+const HANDLER_CONFIRM = 'confirm'
+const HANDLER_CANCEL = 'cancel'
+const HANDLER_SET_DATA = 'setData'
 
 export default {
   name: 'OwlPicker',
@@ -50,6 +65,15 @@ export default {
       default: true
     }
   },
+  computed: {
+    count () {
+      if (this._getFirstDataIsArray()) {
+        return this.data.length
+      } else {
+        return 1
+      }
+    }
+  },
   watch: {
     visible: {
       handler (val) {
@@ -62,22 +86,43 @@ export default {
     }
   },
   methods: {
+    _getFirstDataIsArray () {
+      const firstData = this.data[0]
+      return Object.prototype.toString.call(firstData) === '[object Array]'
+    },
+    _handler (instruction, val = []) {
+      if (!this.$refs.wheel) return
+      let data = null
+      if (this._getFirstDataIsArray()) {
+        let arr = []
+        for (let i = 0, len = this.data.length; i < len; i++) {
+          arr.push(this.$refs.wheel[i][instruction](val[i]))
+        }
+        data = arr
+      } else {
+        data = this.$refs.wheel[instruction](val)
+      }
+      return data
+    },
     setData (val) {
-      return this.$refs.wheel.setData(val)
+      this._handler(HANDLER_SET_DATA, val)
+      return this
     },
     confirm () {
-      this.isVisible = false
-      const data = this.$refs.wheel.confirm()
-      this.$emit('confirm', data)
+      this.hide()
+      const data = this._handler(HANDLER_CONFIRM)
+      this.$emit(HANDLER_CONFIRM, data)
       return data
     },
     cancel () {
-      this.isVisible = false
-      this.$refs.wheel && this.$emit('cancel', this.$refs.wheel.cancel())
+      this.hide()
+      this._handler(HANDLER_CANCEL)
+      this.$emit(HANDLER_CANCEL)
     },
     show () {
       this.isVisible = true
-      return this.$refs.wheel && this.$refs.wheel.show()
+      this._handler(HANDLER_SHOW)
+      return this
     }
   }
 }

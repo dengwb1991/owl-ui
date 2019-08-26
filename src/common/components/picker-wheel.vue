@@ -74,7 +74,6 @@ export default {
       index = index === -1 ? 0 : index
       this.transY = index * -2
       this.valIndex = index
-      return this.$parent.$parent
     },
     confirm () {
       return this.data[this.valIndex || 0]
@@ -87,7 +86,6 @@ export default {
     show () {
       this.oldTransY = this.transY
       this.oldValIndex = this.valIndex
-      return this.$parent.$parent
     },
     getPos (event) {
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop

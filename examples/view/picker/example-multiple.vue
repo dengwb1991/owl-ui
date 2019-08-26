@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="title">Set Data </p>
+    <p class="title">Multiple</p>
     <owl-button @click="show">show</owl-button>
     <params :data="pickerParams"/>
   </div>
@@ -8,17 +8,27 @@
 
 <script>
 import params from '../../components/params'
-
 export default {
   components: {
     params
   },
   data () {
     return {
-      data: '1991/2/24',
+      pickerData: [['星期六', '星期日'], ['上午', '中午', '下午']],
+      // pickerData: [
+      //   [
+      //     { key: '6', value: '星期六' },
+      //     { key: '7', value: '星期日' }
+      //   ],
+      //   [
+      //     { key: 'forenoon', value: '上午' },
+      //     { key: 'noon', value: '中午' },
+      //     { key: 'afternoon', value: '下午' },
+      //   ]
+      // ],
       pickerParams: [],
-      picker: null,
-      result: '[1991,2,24]'
+      result: null,
+      picker: null
     }
   },
   methods: {
@@ -27,7 +37,7 @@ export default {
     },
     load () {
       this.pickerParams = Object.entries({
-        data: this.data,
+        data: this.pickerData,
         result: this.result
       })
     }
@@ -36,11 +46,9 @@ export default {
     result: 'load'
   },
   created () {
-    this.load()
-    this.picker = this.$datePicker({
+    this.picker = this.$picker({
       $props: {
-        min: this.min,
-        max: this.max
+        data: this.pickerData
       },
       $events: {
         confirm: data => {
@@ -54,7 +62,12 @@ export default {
           console.log('callback:', data)
         }
       }
-    }).setData(this.data)
+    })
+    /**
+     * [object, String] .setData(['星期日', '中午'])
+     * [object, Object] .setData(['7', 'noon'])
+     */
+    this.load()
   }
 }
 </script>
