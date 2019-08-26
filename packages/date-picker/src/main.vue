@@ -151,7 +151,7 @@ export default {
           }
         }
         if (month.key === this.minDate.month) {
-          this._resetData('months', this.minDate.month, maxDay)
+          this._resetData('months', this.minDate.month, 12)
         }
         if (month.key <= this.minDate.month) {
           this._resetData('days', this.minDate.day, maxDay)
