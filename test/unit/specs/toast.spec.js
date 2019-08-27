@@ -32,6 +32,7 @@ describe('Toast', () => {
     expect(elm.style.display).to.equal('none')
     expect(vm.isVisible).to.be.false
     vm.show()
+    vm.show()
     expect(vm.isVisible).to.be.true
   })
 

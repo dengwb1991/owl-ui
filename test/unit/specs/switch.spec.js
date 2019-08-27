@@ -23,18 +23,20 @@ describe('Switch', () => {
     expect(switchElm.disabled).to.be.true
   })
 
-  it('init callback event', () => {
+  it('init callback event', done => {
     const btnHandler = sinon.spy()
 
-    createVue({
+    vm = createVue({
       template: `
         <owl-switch v-model="val"
-                    :initCallback="true"
+                    :init-callback="true"
+                    :color="color"
                     @callback="handle">
         </owl-switch>
       `,
       data: {
-        val: true
+        val: false,
+        color: '#584628',
       },
       methods: {
         handle () {
@@ -43,7 +45,10 @@ describe('Switch', () => {
       }
     })
 
-    expect(btnHandler).to.be.calledOnce
+    expect(btnHandler).to.be.called
+    setTimeout(() => {
+      vm.val = true
+      done()
+    })
   })
-
 })
