@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { createTest, destroyVM, createVue} from '../util'
 import Drawer from 'packages/drawer'
 
@@ -8,10 +9,9 @@ describe('Drawer', () => {
   })
 
   it('use', () => {
-    vm = createTest(Drawer, {
-    }, true)
-    let buttonElm = vm.$el
-    expect(buttonElm.classList.contains('owl-drawer')).to.be.true
+    Vue.use(Drawer)
+    expect(Vue.component(Drawer.name))
+      .to.be.a('function')
   })
 
   it('slot contents', () => {
