@@ -91,7 +91,6 @@ export default {
       return Object.prototype.toString.call(firstData) === '[object Array]'
     },
     _handler (instruction, val = []) {
-      if (!this.$refs.wheel) return
       let data = null
       if (this._getFirstDataIsArray()) {
         let arr = []
