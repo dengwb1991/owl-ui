@@ -87,10 +87,9 @@ export default {
     },
     stops () {
       let result = []
-      if (!this.step) return result
       let valueRange = this._max - this._min
-      let stopCount = valueRange / this.step
-      let stepWidth = 100 * this.step / valueRange
+      let stopCount = valueRange / this._step
+      let stepWidth = 100 * this._step / valueRange
       for (let i = 1; i < stopCount; i++) {
         result.push(i * stepWidth)
       }
