@@ -1,10 +1,12 @@
 .move-motion(@className, @keyframeName) {
   .make-motion(@className, @keyframeName);
   .@{className}-enter-active, .@{className}-appear {
-    opacity: 0;
+    // opacity: 0;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
     animation-timing-function: @ease-in-out;
   }
   .@{className}-leave-active {
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
     animation-timing-function: @ease-in-out;
   }
 }
@@ -18,12 +20,12 @@
   0% {
     transform-origin: 0 0;
     transform: translateY(100%);
-    opacity: 0;
+    // opacity: 0;
   }
   100% {
     transform-origin: 0 0;
     transform: translateY(0%);
-    opacity: 1;
+    // opacity: 1;
   }
 }
 
@@ -31,12 +33,12 @@
   0% {
     transform-origin: 0 0;
     transform: translateY(0%);
-    opacity: 1;
+    // opacity: 1;
   }
   100% {
     transform-origin: 0 0;
     transform: translateY(100%);
-    opacity: 0;
+    // opacity: 0;
   }
 }
 

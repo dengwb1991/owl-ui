@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       pickerParams: [],
-      min: new Date('2010/2/24'),
+      min: new Date('1991/2/24'),
       max: new Date('2019/8/22'),
       picker: null,
       result: null
@@ -60,11 +60,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-.title {
-  font-family: PingFangSC-Medium;
-  font-size: 48px;
-  padding: 20px 0 20px 20px;
-}
-</style>

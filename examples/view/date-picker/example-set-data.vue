@@ -15,7 +15,8 @@ export default {
   },
   data () {
     return {
-      data: '1991/2/24',
+      data: '2019/2/24',
+      // data: new Date('2000/4/1'),
       pickerParams: [],
       picker: null,
       result: '[1991,2,24]'
@@ -38,10 +39,6 @@ export default {
   created () {
     this.load()
     this.picker = this.$datePicker({
-      $props: {
-        min: this.min,
-        max: this.max
-      },
       $events: {
         confirm: data => {
           this.result = data
@@ -58,11 +55,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-.title {
-  font-family: PingFangSC-Medium;
-  font-size: 48px;
-  padding: 20px 0 20px 20px;
-}
-</style>

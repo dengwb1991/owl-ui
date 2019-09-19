@@ -6,8 +6,7 @@
                 :lockScroll="lockScroll"
                 :z-index="zIndex"
                 :maskStyle="maskStyle"
-                :containerStyle="containerStyle"
-                @maskClose="cancel">
+                :containerStyle="containerStyle">
       <slot name="title">
         <div class="owl-picker-choose">
             <div class="owl-picker-cancel" @click="cancel">取消</div>
@@ -71,17 +70,6 @@ export default {
         return this.data.length
       } else {
         return 1
-      }
-    }
-  },
-  watch: {
-    visible: {
-      handler (val) {
-        if (val) {
-          this.show()
-        } else {
-          this.isVisible = val
-        }
       }
     }
   },

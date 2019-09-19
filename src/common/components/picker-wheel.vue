@@ -114,7 +114,6 @@ export default {
           return
         }
       }
-
       const flag = (this.startScreenY - this.endScreenY) / (this.startTime - this.endTime)
       if (Math.abs(flag) <= 0.2) {
         this.speed = flag < 0 ? -0.08 : 0.08

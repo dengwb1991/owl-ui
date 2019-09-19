@@ -82,25 +82,20 @@ export default {
       dateFormat: []
     }
   },
-  watch: {
-    visible: {
-      handler (val) {
-        if (val) {
-          this.show()
-        } else {
-          this.isVisible = val
-        }
-      }
-    }
-  },
   methods: {
     setData (value) {
       this._initMinMax(value, 'data')
       this.$nextTick(() => {
         this.$refs.year.setData(this.data.year)
-        this.$refs.month.setData(this.data.month)
-        this.$refs.day.setData(this.data.day)
         this._resetDay()
+        let timer = setTimeout(() => {
+          this.$refs.month.setData(this.data.month)
+          this._resetDay()
+          timer = setTimeout(() => {
+            this.$refs.day.setData(this.data.day)
+            clearTimeout(timer)
+          })
+        })
       })
       return this
     },
@@ -170,11 +165,18 @@ export default {
           this._resetData('days', 1, maxDay)
           this.$refs.day.setData(null, 0)
         }
-        if (month.key <= this.maxDate.month) {
-          this._resetData('days', 1, maxDay)
-          if (+day.key > maxDay) {
+        if (month.key === this.maxDate.month) {
+          this._resetData('days', 1, this.maxDate.day)
+          if (+day.key > this.maxDate.day) {
             this.$refs.day.setData(null, 0)
           }
+        }
+        if (month.key < this.maxDate.month) {
+          maxDay = this._dayOfmonth(year.key, month.key)
+          this._resetData('days', 1, maxDay)
+        }
+        if (+day.key > maxDay) {
+          this.$refs.day.setData(null, 0)
         }
         return
       }
@@ -264,14 +266,9 @@ export default {
      */
     _initDateArray () {
       this._resetData('years', this.minDate.year, this.maxDate.year)
-      let minMonth = 1
+      let minMonth = this.minDate.month
       let maxMonth = 12
-      let minDay = 1
-
-      if (this._isEmpty(this.data)) {
-        minMonth = this.minDate.month
-        minDay = this.minDate.day
-      }
+      let minDay = this.minDate.day
       this._resetData('months', minMonth, maxMonth)
       this._resetData('days', minDay, this._dayOfmonth(this.minDate.year, this.minDate.month))
     },
@@ -288,15 +285,6 @@ export default {
         month: d.getMonth() + 1,
         day: d.getDate()
       }
-    },
-    _isEmpty (obj) {
-      if (obj == null) return true
-      if (obj.length > 0) return false
-      if (obj.length === 0) return true
-      for (var key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) return false
-      }
-      return true
     }
   },
   created () {

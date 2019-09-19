@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { destroyVM, createVue, createTest } from '../util'
-import { dispatchTouchStart, dispatchSwipe, dispatchTap } from '../event'
+import { dispatchTouchStart, dispatchSwipe } from '../event'
 import Range from 'packages/range'
 
 describe('Range', () => {
@@ -156,7 +156,6 @@ describe('Range', () => {
     }, true)
 
     const buttonWrap = vm.$el.querySelector('.owl-range-button-wrap')
-    // const range = vm.$el.querySelector('.owl-range-wrap')
     setTimeout(() => {
       dispatchTouchStart(buttonWrap, {
         clientX: buttonWrap.offsetLeft,
