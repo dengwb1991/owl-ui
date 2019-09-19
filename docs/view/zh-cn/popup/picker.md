@@ -231,7 +231,7 @@ export default {
 ---- | --- | ---
 callback | 显示或隐藏时触发，返回当前visible值 | -
 confirm | 点击确认触发，返回当前选中的值 | -
-cancel | 点击取消触发 | -
+cancel | 点击取消触发，回到上次滚动位置 | -
 
 ## 实例方法
 

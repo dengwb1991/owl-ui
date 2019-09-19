@@ -135,6 +135,28 @@ export default {
 }
 ```
 
+* 引入形式
+
+```html
+<owl-button @click="show">show</owl-button>
+<owl-date-picker :visible.sync="visible"/>
+```
+
+```js
+export default {
+  data () {
+    return {
+      visible: false
+    }
+  },
+  methods: {
+    show () {
+      this.visible = true
+    }
+  }
+}
+```
+
 ## Props 配置
 
 > 日期格式用 `/` 分开
@@ -158,7 +180,7 @@ export default {
 ---- | --- | ---
 callback | 显示或隐藏时触发，返回当前visible值 | -
 confirm | 点击确认触发，返回当前选中的值 | -
-cancel | 点击取消触发 | -
+cancel | 点击取消触发，回到上次滚动位置 | -
 
 ## 实例方法
 
