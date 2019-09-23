@@ -1,21 +1,21 @@
 <template>
   <div class="owl-tabs" :style="BaseStyle">
     <ul :style="[ulStyle, ulWidth, ulTransform, ulTransition]"
-        @touchstart="doTouchStart($event)"
-        @touchmove="doTouchMove($event)"
-        @touchend="doTouchEnd($event)">
+        @touchstart="doTouchStart"
+        @touchmove="doTouchMove"
+        @touchend="doTouchEnd">
       <li ref="tab"
           v-for="(item, index) in data"
           :key="index"
           :class="index === activeIndex ? 'active' : ''"
-          :style="index === activeIndex ? [activeColor, activeStyle] : defaultColor"
+          :style="index === activeIndex ? [activeColor, activeStyle, liStyle] : [defaultColor, liStyle]"
           @click="tap({ item, index })">
         {{name ? item[name] : item}}
       </li>
       <div ref="line"
-           class="line"
-           v-if="lineUse"
-           :style="[underlineStyle, underlineLeft, lineTransition]"></div>
+          class="line"
+          v-if="lineUse"
+          :style="[underlineStyle, underlineLeft, lineTransition]"></div>
     </ul>
   </div>
 </template>
@@ -159,6 +159,10 @@ export default {
         color: this.highlight
       }
     },
+    liStyle () {
+      const width = this.data.length <= 4 ? '100%' : this.tabWidth
+      return { width }
+    },
     underlineStyle () {
       return {
         width: !this.lineWidth ? `${this.liWidth}px` : this.lineWidth,
@@ -175,12 +179,10 @@ export default {
   },
   methods: {
     doTouchStart (event) {
-      event.stopPropagation()
       this.tabTransition = null
-
       this.tabsIns = {
         ...this.tabsIns,
-        X: event.touches[0].pageX - parseFloat(this.tabTransX)
+        X: event.targetTouches[0].clientX - parseFloat(this.tabTransX)
       }
     },
     doTouchMove (event) {
@@ -188,9 +190,9 @@ export default {
       event.preventDefault()
       const surplusWidth = this.surplusWidth = Math.abs(this.surplusWidth)
 
-      let transX = event.touches[0].pageX - this.tabsIns.X
-      if (surplusWidth + event.touches[0].pageX - this.tabsIns.X < 0) {
-        transX = -surplusWidth - (this.tabsIns.X - event.touches[0].pageX - surplusWidth) / 8
+      let transX = event.targetTouches[0].clientX - this.tabsIns.X
+      if (surplusWidth + event.targetTouches[0].clientX - this.tabsIns.X < 0) {
+        transX = -surplusWidth - (this.tabsIns.X - event.targetTouches[0].clientX - surplusWidth) / 8
       } else if (transX > 0) {
         transX = transX / 8
       }
@@ -209,20 +211,18 @@ export default {
       return /^([0-9|\\.]+)([a-zA-Z]+)$/.exec(data)
     },
     getLiWidth () {
-      this.liWidth = this.$refs.tab[0].offsetWidth
+      this.liWidth = this.$refs.tab[0].clientWidth
     },
     getLineRealWidth () {
-      this.lineRealWidth = this.$refs.line && (this.$refs.line.offsetWidth || this.$refs.tab[0].offsetWidth)
+      this.lineRealWidth = this.$refs.line && (this.$refs.line.clientWidth || this.$refs.tab[0].clientWidth)
     },
     tabPlace () {
       this.tabTransition = '-webkit-transform 0.4s linear 0s'
       const surplusWidth = this.surplusWidth = this.liWidth * this.data.length - document.body.clientWidth
       const centerMarginLeft = parseInt((document.body.clientWidth - this.liWidth) / 2)
-      const bodyMarginLeft = parseInt(this.$refs.tab[this.activeIndex].offsetLeft + this.tabTransX)
+      const bodyMarginLeft = parseInt(this.$refs.tab[this.activeIndex].clientWidth * this.activeIndex + this.tabTransX)
       let shouldTranslateX = parseInt(this.tabTransX) - (bodyMarginLeft - centerMarginLeft)
       if (shouldTranslateX > 0 && shouldTranslateX + parseInt(this.tabTransX) > 0) {
-        shouldTranslateX = 0
-      } else if (shouldTranslateX > 0 && shouldTranslateX + parseInt(this.tabTransX) < 0) {
         shouldTranslateX = 0
       } else if (shouldTranslateX < -surplusWidth) {
         shouldTranslateX = -surplusWidth
@@ -252,6 +252,7 @@ export default {
     }
   },
   mounted () {
+    if (!this.$refs.tab) return
     this.getLiWidth()
     this.getLineRealWidth()
     this.tabPlace()
