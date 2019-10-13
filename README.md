@@ -43,6 +43,10 @@
   <a href="https://travis-ci.org/dengwb1991/owl-ui" rel="nofollow" target="_blank">
     <img src="https://api.travis-ci.org/dengwb1991/owl-ui.svg?branch=master" alt="build">
   </a>
+
+  <a href="https://codecov.io/gh/dengwb1991/owl-ui/branch/master/graph/badge.svg" rel="nofollow" target="_blank">
+    <img src="https://codecov.io/gh/dengwb1991/owl-ui" alt="codecov">
+  </a>
 </p>
 
 ### 官网链接
