@@ -3,7 +3,6 @@
 <img style="padding-right: 20px"src="https://www.dengwb.com/static/logo/owl.png" width="120px"/>
 <img src="https://www.dengwb.com/static/logo/Dengwb.png" width="100px"/>
 </p>
-<!--<br/>-->
 
 <p font-size="40px" align="center">基于 Vue 和 Webpack 构建的移动端UI组件库</p>
 
@@ -49,27 +48,34 @@
   </a>
 </p>
 
-### 官网链接
-
-[传送门](http://owl-ui.dengwb.com)
-
-<p align="left">
-    <img src="https://owl-ui.dengwb.com/static/images/owl-ui-home.png"  width="600px">
-</p>
-
-### 示例链接
-
-[传送门](http://owl-ui.dengwb.com/examples)
-
-<img src="https://owl-ui.dengwb.com/static/images/qr-code.png"/>
-
-### 开发心得链接
-
-[UI组件库从0到1开发心得](https://juejin.im/post/5c6504d06fb9a049c6445a25)
-
-[UI组件库从1到N开发心得-组件篇](https://juejin.im/post/5ce21c8ee51d45109725fdbe)
-
-[UI组件库从1到N开发心得-单元测试篇](https://juejin.im/post/5da5656651882557494cc3e3)
+<html>
+<table style="margin-left: auto; margin-right: auto;">
+  <tr>
+    <td style="text-align: center; font-size: 18px">
+      官网
+    </td>
+    <td style="text-align: center; font-size: 18px">
+      示例
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://owl-ui.dengwb.com/static/images/owl-ui-home.png"  width="250px">
+    </td>
+    <td>
+      <img src="https://owl-ui.dengwb.com/static/images/qr-code.png" width="250px"/>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center">
+      <a href="http://owl-ui.dengwb.com">http://owl-ui.dengwb.com</a>
+    </td>
+    <td style="text-align: center">
+      <a href="http://owl-ui.dengwb.com/examples">http://owl-ui.dengwb.com/examples</a>
+    </td>
+  </tr>
+</table>
+</html>
 
 ### 安装
 
@@ -145,6 +151,14 @@ npm run unit            #组件单元测试
 
 npm run test            #eslint测试 & 组件单元测试
 ```
+
+### 开发心得链接
+
+[UI组件库从0到1开发心得](https://juejin.im/post/5c6504d06fb9a049c6445a25)
+
+[UI组件库从1到N开发心得-组件篇](https://juejin.im/post/5ce21c8ee51d45109725fdbe)
+
+[UI组件库从1到N开发心得-单元测试篇](https://juejin.im/post/5da5656651882557494cc3e3)
 
 ### 学习交流
 
