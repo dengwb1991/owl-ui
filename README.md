@@ -48,8 +48,10 @@
   </a>
 </p>
 
-<div align=center>
-  <table align="center">
+<h2 align="center">了解 owl-ui</h2>
+
+<table>
+  <tbody>
     <tr>
       <td align="center" font-size="18px">
         官网
@@ -57,33 +59,41 @@
       <td align="center" font-size="18px">
         示例
       </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <img src="https://owl-ui.dengwb.com/static/images/owl-ui-home.png"  width="250px">
-      </td>
-      <td align="center">
-        <img src="https://owl-ui.dengwb.com/static/images/qr-code.png" width="250px"/>
+      <td align="center" font-size="18px">
+        作者
       </td>
     </tr>
     <tr>
       <td align="center">
-        <a href="http://owl-ui.dengwb.com">http://owl-ui.dengwb.com</a>
+        <a href="http://owl-ui.dengwb.com" target="_blank">
+          <img src="https://owl-ui.dengwb.com/static/images/owl-ui-home.png"  width="250px">
+        </a>
       </td>
       <td align="center">
-        <a href="http://owl-ui.dengwb.com/examples">http://owl-ui.dengwb.com/examples</a>
+        <a href="http://owl-ui.dengwb.com/examples" target="_blank">
+          <img src="https://owl-ui.dengwb.com/static/images/qr-code.png" width="250px"/>
+        </a>
+      </td>
+      <td align="center">
+        <img src="https://www.dengwb.com/static/wechat/my-wechat-code2.png" width="250px"/>
       </td>
     </tr>
-  </table>
-</div>
+  </tbody>
+</table>
 
-### 安装
+### 开发心得链接
+
+[UI组件库从0到1开发心得](https://juejin.im/post/5c6504d06fb9a049c6445a25)
+
+[UI组件库从1到N开发心得-组件篇](https://juejin.im/post/5ce21c8ee51d45109725fdbe)
+
+[UI组件库从1到N开发心得-单元测试篇](https://juejin.im/post/5da5656651882557494cc3e3)
+
+<h2 align="center">安装 & 使用</h2>
 
 ```bash
 npm install owl-ui -S
 ```
-
-### 使用
 
 ```js
 import 'owl-ui/lib/flexible' // Mobile adaptive solution
@@ -122,44 +132,3 @@ npm run dev
 
 npm run docs
 ```
-
-### 命令介绍
-
-```bash
-
-npm run dev             #启动组件开发
-
-npm run docs            #启动文档开发
-
-npm run prod            #组件构建
-
-npm run build           #整体构建
-
-npm run build:style     #样式构建
-
-npm run build:icon      #svg转化为iconfont
-
-npm run build:docs      #文档构建
-
-npm run build:example   #示例构建
-
-npm run build:component #按需组件构建
-
-npm run lint            #eslint测试
-
-npm run unit            #组件单元测试
-
-npm run test            #eslint测试 & 组件单元测试
-```
-
-### 开发心得链接
-
-[UI组件库从0到1开发心得](https://juejin.im/post/5c6504d06fb9a049c6445a25)
-
-[UI组件库从1到N开发心得-组件篇](https://juejin.im/post/5ce21c8ee51d45109725fdbe)
-
-[UI组件库从1到N开发心得-单元测试篇](https://juejin.im/post/5da5656651882557494cc3e3)
-
-### 学习交流
-
-<img width=300 src="https://www.dengwb.com/static/wechat/my-wechat-code.jpeg"/>
