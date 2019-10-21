@@ -48,34 +48,34 @@
   </a>
 </p>
 
-<html align="center">
-<table align="center">
-  <tr>
-    <td align="center" font-size="18px">
-      官网
-    </td>
-    <td align="center" font-size="18px">
-      示例
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://owl-ui.dengwb.com/static/images/owl-ui-home.png"  width="250px">
-    </td>
-    <td align="center">
-      <img src="https://owl-ui.dengwb.com/static/images/qr-code.png" width="250px"/>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="http://owl-ui.dengwb.com">http://owl-ui.dengwb.com</a>
-    </td>
-    <td align="center">
-      <a href="http://owl-ui.dengwb.com/examples">http://owl-ui.dengwb.com/examples</a>
-    </td>
-  </tr>
-</table>
-</html>
+<div align=center>
+  <table align="center">
+    <tr>
+      <td align="center" font-size="18px">
+        官网
+      </td>
+      <td align="center" font-size="18px">
+        示例
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="https://owl-ui.dengwb.com/static/images/owl-ui-home.png"  width="250px">
+      </td>
+      <td align="center">
+        <img src="https://owl-ui.dengwb.com/static/images/qr-code.png" width="250px"/>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="http://owl-ui.dengwb.com">http://owl-ui.dengwb.com</a>
+      </td>
+      <td align="center">
+        <a href="http://owl-ui.dengwb.com/examples">http://owl-ui.dengwb.com/examples</a>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ### 安装
 
