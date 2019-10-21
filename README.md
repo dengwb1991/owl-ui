@@ -132,3 +132,32 @@ npm run dev
 
 npm run docs
 ```
+
+### 命令介绍
+
+```bash
+
+npm run dev             #启动组件开发
+
+npm run docs            #启动文档开发
+
+npm run prod            #组件构建
+
+npm run build           #整体构建
+
+npm run build:style     #样式构建
+
+npm run build:icon      #svg转化为iconfont
+
+npm run build:docs      #文档构建
+
+npm run build:example   #示例构建
+
+npm run build:component #按需组件构建
+
+npm run lint            #eslint测试
+
+npm run unit            #组件单元测试
+
+npm run test            #eslint测试 & 组件单元测试
+```
