@@ -75,7 +75,9 @@
         </a>
       </td>
       <td align="center">
-        <img src="https://www.dengwb.com/static/wechat/my-wechat-code2.png" width="250px"/>
+        <a href="https://www.dengwb.com/static/wechat/my-wechat-code2.png" target="_blank">
+          <img src="https://www.dengwb.com/static/wechat/my-wechat-code2.png" width="250px"/>
+        </a>
       </td>
     </tr>
   </tbody>
