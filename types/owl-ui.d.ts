@@ -50,6 +50,6 @@ declare module 'vue/types/vue' {
     /** create Picker instance */
     $picker(options: object): Picker
     /** create Toast instance */
-    $toast(options: object): Toast
+    $toast(options: object | string): Toast
   }
 }
