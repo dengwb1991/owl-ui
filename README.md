@@ -91,6 +91,8 @@
 
 [UI组件库从1到N开发心得-单元测试篇](https://juejin.im/post/5da5656651882557494cc3e3)
 
+[UI组件库从1到N开发心得-声明文件篇](https://juejin.im/post/5ea644046fb9a03c65690529)
+
 <h2 align="center">安装 & 使用</h2>
 
 ```bash
